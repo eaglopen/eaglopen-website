@@ -1,0 +1,321 @@
+/* ===== HEADER ===== */
+.main-header {
+  background: linear-gradient(to right, var(--color-primary-dark), var(--color-primary));
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+}
+
+.main-header .container {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+
+/* LOGO */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--text-inverse);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  padding: var(--space-4) 0;
+  flex: 0 0 auto;
+  max-height: var(--header-height);
+}
+
+.logo img {
+  height: 70px;
+  width: 70px;
+  object-fit: cover;
+  border-radius: var(--radius-full);
+  background: var(--color-primary);
+}
+
+
+/* NAV */
+.nav {
+  width: 100%;
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+}
+
+.nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+.nav a {
+  color: var(--text-inverse);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  position: relative;
+  padding: var(--space-2) var(--space-4);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  transition: color var(--transition-base);
+}
+
+.nav a:hover {
+  color: var(--color-secondary);
+}
+
+.nav > ul > li > a.active {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* CTA Button */
+.cta-btn {
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-secondary);
+  border-radius: var(--radius-base);
+  color: var(--text-inverse) !important;
+}
+
+/* ================= DROPDOWN MENU ================= */
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+/* Dropdown container */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  background: var(--bg-primary);
+  display: flex;
+  flex-direction: column;
+
+  /* spacing + containment fixes */
+  padding: var(--space-1) 0;
+  margin-top: var(--space-2);
+  overflow: hidden;
+
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px) scale(0.95);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: var(--z-dropdown);
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+/* Hide after a menu item is clicked until hover ends */
+.dropdown.dropdown-dismissed:hover .dropdown-menu {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px) scale(0.95);
+}
+
+.dropdown.dropdown-dismissed:hover > a .dropdown-icon {
+  transform: none;
+}
+
+/* Dropdown links */
+.dropdown-menu a {
+  position: relative;
+  padding: var(--space-3) var(--space-5);
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+  border-radius: var(--radius-lg);
+  margin: 0 var(--space-2);
+}
+
+.dropdown-menu a:hover {
+  background: rgba(0, 180, 216, 0.1);
+  color: var(--color-secondary);
+  transform: translateX(4px);
+}
+
+.dropdown-menu a::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 0;
+  background: var(--color-secondary);
+  border-radius: var(--radius-sm);
+  transition: height var(--transition-base);
+}
+
+.dropdown-menu a:hover::before {
+  height: 70%;
+}
+
+.dropdown-menu a:hover::after {
+  width: calc(100% - 36px);
+}
+
+.dropdown > a .dropdown-icon {
+  transition: transform var(--transition-base);
+  font-size: 0.7em;
+}
+
+.dropdown:hover > a .dropdown-icon {
+  transform: rotate(180deg);
+}
+
+/* ================= MOBILE MENU BUTTON ================= */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-2);
+  z-index: var(--z-fixed);
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.mobile-menu-btn span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: var(--text-inverse);
+  margin: var(--space-1) 0;
+  transition: all var(--transition-base);
+  border-radius: var(--radius-sm);
+}
+
+.mobile-menu-btn.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-btn.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-btn.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* ================= MOBILE NAVIGATION ================= */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 80%;
+  max-width: 400px;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--bg-primary);
+  box-shadow: var(--shadow-lg);
+  transform: translateX(110%);
+  visibility: hidden;
+  transition:
+    transform var(--transition-base),
+    visibility var(--transition-base);
+  z-index: var(--z-modal);
+  overflow-y: auto;
+}
+
+.mobile-nav.active {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+.mobile-nav-header {
+  background: var(--color-primary);
+  color: var(--text-inverse);
+  padding: var(--space-5);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mobile-nav-close {
+  background: none;
+  border: none;
+  color: var(--text-inverse);
+  font-size: var(--font-size-2xl);
+  cursor: pointer;
+  padding: var(--space-1);
+}
+
+.mobile-nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.mobile-nav li {
+  border-bottom: 1px solid var(--color-gray-200);
+}
+
+.mobile-nav a {
+  display: block;
+  padding: var(--space-4) var(--space-5);
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  transition: background var(--transition-base);
+}
+
+.mobile-nav a:hover {
+  background: var(--bg-secondary);
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+/* Mobile dropdown */
+.mobile-nav .dropdown-menu {
+  position: static;
+  box-shadow: none;
+  border: none;
+  background: var(--bg-secondary);
+  margin: 0;
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  display: none; /* Initially hidden */
+}
+
+.mobile-nav .dropdown.active .dropdown-menu {
+  display: block; /* Show when active */
+}
+
+.mobile-nav .dropdown-menu a {
+  padding-left: var(--space-10);
+  font-size: var(--font-size-sm);
+}
+
+/* Mobile CTA button */
+.mobile-nav .cta-btn {
+  margin: var(--space-5);
+  text-align: center;
+}
+

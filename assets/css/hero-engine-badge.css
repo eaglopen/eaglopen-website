@@ -1,0 +1,450 @@
+/* ===== HERO ENGINE BADGE — bottom-right live workspace widget ===== */
+
+.hero-engine-badge {
+  --heb-accent: var(--color-secondary, #00b4d8);
+  --heb-gold: var(--color-gold, #c9a84c);
+  --heb-bg: rgba(8, 26, 43, 0.82);
+  --heb-border: rgba(0, 180, 216, 0.22);
+  --heb-glow: rgba(0, 180, 216, 0.14);
+  --heb-width: clamp(220px, 26vw, 320px);
+  --heb-height: clamp(76px, 9vh, 96px);
+
+  position: absolute;
+  right: 0;
+  /* ↓ Move badge up/down: lower value = closer to bottom (over Gemini logo) */
+  bottom: clamp(10px, 1.5vh, 16px);
+  z-index: 5;
+  width: var(--heb-width);
+  height: var(--heb-height);
+  pointer-events: none;
+  user-select: none;
+  contain: layout style paint;
+}
+
+/* Soft ambient glow — blends into hero gradient */
+.hero-engine-badge__glow {
+  position: absolute;
+  inset: -20% -8% -30% -45%;
+  background:
+    radial-gradient(ellipse 70% 80% at 88% 72%, rgba(0, 180, 216, 0.18) 0%, transparent 62%),
+    radial-gradient(ellipse 50% 60% at 95% 90%, rgba(201, 168, 76, 0.1) 0%, transparent 55%);
+  filter: blur(12px);
+  opacity: 0.85;
+  animation: hebGlowPulse 6s ease-in-out infinite;
+}
+
+@keyframes hebGlowPulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.03); }
+}
+
+.hero-engine-badge__frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 14px 0 0 14px;
+  overflow: hidden;
+  background: var(--heb-bg);
+  backdrop-filter: blur(20px) saturate(1.35);
+  -webkit-backdrop-filter: blur(20px) saturate(1.35);
+  box-shadow:
+    0 0 0 1px var(--heb-border),
+    0 12px 40px rgba(8, 26, 43, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 0.35) 12%,
+    black 28%,
+    black 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 0.35) 12%,
+    black 28%,
+    black 100%
+  );
+}
+
+/* Animated gradient border ring */
+.hero-engine-badge__frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    115deg,
+    transparent 20%,
+    var(--heb-accent) 45%,
+    var(--heb-gold) 55%,
+    transparent 80%
+  );
+  background-size: 220% 220%;
+  animation: hebBorderShift 8s linear infinite;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+@keyframes hebBorderShift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 220% 50%; }
+}
+
+/* Subtle animated grid */
+.hero-engine-badge__grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.07;
+  background-image:
+    linear-gradient(rgba(0, 180, 216, 0.6) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 180, 216, 0.6) 1px, transparent 1px);
+  background-size: 18px 18px;
+  animation: hebGridDrift 24s linear infinite;
+}
+
+@keyframes hebGridDrift {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(18px, 18px); }
+}
+
+/* Neural connection lines */
+.hero-engine-badge__neural {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.22;
+  pointer-events: none;
+}
+
+.hero-engine-badge__neural line {
+  stroke: var(--heb-accent);
+  stroke-width: 0.6;
+  stroke-dasharray: 4 6;
+  animation: hebNeuralFlow 3.5s linear infinite;
+}
+
+.hero-engine-badge__neural circle {
+  fill: var(--heb-gold);
+  opacity: 0.6;
+}
+
+@keyframes hebNeuralFlow {
+  to { stroke-dashoffset: -20; }
+}
+
+/* Floating binary particles */
+.hero-engine-badge__particles span {
+  position: absolute;
+  font-family: "SF Mono", "Cascadia Code", "Consolas", monospace;
+  font-size: 9px;
+  font-weight: 500;
+  color: var(--heb-accent);
+  opacity: 0;
+  animation: hebParticleFloat 7s ease-in-out infinite;
+}
+
+.hero-engine-badge__particles span:nth-child(1) { top: 18%; left: 72%; animation-delay: 0s; }
+.hero-engine-badge__particles span:nth-child(2) { top: 62%; left: 84%; animation-delay: 1.4s; }
+.hero-engine-badge__particles span:nth-child(3) { top: 38%; left: 58%; animation-delay: 2.8s; }
+.hero-engine-badge__particles span:nth-child(4) { top: 78%; left: 68%; animation-delay: 4.1s; }
+
+@keyframes hebParticleFloat {
+  0%, 100% { opacity: 0; transform: translateY(4px); }
+  15%, 55% { opacity: 0.35; }
+  35% { opacity: 0.5; transform: translateY(-3px); }
+}
+
+/* Header bar */
+.hero-engine-badge__header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 14px 5px 18%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.hero-engine-badge__dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.hero-engine-badge__dot:nth-child(1) { background: #ff5f57; opacity: 0.75; }
+.hero-engine-badge__dot:nth-child(2) { background: #febc2e; opacity: 0.75; }
+.hero-engine-badge__dot:nth-child(3) { background: #28c840; opacity: 0.75; }
+
+.hero-engine-badge__repo {
+  margin-left: 4px;
+  font-family: "SF Mono", "Cascadia Code", "Consolas", monospace;
+  font-size: 9px;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.38);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hero-engine-badge__live {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: "SF Mono", "Cascadia Code", "Consolas", monospace;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(40, 200, 64, 0.85);
+}
+
+.hero-engine-badge__live-pulse {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #28c840;
+  box-shadow: 0 0 6px rgba(40, 200, 64, 0.7);
+  animation: hebLivePulse 2s ease-in-out infinite;
+}
+
+@keyframes hebLivePulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(0.85); }
+}
+
+/* Body */
+.hero-engine-badge__body {
+  position: relative;
+  z-index: 2;
+  padding: 6px 14px 8px 18%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.hero-engine-badge__prompt {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  min-height: 1.35em;
+  overflow: hidden;
+}
+
+.hero-engine-badge__chevron {
+  flex-shrink: 0;
+  font-family: "SF Mono", "Cascadia Code", "Consolas", monospace;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--heb-accent);
+  opacity: 0.9;
+}
+
+.hero-engine-badge__phrase {
+  font-family: "SF Mono", "Cascadia Code", "Consolas", monospace;
+  font-size: clamp(10px, 1.05vw, 12px);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    #c8ecf8 40%,
+    var(--heb-gold) 75%,
+    #ffffff 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: hebPhraseShimmer 6s ease-in-out infinite;
+  transition: filter 0.35s ease, opacity 0.35s ease;
+}
+
+.hero-engine-badge__phrase.is-scrambling {
+  filter: blur(0.4px);
+  opacity: 0.92;
+}
+
+.hero-engine-badge__phrase.is-entering {
+  animation: hebPhraseEnter 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards,
+    hebPhraseShimmer 6s ease-in-out infinite;
+}
+
+@keyframes hebPhraseShimmer {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 200% center; }
+}
+
+@keyframes hebPhraseEnter {
+  from {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+.hero-engine-badge__cursor {
+  flex-shrink: 0;
+  width: 6px;
+  height: 1.05em;
+  margin-left: 1px;
+  background: var(--heb-accent);
+  opacity: 0.85;
+  animation: hebCursorBlink 1.1s step-end infinite;
+  box-shadow: 0 0 8px var(--heb-glow);
+}
+
+@keyframes hebCursorBlink {
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 0; }
+}
+
+/* Status + metrics row */
+.hero-engine-badge__footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero-engine-badge__status {
+  flex: 1;
+  min-width: 0;
+  font-family: "SF Mono", "Cascadia Code", "Consolas", monospace;
+  font-size: 8px;
+  letter-spacing: 0.03em;
+  color: rgba(255, 255, 255, 0.42);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: opacity 0.3s ease;
+}
+
+.hero-engine-badge__status.is-fading {
+  opacity: 0;
+}
+
+.hero-engine-badge__metrics {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.hero-engine-badge__metric {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.hero-engine-badge__metric-label {
+  font-family: "SF Mono", "Cascadia Code", "Consolas", monospace;
+  font-size: 7px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.28);
+}
+
+.hero-engine-badge__metric-bar {
+  width: 28px;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.hero-engine-badge__metric-bar span {
+  display: block;
+  height: 100%;
+  width: var(--heb-load, 40%);
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--heb-accent), var(--heb-gold));
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: hebBarPulse 2.4s ease-in-out infinite;
+}
+
+@keyframes hebBarPulse {
+  0%, 100% { opacity: 0.75; }
+  50% { opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-engine-badge {
+    --heb-width: clamp(190px, 52vw, 260px);
+    --heb-height: 68px;
+    bottom: 8px;
+  }
+
+  .hero-engine-badge__metrics {
+    display: none;
+  }
+
+  .hero-engine-badge__repo {
+    max-width: 72px;
+  }
+
+  .hero-engine-badge__phrase {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-engine-badge {
+    --heb-width: clamp(168px, 58vw, 220px);
+    --heb-height: 62px;
+    bottom: 6px;
+  }
+
+  .hero-engine-badge__header {
+    padding-left: 22%;
+  }
+
+  .hero-engine-badge__body {
+    padding-left: 22%;
+    gap: 3px;
+  }
+
+  .hero-engine-badge__dot:nth-child(2),
+  .hero-engine-badge__dot:nth-child(3) {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-engine-badge__glow,
+  .hero-engine-badge__grid,
+  .hero-engine-badge__frame::before,
+  .hero-engine-badge__neural line,
+  .hero-engine-badge__particles span,
+  .hero-engine-badge__live-pulse,
+  .hero-engine-badge__cursor,
+  .hero-engine-badge__phrase,
+  .hero-engine-badge__metric-bar span {
+    animation: none !important;
+  }
+
+  .hero-engine-badge__phrase {
+    -webkit-text-fill-color: rgba(255, 255, 255, 0.92);
+    background: none;
+  }
+}

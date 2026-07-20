@@ -1,0 +1,340 @@
+/* ===== DESIGN SYSTEM VARIABLES ===== */
+:root {
+  /* Typography */
+  --font-family-primary: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+  --font-size-6xl: 3.75rem;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.6;
+  --line-height-loose: 1.8;
+
+  /* Colors - Professional Blue/Gray Palette */
+  --color-primary: #0b3c5d;
+  --color-primary-light: #0f5fa8;
+  --color-primary-dark: #081a2b;
+  --color-secondary: #00b4d8;
+  --color-secondary-light: #48cae4;
+  --color-secondary-dark: #0096c7;
+  --color-gold: #C9A84C;
+  --color-gold-light: #d4b86a;
+  --color-gold-dark: #a88a3a;
+  --color-accent: #d90429;
+  --color-accent-light: #ef233c;
+  --color-accent-dark: #830016;
+  
+  /* Neutral Colors */
+  --color-white: #ffffff;
+  --color-gray-50: #f8fafc;
+  --color-gray-100: #f1f5f9;
+  --color-gray-200: #e2e8f0;
+  --color-gray-300: #cbd5e1;
+  --color-gray-400: #94a3b8;
+  --color-gray-500: #64748b;
+  --color-gray-600: #475569;
+  --color-gray-700: #334155;
+  --color-gray-800: #1e293b;
+  --color-gray-900: #0f172a;
+  --color-black: #000000;
+
+  /* Text Colors */
+  --text-primary: var(--color-gray-900);
+  --text-secondary: var(--color-gray-600);
+  --text-muted: var(--color-gray-500);
+  --text-inverse: var(--color-white);
+
+  /* Background Colors */
+  --bg-primary: var(--color-white);
+  --bg-secondary: var(--color-gray-50);
+  --bg-muted: var(--color-gray-100);
+
+  /* Spacing Scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-28: 7rem;
+  --space-32: 8rem;
+  --space-36: 9rem;
+  --space-40: 10rem;
+  --space-44: 11rem;
+  --space-48: 12rem;
+  --space-52: 13rem;
+  --space-56: 14rem;
+  --space-60: 15rem;
+  --space-64: 16rem;
+  --space-72: 18rem;
+  --space-80: 20rem;
+
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-base: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+
+  /* Layout Constants */
+  --header-height: 80px;
+  --container-max-width: 1300px;
+  --container-padding: 40px;
+  --section-padding: 100px;
+  --section-padding-sm: 80px;
+  --section-padding-xs: 60px;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --card-radius: 16px;
+
+  /* Z-index */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+}
+
+/* ===== GLOBAL ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: clip;
+}
+
+body {
+  font-family: var(--font-family-primary);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: var(--line-height-relaxed);
+  overflow-x: clip;
+}
+
+/* Prevent background scroll while the mobile menu is open */
+body.mobile-menu-open {
+  overflow: hidden;
+}
+
+/* Media should never force horizontal overflow */
+img,
+video,
+iframe,
+canvas,
+svg {
+  max-width: 100%;
+}
+
+/* Long words / URLs should wrap instead of overflowing on small screens */
+h1,
+h2,
+h3,
+h4,
+p,
+a,
+li {
+  overflow-wrap: break-word;
+}
+
+.container {
+  max-width: var(--container-max-width);
+  margin: auto;
+  padding: 0 var(--container-padding);
+}
+
+.section-title {
+  text-align: center;
+  font-size: var(--font-size-4xl);
+  margin-bottom: var(--space-8);
+  color: var(--color-primary);
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--color-gold);
+  color: var(--color-primary-dark);
+  padding: var(--space-3) var(--space-8);
+  text-decoration: none;
+  border-radius: var(--radius-full);
+  font-weight: var(--font-weight-semibold);
+  border: none;
+  cursor: pointer;
+  transition:
+    background 0.4s var(--ease-expo),
+    box-shadow 0.4s var(--ease-expo),
+    transform 0.4s var(--ease-expo);
+  box-shadow: 0 2px 12px rgba(201, 168, 76, 0.35);
+}
+
+.btn-primary:hover {
+  background: var(--color-gold-light);
+  box-shadow: 0 6px 24px rgba(201, 168, 76, 0.45);
+  transform: translateY(-2px);
+}
+
+/* Hero CTA with cursor-following glow */
+.hero-cta-glow {
+  position: relative;
+  overflow: hidden;
+  --glow-x: 50%;
+  --glow-y: 50%;
+}
+
+.hero-cta-glow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    120px circle at var(--glow-x) var(--glow-y),
+    rgba(255, 255, 255, 0.35),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s var(--ease-expo);
+  pointer-events: none;
+}
+
+.hero-cta-glow:hover::before {
+  opacity: 1;
+}
+
+/* Shared styling for page heroes */
+.page-hero {
+  min-height: 50vh;
+  height: auto;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+}
+
+.page-hero-overlay {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  min-height: 50vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--text-inverse);
+  padding: var(--space-16) var(--space-6);
+  gap: var(--space-2);
+}
+
+.page-hero h1 {
+  font-size: clamp(2rem, 5.5vw, 3rem);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--space-2);
+  text-wrap: balance;
+}
+
+.page-hero p {
+  font-size: clamp(1rem, 2.2vw, 1.125rem);
+  max-width: 600px;
+  text-wrap: pretty;
+}
+
+/* Shared styling for CTA sections */
+.cta-section {
+  background: var(--color-primary);
+  color: var(--text-inverse);
+  padding: var(--section-padding-sm) 0;
+  text-align: center;
+}
+
+.cta-content h2 {
+  font-size: var(--font-size-4xl);
+  margin-bottom: var(--space-4);
+}
+
+.cta-content p {
+  margin-bottom: var(--space-6);
+}
+
+/* ===== BACK TO TOP BUTTON (injected by animations.js) ===== */
+.back-to-top {
+  position: fixed;
+  right: var(--space-5);
+  bottom: var(--space-5);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-primary);
+  color: var(--text-inverse);
+  border: none;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-lg);
+  cursor: pointer;
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition:
+    opacity var(--transition-base),
+    visibility var(--transition-base),
+    transform var(--transition-base),
+    background var(--transition-base);
+  z-index: var(--z-fixed);
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: var(--color-primary-light);
+}
+
+/* ===== MOBILE NAV BACKDROP (injected by animations.js) ===== */
+.mobile-nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 26, 43, 0.55);
+  backdrop-filter: blur(2px);
+  z-index: var(--z-modal-backdrop);
+}

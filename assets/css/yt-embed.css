@@ -1,0 +1,262 @@
+/* =====================================================
+   EAGLOPEN — Lite YouTube Embed (shared)
+   Premium framed video player used on Research & AlgoLab.
+   ===================================================== */
+
+.yt-lite {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: var(--color-primary-dark);
+  box-shadow:
+    0 30px 80px rgba(8, 26, 43, 0.45),
+    0 4px 18px rgba(8, 26, 43, 0.3);
+  isolation: isolate;
+}
+
+/* Editor-style chrome bar above the video */
+.yt-lite-chrome {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.yt-lite-chrome .yt-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.yt-lite-chrome .yt-dot:nth-child(1) {
+  background: #ff5f57;
+}
+
+.yt-lite-chrome .yt-dot:nth-child(2) {
+  background: #febc2e;
+}
+
+.yt-lite-chrome .yt-dot:nth-child(3) {
+  background: #28c840;
+}
+
+.yt-lite-chrome .yt-chrome-title {
+  margin-left: var(--space-2);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.yt-lite-chrome .yt-chrome-live {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.yt-lite-chrome .yt-chrome-live::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: var(--radius-full);
+  background: var(--color-gold);
+  animation: ytLivePulse 1.8s ease-in-out infinite;
+}
+
+@keyframes ytLivePulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.75);
+  }
+}
+
+/* Stage keeps a 16:9 ratio and hosts poster / iframe */
+.yt-lite-stage {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.yt-lite-stage > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.02);
+  transition: transform 0.8s var(--ease-expo), filter 0.8s var(--ease-expo);
+}
+
+.yt-lite:hover .yt-lite-stage > img {
+  transform: scale(1.06);
+}
+
+/* Cinematic vignette over the poster */
+.yt-lite-stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at center, rgba(8, 26, 43, 0) 40%, rgba(8, 26, 43, 0.45) 100%),
+    linear-gradient(180deg, rgba(8, 26, 43, 0.15) 0%, rgba(8, 26, 43, 0) 35%, rgba(8, 26, 43, 0.55) 100%);
+  pointer-events: none;
+  transition: opacity 0.6s var(--ease-expo);
+}
+
+.yt-lite.is-playing .yt-lite-stage::after {
+  opacity: 0;
+}
+
+/* Play button */
+.yt-lite-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  width: 88px;
+  height: 88px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(8, 26, 43, 0.55);
+  backdrop-filter: blur(10px);
+  color: var(--color-white);
+  font-size: var(--font-size-2xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    background 0.4s var(--ease-expo),
+    transform 0.4s var(--ease-expo),
+    box-shadow 0.4s var(--ease-expo);
+  box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.4);
+}
+
+.yt-lite-play i {
+  margin-left: 4px;
+}
+
+.yt-lite-play::before {
+  content: "";
+  position: absolute;
+  inset: -14px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(201, 168, 76, 0.45);
+  animation: ytPlayRing 2.4s var(--ease-expo) infinite;
+  pointer-events: none;
+}
+
+@keyframes ytPlayRing {
+  0% {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.25);
+    opacity: 0;
+  }
+}
+
+.yt-lite:hover .yt-lite-play {
+  background: var(--color-gold);
+  color: var(--color-primary-dark);
+  transform: translate(-50%, -50%) scale(1.08);
+  box-shadow: 0 12px 40px rgba(201, 168, 76, 0.45);
+}
+
+.yt-lite-play:focus-visible {
+  outline: 3px solid var(--color-gold);
+  outline-offset: 4px;
+}
+
+/* Duration / label pill on the poster */
+.yt-lite-label {
+  position: absolute;
+  left: var(--space-4);
+  bottom: var(--space-4);
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  background: rgba(8, 26, 43, 0.65);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.04em;
+  pointer-events: none;
+}
+
+.yt-lite-label i {
+  color: var(--color-gold);
+  font-size: 0.7rem;
+}
+
+/* Once playing: hide poster UI, show iframe */
+.yt-lite.is-playing .yt-lite-play,
+.yt-lite.is-playing .yt-lite-label,
+.yt-lite.is-playing .yt-lite-stage > img {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s var(--ease-expo);
+}
+
+.yt-lite-iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  z-index: 4;
+}
+
+@media (max-width: 640px) {
+  .yt-lite-play {
+    width: 64px;
+    height: 64px;
+    font-size: var(--font-size-xl);
+  }
+
+  .yt-lite-chrome .yt-chrome-title {
+    max-width: 55%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .yt-lite-play::before,
+  .yt-lite-chrome .yt-chrome-live::before {
+    animation: none;
+  }
+
+  .yt-lite-stage > img,
+  .yt-lite:hover .yt-lite-stage > img {
+    transform: none;
+    transition: none;
+  }
+}
+
+/* FABLE 5: I FINISHED THIS FILE */

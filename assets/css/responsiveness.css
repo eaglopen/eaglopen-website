@@ -1,0 +1,261 @@
+/* ================= RESPONSIVE ================= */
+
+/* Contact Page Responsive */
+@media screen and (max-width: 1024px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-section {
+    padding: 60px 40px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .contact-hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .contact-hero p {
+    font-size: 1rem;
+  }
+
+  .contact-section {
+    padding: 50px 20px;
+  }
+
+  /* Media Page Responsive */
+  .media-hero h1 {
+    font-size: 2rem;
+  }
+
+  .media-hero p {
+    font-size: 1rem;
+  }
+
+  .media-card img {
+    height: 180px;
+  }
+
+  .cta-section h2 {
+    font-size: 2rem;
+  }
+
+  .cta-section.media-cta h2 {
+    font-size: 2rem;
+  }
+}
+
+/* Medium devices */
+@media (max-width: 1024px) {
+  .hero-text h1,
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .services-grid, .programs-grid, .community-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Full-bleed heroes and sliders must keep their own spacing —
+     never apply blanket padding to them (it created white gaps
+     between the header and the hero). */
+  section:not(.hero-section):not(.page-hero):not(.about-hero):not(.contact-hero):not(.news-hero) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .partners-logos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .hero-text h1,
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-text p,
+  .hero-content p {
+    font-size: 0.95rem;
+  }
+
+  .hero-buttons a {
+    padding: 10px 20px;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .cta-section h2 {
+    font-size: 2rem;
+  }
+}
+
+/* ===== HERO FEATURE STRIP RESPONSIVE ===== */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .hero-float-icons {
+    bottom: -26px;
+  }
+
+  .hero-float-icon {
+    width: 52px;
+    height: 52px;
+    bottom: 0;
+    font-size: var(--font-size-lg);
+  }
+
+  .hero-features {
+    padding-top: 60px;
+  }
+
+  .feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero-section {
+    overflow: visible;
+  }
+
+  .hero-float-grid {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+    height: auto;
+    padding-bottom: 28px;
+  }
+
+  .hero-float-icon {
+    position: relative;
+    left: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    width: 48px;
+    height: 48px;
+    font-size: var(--font-size-base);
+  }
+
+  .hero-float-icon:hover {
+    transform: translateY(-4px) !important;
+  }
+
+  .hero-float-icons {
+    position: relative;
+    bottom: auto;
+    margin-top: -28px;
+  }
+
+  .hero-features {
+    padding-top: var(--space-8);
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    padding: var(--space-8) var(--space-5);
+  }
+
+  .feature-item h3 {
+    font-size: var(--font-size-lg);
+  }
+
+  .research-focus-grid,
+  .projects-grid,
+  .team-strip-grid,
+  .home-news-card {
+    grid-template-columns: 1fr;
+  }
+
+  .research-highlight .highlight-grid {
+    direction: ltr;
+  }
+
+  .research-hero h1 {
+    font-size: 2rem;
+  }
+}
+
+/* ===== MOBILE MENU RESPONSIVE ===== */
+/* The desktop nav has 9 items and wraps onto two rows below ~1080px,
+   so the mobile menu takes over at 1024px and below. */
+@media screen and (max-width: 1024px) {
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .mobile-nav {
+    display: block;
+  }
+
+  .main-header .container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 64px;
+    height: auto;
+    padding: 0 20px;
+  }
+
+  .main-header .logo {
+    padding: var(--space-2) 0;
+    font-size: var(--font-size-xl);
+  }
+
+  .main-header .logo img {
+    height: 48px;
+    width: 48px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  /* Grids - Mobile */
+  .services-grid, .programs-grid, .community-grid, .highlight-grid, .impact-grid, .vm-grid,
+  .feature-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  /* Sections - Mobile */
+  section:not(.hero-section):not(.page-hero):not(.about-hero):not(.contact-hero):not(.news-hero) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .cta-section {
+    padding: 60px 0;
+  }
+
+  .partners-logos {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+
+  .partners-logos img {
+    height: 72px;
+    width: 72px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .partners-logos {
+    grid-template-columns: 1fr;
+  }
+}

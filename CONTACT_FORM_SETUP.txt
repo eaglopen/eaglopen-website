@@ -1,0 +1,113 @@
+============================================================
+EAGLOPEN CONTACT FORM - SETUP INSTRUCTIONS
+============================================================
+
+1. FILES MODIFIED
+------------------------------------------------------------
+- public/assets/js/contact.js
+  Replaced the simulated submit with a real submission to a
+  Google Apps Script (same approach as the Portfolio site),
+  customized for the EAGLOPEN form fields:
+  Full Name, Email, Organization (optional), Topic, Message.
+  All validation, character counter, topic pre-select, and
+  FAQ behavior are unchanged. No UI/design was changed.
+
+No other website files were touched (Home, About, Programs,
+AlgoLab, Research, Community, Media, News, Header, Footer,
+global CSS — all untouched).
+
+2. FILES CREATED
+------------------------------------------------------------
+- EAGLOPEN-APPS-SCRIPT.txt  (the Google Apps Script code to deploy)
+- CONTACT_FORM_SETUP.txt    (this file)
+
+3. WHAT YOU MUST CONFIGURE MANUALLY
+------------------------------------------------------------
+You need to deploy a NEW Google Apps Script (separate from
+your Portfolio script) and paste its URL into contact.js.
+Steps below.
+
+4. DEPLOY THE NEW GOOGLE APPS SCRIPT
+------------------------------------------------------------
+a) Go to https://script.google.com (logged in as
+   lenchataye@gmail.com).
+b) Click "New project". Name it "EAGLOPEN Contact Form".
+   IMPORTANT: Do NOT edit your existing Portfolio project —
+   this is a brand new, separate project.
+c) Delete the default code in Code.gs.
+d) Open EAGLOPEN-APPS-SCRIPT.txt (in this project root),
+   copy ALL of its contents, and paste into Code.gs.
+e) Click Deploy > New deployment.
+f) Click the gear icon > select "Web app".
+g) Settings:
+   - Description: EAGLOPEN Contact Form
+   - Execute as: Me
+   - Who has access: Anyone
+h) Click Deploy, authorize the permissions when asked
+   (it needs permission to send email as you).
+i) Copy the Web App URL. It looks like:
+   https://script.google.com/macros/s/XXXXXXXX/exec
+
+5. WHERE TO PASTE THE URL
+------------------------------------------------------------
+Open:  public/assets/js/contact.js
+At the top of the file, find:
+
+  const EAGLOPEN_SCRIPT_URL =
+    "PASTE_YOUR_EAGLOPEN_APPS_SCRIPT_URL_HERE";
+
+Replace the placeholder string with your copied Web App URL:
+
+  const EAGLOPEN_SCRIPT_URL =
+    "https://script.google.com/macros/s/XXXXXXXX/exec";
+
+That is the ONLY place you need to paste it.
+
+6. DO I NEED TO REPLACE ANY OTHER URL?
+------------------------------------------------------------
+No. Only the placeholder above. Your Portfolio script and its
+URL stay exactly as they are — Portfolio emails will continue
+to identify themselves as Portfolio emails.
+
+7. WHAT THE EAGLOPEN EMAIL LOOKS LIKE
+------------------------------------------------------------
+- Sender name:  "EAGLOPEN Contact Form"
+- Subject:      [EAGLOPEN] New <Topic> message from <Name>
+- Body clearly shows:
+  * Website: EAGLOPEN Science and Technology Organization
+  * Contact Type (the topic selected in the dropdown)
+  * Full Name
+  * Email Address
+  * Organization (or "Not provided")
+  * Message
+  * Submission date & time
+- Receiver: lenchataye@gmail.com (unchanged)
+
+You will always be able to tell at a glance which website a
+message came from.
+
+8. FINAL TESTING STEPS
+------------------------------------------------------------
+a) After pasting the URL, open the site's contact page.
+b) Fill in the form (pick any topic) and press Send Message.
+c) The button shows "Sending…", then the green success box
+   appears and the form resets.
+d) Check lenchataye@gmail.com — you should receive an email
+   with the [EAGLOPEN] subject within about a minute.
+e) Also test validation: try submitting with an empty field
+   or a bad email — inline errors should appear and nothing
+   is sent.
+f) Optional: submit the Portfolio form too and confirm its
+   email still says it came from the Portfolio site.
+
+TROUBLESHOOTING
+------------------------------------------------------------
+- No email received: re-check the deployment settings
+  ("Execute as: Me", "Who has access: Anyone") and that you
+  copied the /exec URL (not the /dev URL).
+- Error message under the message box: the URL placeholder
+  was not replaced, or the URL is wrong.
+- Changed the script code later? You must create a NEW
+  deployment version (Deploy > Manage deployments > Edit >
+  Version: New version) for changes to take effect.
+============================================================

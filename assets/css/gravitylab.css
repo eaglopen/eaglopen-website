@@ -1,0 +1,469 @@
+/* ============================================================
+   EAGLOPEN — GRAVITYLAB (Aerospace Science Playground)
+   Mission: Touchdown — the EAGLOPEN emblem descends onto
+   six worlds so visitors can feel gravity, not just read it.
+   Design language: mission-console navy, cyan telemetry,
+   gold command accents — matching the AlgoLab terminal system.
+   ============================================================ */
+
+.gravity-lab {
+  position: relative;
+  padding: var(--section-padding) 0;
+  background:
+    radial-gradient(1100px 500px at 85% -10%, rgba(15, 95, 168, 0.22), transparent 60%),
+    radial-gradient(900px 420px at 8% 110%, rgba(72, 202, 228, 0.1), transparent 60%),
+    linear-gradient(180deg, #081a2b 0%, #0a1424 55%, #0d1526 100%);
+  overflow: hidden;
+}
+
+/* faint starfield behind the console, pure CSS */
+.gravity-lab::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1.5px 1.5px at 12% 24%, rgba(255, 255, 255, 0.5), transparent 55%),
+    radial-gradient(1px 1px at 28% 68%, rgba(255, 255, 255, 0.35), transparent 55%),
+    radial-gradient(1.5px 1.5px at 44% 12%, rgba(255, 255, 255, 0.4), transparent 55%),
+    radial-gradient(1px 1px at 62% 42%, rgba(255, 255, 255, 0.3), transparent 55%),
+    radial-gradient(1.5px 1.5px at 76% 16%, rgba(255, 255, 255, 0.45), transparent 55%),
+    radial-gradient(1px 1px at 88% 58%, rgba(255, 255, 255, 0.35), transparent 55%),
+    radial-gradient(1px 1px at 8% 84%, rgba(255, 255, 255, 0.3), transparent 55%),
+    radial-gradient(1.5px 1.5px at 94% 88%, rgba(255, 255, 255, 0.4), transparent 55%);
+  pointer-events: none;
+}
+
+.gravity-lab .section-title {
+  color: var(--color-white);
+}
+
+.gravity-lab .section-sub {
+  color: var(--color-gray-300);
+}
+
+/* ===== MISSION CONSOLE SHELL ===== */
+.gl-console {
+  position: relative;
+  max-width: 980px;
+  margin: 0 auto;
+  background: #0d1526;
+  border: 1px solid rgba(72, 202, 228, 0.18);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow:
+    0 40px 80px -24px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(8, 26, 43, 0.4),
+    0 0 60px -18px rgba(72, 202, 228, 0.25);
+}
+
+.gl-console .al-terminal-bar {
+  justify-content: flex-start;
+}
+
+.gl-mode-pill {
+  margin-left: auto;
+  font-family: "SF Mono", "Fira Code", Consolas, "Courier New", monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #48cae4;
+  border: 1px solid rgba(72, 202, 228, 0.35);
+  border-radius: 999px;
+  padding: 3px 12px;
+  white-space: nowrap;
+}
+
+.gl-body {
+  padding: 18px 20px 18px;
+}
+
+/* ===== CONTROL DECK ===== */
+.gl-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.gl-worlds {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.gl-world {
+  padding: 7px 15px;
+  border-radius: 999px;
+  border: 1px solid rgba(72, 202, 228, 0.25);
+  background: transparent;
+  color: #c7d5e8;
+  font-family: "SF Mono", "Fira Code", Consolas, "Courier New", monospace;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s var(--ease-expo);
+}
+
+.gl-world:hover {
+  border-color: rgba(72, 202, 228, 0.6);
+  transform: translateY(-1px);
+}
+
+.gl-world.is-active {
+  background: #48cae4;
+  border-color: #48cae4;
+  color: #081a2b;
+  font-weight: var(--font-weight-bold);
+}
+
+.gl-world:disabled {
+  opacity: 0.45;
+  cursor: default;
+  transform: none;
+}
+
+.gl-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.gl-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-family: "SF Mono", "Fira Code", Consolas, "Courier New", monospace;
+  font-size: 0.8rem;
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+  transition: background 0.25s var(--ease-expo), box-shadow 0.25s var(--ease-expo), transform 0.25s var(--ease-expo), color 0.25s ease, border-color 0.25s ease;
+}
+
+.gl-btn-drop {
+  background: var(--color-gold);
+  color: var(--color-primary-dark);
+  box-shadow: 0 2px 14px rgba(201, 168, 76, 0.35);
+}
+
+.gl-btn-drop:hover {
+  background: var(--color-gold-light);
+  box-shadow: 0 6px 22px rgba(201, 168, 76, 0.45);
+  transform: translateY(-1px);
+}
+
+.gl-btn-drop:disabled {
+  opacity: 0.5;
+  cursor: default;
+  transform: none;
+  box-shadow: none;
+}
+
+.gl-btn-orbit {
+  background: transparent;
+  color: #48cae4;
+  border-color: rgba(72, 202, 228, 0.4);
+}
+
+.gl-btn-orbit:hover {
+  border-color: #48cae4;
+  background: rgba(72, 202, 228, 0.08);
+  transform: translateY(-1px);
+}
+
+/* ===== STAGE ===== */
+.gl-stage-wrap {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(72, 202, 228, 0.14);
+  background: #05070f;
+}
+
+.gl-canvas {
+  display: block;
+  width: 100%;
+  height: 480px;
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.gl-canvas.is-grabbing {
+  cursor: grabbing;
+}
+
+/* telemetry HUD — mono, top-left, like a lander readout */
+.gl-hud {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  font-family: "SF Mono", "Fira Code", Consolas, "Courier New", monospace;
+  font-size: 0.72rem;
+  line-height: 1.75;
+  color: rgba(199, 213, 232, 0.92);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
+  pointer-events: none;
+  user-select: none;
+}
+
+.gl-hud strong {
+  color: #48cae4;
+  font-weight: var(--font-weight-semibold);
+}
+
+.gl-hud .gl-hud-title {
+  color: var(--color-gold-light);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.66rem;
+}
+
+/* touchdown result flash */
+.gl-result {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  text-align: right;
+  font-family: "SF Mono", "Fira Code", Consolas, "Courier New", monospace;
+  font-size: 0.72rem;
+  line-height: 1.7;
+  color: rgba(199, 213, 232, 0.9);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.5s var(--ease-expo), transform 0.5s var(--ease-expo);
+  pointer-events: none;
+  user-select: none;
+}
+
+.gl-result.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gl-result .gl-result-badge {
+  display: inline-block;
+  color: #081a2b;
+  background: #8ce99a;
+  border-radius: 4px;
+  padding: 1px 8px;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.1em;
+  margin-bottom: 2px;
+}
+
+.gl-result.is-hard .gl-result-badge {
+  background: #ef233c;
+  color: #fff;
+}
+
+/* interaction hint */
+.gl-hint {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "SF Mono", "Fira Code", Consolas, "Courier New", monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  color: rgba(199, 213, 232, 0.65);
+  background: rgba(5, 7, 15, 0.55);
+  border: 1px solid rgba(72, 202, 228, 0.16);
+  border-radius: 999px;
+  padding: 5px 14px;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  transition: opacity 0.6s ease;
+}
+
+.gl-hint.is-hidden {
+  opacity: 0;
+}
+
+/* orbit-mode "begin descent" action, floats over canvas */
+.gl-land {
+  position: absolute;
+  left: 50%;
+  bottom: 52px;
+  transform: translate(-50%, 8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s var(--ease-expo), transform 0.4s var(--ease-expo);
+}
+
+.gl-land.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+  pointer-events: auto;
+}
+
+/* ===== CONSOLE FOOTER — mission log + gravity meter ===== */
+.gl-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  margin-top: 14px;
+  font-family: "SF Mono", "Fira Code", Consolas, "Courier New", monospace;
+  font-size: 0.76rem;
+  color: #8aa2c0;
+}
+
+.gl-gmeter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 220px;
+  flex: 1;
+  max-width: 340px;
+}
+
+.gl-gmeter-track {
+  position: relative;
+  flex: 1;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.gl-gmeter-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 20%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #48cae4, #d4b86a);
+  transition: width 0.8s var(--ease-expo);
+}
+
+/* Earth reference tick on the meter */
+.gl-gmeter-earth {
+  position: absolute;
+  top: -3px;
+  bottom: -3px;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.gl-gmeter-label {
+  white-space: nowrap;
+  color: #c7d5e8;
+}
+
+.gl-gmeter-label strong {
+  color: #48cae4;
+  font-weight: var(--font-weight-semibold);
+}
+
+.gl-status {
+  color: #5a708c;
+  font-style: italic;
+  text-align: right;
+  flex: 1;
+  min-width: 200px;
+}
+
+/* ===== FACT STRIP ===== */
+.gl-fact {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  max-width: 980px;
+  margin: 18px auto 0;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: rgba(72, 202, 228, 0.06);
+  border: 1px solid rgba(72, 202, 228, 0.16);
+  color: var(--color-gray-300);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+}
+
+.gl-fact i {
+  color: var(--color-gold-light);
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.gl-fact strong {
+  color: var(--color-white);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .gl-canvas {
+    height: 420px;
+  }
+}
+
+@media (max-width: 768px) {
+  .gl-body {
+    padding: 14px 14px 16px;
+  }
+
+  .gl-canvas {
+    height: 380px;
+  }
+
+  .gl-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .gl-actions {
+    justify-content: stretch;
+  }
+
+  .gl-actions .gl-btn {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .gl-world {
+    font-size: 0.74rem;
+    padding: 6px 12px;
+  }
+
+  .gl-hud {
+    font-size: 0.64rem;
+    top: 10px;
+    left: 12px;
+  }
+
+  .gl-result {
+    font-size: 0.64rem;
+    top: 10px;
+    right: 12px;
+  }
+
+  .gl-status {
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .gl-canvas {
+    height: 330px;
+  }
+
+  .gl-hint {
+    font-size: 0.6rem;
+    max-width: calc(100% - 24px);
+    white-space: normal;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gl-world,
+  .gl-btn,
+  .gl-result,
+  .gl-land,
+  .gl-gmeter-fill {
+    transition: none !important;
+  }
+}

@@ -1,0 +1,24 @@
+/* ================= ANIMATIONS ================= */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ----------The following one is about making the header and hero section(the text over the image unanimted------------- */
+.main-header,
+.hero-section,
+.page-hero,
+.programs-hero,
+.community-hero,
+.media-hero,
+.research-hero {
+  opacity: 1 !important;
+  transform: none !important;
+}
+/* ---------up to this one------------ */
