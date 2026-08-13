@@ -1,7 +1,7 @@
 /* Keeps legacy static links compatible while presenting Cloudflare Pages clean URLs. */
 (() => {
-  // VS Code Live Server is a simple static server and does not process the
-  // Cloudflare Pages `_redirects` file. Keep local navigation on .html files.
+  // VS Code Live Server serves physical files only. Keep local navigation on
+  // .html files while Cloudflare Pages serves extensionless page URLs.
   if (["localhost", "127.0.0.1", "::1"].includes(window.location.hostname)) return;
 
   const routes = {
