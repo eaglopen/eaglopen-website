@@ -8,7 +8,7 @@
     "index.html": "/",
     "about.html": "/about",
     "algolab.html": "/algolab",
-    "algolab-2026-participants.html": "/algolab-2026-participants",
+    "algolab-participants.html": "/algolab-participants",
     "community.html": "/community",
     "contact.html": "/contact",
     "media.html": "/media",

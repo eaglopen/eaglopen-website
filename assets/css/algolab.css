@@ -654,6 +654,19 @@
   border-radius: 50%;
 }
 
+/* Give the main AlgoLab alumni the same prominent portrait treatment as 2026 participants. */
+#algolab-alumni .al-alumni-photo {
+  width: 110px;
+  height: 110px;
+  border: 3px solid var(--color-white);
+  outline: 2px dashed rgba(255, 255, 255, 0.38);
+  outline-offset: 4px;
+}
+
+#algolab-alumni .al-alumni-photo img {
+  object-position: center 20%;
+}
+
 .al-alumni-head h2,
 .al-alumni-head h3 {
   font-size: var(--font-size-lg);
@@ -768,6 +781,13 @@
 .al-participants-back {
   margin-top: 44px;
   text-align: center;
+}
+
+.al-participants-cohort {
+  position: relative;
+  margin-top: 100px;
+  padding-top: 100px;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
 }
 
 .al-participants-back a {
