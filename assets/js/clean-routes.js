@@ -9,6 +9,7 @@
     "about.html": "/about",
     "algolab.html": "/algolab",
     "algolab-participants.html": "/algolab-participants",
+    "participant-profile.html": "/participant-profile",
     "community.html": "/community",
     "contact.html": "/contact",
     "media.html": "/media",

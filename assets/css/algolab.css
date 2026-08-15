@@ -688,6 +688,104 @@
   margin: 0;
 }
 
+/* ===== PARTICIPANT PROFILE CTA ===== */
+.al-profile-cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 46px;
+  width: 100%;
+  margin-top: 24px;
+  padding: 11px 13px 11px 18px;
+  overflow: hidden;
+  border: 1px solid rgba(201, 168, 76, 0.56);
+  border-radius: var(--radius-full);
+  background: linear-gradient(110deg, rgba(201, 168, 76, 0.2), rgba(72, 202, 228, 0.14));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 10px 24px -18px rgba(0, 0, 0, 0.85);
+  color: var(--color-gold-light);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.025em;
+  text-decoration: none;
+  transition: transform 0.35s var(--ease-expo), border-color 0.35s ease, box-shadow 0.35s ease, color 0.35s ease, background 0.35s ease;
+}
+
+.al-profile-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, rgba(201, 168, 76, 0.21), rgba(72, 202, 228, 0.24));
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.al-profile-cta span,
+.al-profile-cta i {
+  position: relative;
+  z-index: 1;
+}
+
+.al-profile-cta i {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  color: var(--color-primary-dark);
+  font-size: 0.75rem;
+  transition: transform 0.35s var(--ease-expo), background 0.35s ease;
+}
+
+.al-profile-cta:hover {
+  color: var(--color-white);
+  border-color: var(--color-secondary-light);
+  box-shadow: 0 16px 30px -18px rgba(72, 202, 228, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+}
+
+.al-profile-cta:hover::before { opacity: 1; }
+.al-profile-cta:hover i { background: var(--color-secondary-light); transform: translateX(4px); }
+.al-profile-cta:active { transform: translateY(-1px) scale(0.985); }
+.al-profile-cta:focus-visible { outline: 3px solid var(--color-secondary-light); outline-offset: 4px; }
+
+.al-profile-page {
+  min-height: 72vh;
+  padding: 140px 0 100px;
+  background: radial-gradient(700px 360px at 12% 0%, rgba(0, 180, 216, 0.18), transparent 70%), linear-gradient(160deg, var(--color-primary-dark), var(--color-primary));
+}
+
+.al-profile-view {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: clamp(30px, 5vw, 56px);
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 30px 70px -32px rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+}
+
+.al-profile-view img { width: 150px; height: 150px; object-fit: cover; border: 3px solid var(--color-white); outline: 2px dashed rgba(255, 255, 255, 0.38); outline-offset: 5px; border-radius: 50%; }
+.al-profile-view h1 { margin: 28px 0 6px; color: var(--color-white); font-size: clamp(2rem, 5vw, var(--font-size-4xl)); line-height: var(--line-height-tight); }
+.al-profile-view p { max-width: 570px; margin: 22px auto 30px; color: rgba(255, 255, 255, 0.8); }
+.al-profile-view .al-alumni-cohort { display: block; }
+.al-profile-back { display: inline-flex; align-items: center; gap: 10px; color: var(--color-gold-light); font-weight: var(--font-weight-semibold); text-decoration: none; }
+.al-profile-back:hover { color: var(--color-white); }
+
+@media (max-width: 640px) {
+  .al-profile-cta { min-height: 50px; margin-top: 20px; }
+  .al-profile-page { padding: 112px 0 72px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .al-profile-cta, .al-profile-cta::before, .al-profile-cta i { transition: none; }
+}
+
 .al-alumni-links {
   display: flex;
   gap: 10px;

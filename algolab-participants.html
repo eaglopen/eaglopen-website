@@ -493,7 +493,7 @@
         document.querySelector(target).innerHTML = participants
           .map(
             (participant) =>
-              `<article class="al-alumni-card"><span class="al-alumni-quote-mark" aria-hidden="true">&rdquo;</span><div class="al-alumni-head"><div class="al-alumni-photo"><img src="${participant.image}" alt="${participant.name}" loading="lazy" /></div><div><h3>${participant.name}</h3><span class="al-alumni-cohort">AlgoLab ${cohort}</span></div></div><p>${participant.description}</p></article>`,
+              `<article class="al-alumni-card"><span class="al-alumni-quote-mark" aria-hidden="true">&rdquo;</span><div class="al-alumni-head"><div class="al-alumni-photo"><img src="${participant.image}" alt="${participant.name}" loading="lazy" /></div><div><h3>${participant.name}</h3><span class="al-alumni-cohort">AlgoLab ${cohort}</span></div></div><p>${participant.description}</p><a class="al-profile-cta" href="participant-profile.html?${new URLSearchParams({ name: participant.name, image: participant.image, description: participant.description, cohort }).toString()}" aria-label="Explore ${participant.name}'s profile"><span>Explore Profile</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></article>`,
           )
           .join("");
       };
