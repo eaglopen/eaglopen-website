@@ -25,6 +25,10 @@
   max-height: var(--header-height);
 }
 
+.main-header a.logo {
+  text-decoration: none;
+}
+
 .logo img {
   height: 70px;
   width: 70px;
