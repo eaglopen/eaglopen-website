@@ -6,11 +6,10 @@
     title: "EAGLOPEN AlgoLab 2026 Officially Kicks Off at ASTU",
     summary: "EAGLOPEN AlgoLab 2026 has officially kicked off at the ASTU ICT Smart Center, bringing together students from across Ethiopia both in person and online for an exciting journey through Python, C++, AI & Machine Learning, and Aerospace Fundamentals.",
     images: [
-      // Replace these four paths with the final AlgoLab 2026 images when provided.
-      { src: "assets/images/programs/program1.png", alt: "Students participating in EAGLOPEN AlgoLab 2026" },
-      { src: "assets/images/programs/program2.png", alt: "AlgoLab students learning together at ASTU" },
-      { src: "assets/images/programs/program3.png", alt: "Students working during an AlgoLab technology session" },
-      { src: "assets/images/programs/program4.png", alt: "EAGLOPEN AlgoLab learning activity" },
+      { src: "assets/images/news/algolab%202026/im1.jpg", alt: "Students participating in EAGLOPEN AlgoLab 2026" },
+      { src: "assets/images/news/algolab%202026/im2.jpg", alt: "AlgoLab students learning together at ASTU" },
+      { src: "assets/images/news/algolab%202026/im3.jpg", alt: "Students working during an AlgoLab technology session" },
+      { src: "assets/images/news/algolab%202026/im4.jpg", alt: "EAGLOPEN AlgoLab learning activity" },
     ],
   };
 
