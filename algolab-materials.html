@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="icon" type="image/jpeg" href="assets/images/hero/logo.jpg" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Day-by-day learning resources for EAGLOPEN AlgoLab 2026." />
+    <title>AlgoLab 2026 Course Materials | EAGLOPEN</title>
+    <script src="https://kit.fontawesome.com/bc43529ae8.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/header.css" />
+    <link rel="stylesheet" href="assets/css/footer.css" />
+    <link rel="stylesheet" href="assets/css/animations.css" />
+    <link rel="stylesheet" href="assets/css/algolab.css" />
+    <link rel="stylesheet" href="assets/css/responsiveness.css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="container">
+        <a class="logo" href="index.html" aria-label="EAGLOPEN home"><img src="assets/images/hero/logo.jpg" alt="EAGLOPEN logo" /><span>EAGLOPEN</span></a>
+        <nav class="nav" aria-label="Primary navigation"><ul>
+          <li><a href="index.html">HOME</a></li><li><a href="about.html">ABOUT</a></li><li><a href="programs.html">PROGRAMS</a></li>
+          <li><a href="algolab.html" aria-current="page">ALGOLAB</a></li><li><a href="research.html">RESEARCH</a></li><li><a href="community.html">COMMUNITY</a></li><li><a href="media.html">MEDIA</a></li><li><a href="contact.html">CONTACT</a></li>
+        </ul></nav>
+        <button class="mobile-menu-btn" aria-label="Toggle mobile menu"><span></span><span></span><span></span></button>
+      </div>
+    </header>
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <div class="mobile-nav-header"><a class="logo" href="index.html"><img src="assets/images/hero/logo.jpg" alt="EAGLOPEN logo" /><span>EAGLOPEN</span></a><button class="mobile-nav-close" aria-label="Close mobile menu">×</button></div>
+      <ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="programs.html">Programs</a></li><li><a href="algolab.html">AlgoLab</a></li><li><a href="research.html">Research</a></li><li><a href="community.html">Community</a></li><li><a href="media.html">Media</a></li><li><a href="contact.html">Contact</a></li></ul>
+    </nav>
+    <main class="al-materials-page">
+      <section class="al-materials-hero" aria-labelledby="materials-title">
+        <div class="container">
+          <a class="al-back-link" href="algolab.html#algolab-syllabus"><i class="fas fa-arrow-left" aria-hidden="true"></i> All AlgoLab courses</a>
+          <span class="section-eyebrow">AlgoLab 2026 · Learning Library</span>
+          <h1 id="materials-title">Course materials, organized by day.</h1>
+          <p>Open a course to find its learning plan and every handout, starter file, and activity in one place.</p>
+          <div class="al-course-tabs" id="course-tabs" aria-label="Choose an AlgoLab course"></div>
+        </div>
+      </section>
+      <section class="al-materials-content" aria-live="polite">
+        <div class="container">
+          <div class="al-course-overview" id="course-overview"></div>
+          <div class="al-materials-note"><i class="fas fa-circle-info" aria-hidden="true"></i><p><strong>How downloads work:</strong> Select a file below to download it. Resources are stored by course, week, and day, so the teaching team can add as many PDFs, slides, ZIP files, or links as needed.</p></div>
+          <div class="al-week-nav" id="week-nav" aria-label="Choose a week"></div>
+          <div class="al-day-grid" id="day-grid"></div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer"><div class="container"><div class="footer-bottom footer-bottom-modern"><p>© 2026 EAGLOPEN Science &amp; Technology Organization</p><p class="footer-bottom-tagline">Made with passion for the next generation of African innovators.</p></div></div></footer>
+    <script src="assets/js/animations.js"></script>
+    <script>
+      const courses = {
+        python: { name: "Python Programming", icon: "fab fa-python", days: ["Monday", "Wednesday", "Friday"], time: "8:00 – 10:30 AM", summary: "Learn to think like a programmer, write clean Python, and solve real problems through practice.", weeks: [["Getting started with Python", "Variables, data types & input", "Conditions and decision making"], ["Loops and iteration", "Functions and code organization", "Lists, tuples and dictionaries"], ["Working with files", "Problem-solving patterns", "Mini project and showcase"]] },
+        cpp: { name: "C++ Programming", icon: "fas fa-code", days: ["Monday", "Wednesday", "Friday"], time: "2:00 – 4:30 PM", summary: "Build strong programming logic and efficient solutions with C++ and algorithmic thinking.", weeks: [["C++ environment & first program", "Variables, operators & input/output", "Conditions and control flow"], ["Loops and functions", "Arrays, strings & vectors", "Pointers and memory basics"], ["Structures and object-oriented thinking", "Algorithms and problem solving", "Programming challenge and review"]] },
+        "ai-ml": { name: "AI & Machine Learning", icon: "fas fa-brain", days: ["Tuesday", "Thursday"], time: "8:00 – 10:30 AM", summary: "Explore how intelligent systems learn from data, make predictions, and affect the world around us.", weeks: [["What is AI? Ethics and real-world examples", "Data, features and preparing a dataset"], ["How machines learn: supervised learning", "Classification, prediction and evaluation"], ["Introduction to neural networks", "AI project workshop and presentations"]] },
+        aerospace: { name: "Aerospace Fundamentals", icon: "fas fa-rocket", days: ["Tuesday", "Thursday"], time: "2:00 – 4:30 PM", summary: "Discover the forces, systems, and bold engineering ideas behind flight and space exploration.", weeks: [["Introduction to aerospace and flight", "Forces of flight: lift, weight, thrust and drag"], ["Aircraft design and stability", "Rocket science and space missions"], ["Satellites, orbits and Earth observation", "Design challenge and mission showcase"]] }
+      };
+      const queryCourse = new URLSearchParams(location.search).get("course");
+      let activeCourse = courses[queryCourse] ? queryCourse : "python";
+      let activeWeek = 0;
+      const slug = text => text.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+      const fileName = (course, week, day, type, extension) => `${course}/week-${week}/day-${day}-${type}.${extension}`;
+      function render() {
+        const course = courses[activeCourse];
+        document.title = `${course.name} Materials | EAGLOPEN`;
+        document.getElementById("course-tabs").innerHTML = Object.entries(courses).map(([key, item]) => `<a class="al-course-tab ${key === activeCourse ? "is-active" : ""}" href="algolab-materials.html?course=${key}"><i class="${item.icon}" aria-hidden="true"></i><span>${item.name}</span></a>`).join("");
+        document.getElementById("course-overview").innerHTML = `<div class="al-course-mark"><i class="${course.icon}" aria-hidden="true"></i></div><div><p class="al-course-label">${course.days.join(" · ")} · ${course.time}</p><h2>${course.name}</h2><p>${course.summary}</p></div><div class="al-course-stats"><span><strong>${course.weeks.length}</strong> weeks</span><span><strong>${course.weeks.flat().length}</strong> learning days</span><span><strong>3+</strong> files per day</span></div>`;
+        document.getElementById("week-nav").innerHTML = course.weeks.map((week, index) => `<button class="${index === activeWeek ? "is-active" : ""}" type="button" data-week="${index}"><span>Week ${index + 1}</span><small>${index === 0 ? "Foundations" : index === 1 ? "Build skills" : "Create & apply"}</small></button>`).join("");
+        document.getElementById("day-grid").innerHTML = course.weeks[activeWeek].map((topic, index) => {
+          const day = index + 1, globalDay = activeWeek * course.days.length + day, weekday = course.days[index];
+          const base = `assets/files/algolab/${fileName(activeCourse, activeWeek + 1, day, "")}`.replace("..", ".");
+          return `<article class="al-day-card"><div class="al-day-heading"><span>Day ${globalDay}</span><p>${weekday} · ${course.time}</p><h3>${topic}</h3></div><div class="al-file-list"><a href="${base}lesson-notes.pdf" download><i class="fas fa-file-pdf" aria-hidden="true"></i><span><strong>Lesson notes</strong><small>PDF handout</small></span><i class="fas fa-download" aria-hidden="true"></i></a><a href="${base}practice-files.zip" download><i class="fas fa-file-zipper" aria-hidden="true"></i><span><strong>Practice files</strong><small>ZIP download</small></span><i class="fas fa-download" aria-hidden="true"></i></a><a href="${base}activity.pdf" download><i class="fas fa-clipboard-list" aria-hidden="true"></i><span><strong>Day activity</strong><small>PDF worksheet</small></span><i class="fas fa-download" aria-hidden="true"></i></a></div></article>`;
+        }).join("");
+        document.querySelectorAll("[data-week]").forEach(button => button.addEventListener("click", () => { activeWeek = Number(button.dataset.week); render(); document.getElementById("week-nav").scrollIntoView({ behavior: "smooth", block: "nearest" }); }));
+      }
+      render();
+    </script>
+    <script src="assets/js/clean-routes.js"></script>
+  </body>
+</html>
