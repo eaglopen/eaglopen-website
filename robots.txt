@@ -1,0 +1,6 @@
+# Allow search engines to crawl the public EAGLOPEN website.
+User-agent: *
+Allow: /
+
+# Canonical sitemap location.
+Sitemap: https://eaglopen.org/sitemap.xml
