@@ -140,10 +140,10 @@
   /* ---------- Emblem sprite (circular-clipped logo) ---------- */
   var emblemSprite = null;
   var logo = new Image();
-  logo.crossOrigin = "anonymous";
   logo.onload = buildEmblem;
   logo.onerror = buildEmblem;
-  logo.src = "assets/images/hero/logo.png";
+  // Versioned PNG URL ensures the interactive canvas does not reuse the removed JPG.
+  logo.src = "assets/images/hero/logo.png?v=20260823";
 
   function buildEmblem() {
     var size = 160;
