@@ -143,7 +143,7 @@
   logo.crossOrigin = "anonymous";
   logo.onload = buildEmblem;
   logo.onerror = buildEmblem;
-  logo.src = "assets/images/hero/logo.jpg";
+  logo.src = "assets/images/hero/logo.png";
 
   function buildEmblem() {
     var size = 160;
