@@ -143,7 +143,7 @@
   logo.onload = buildEmblem;
   logo.onerror = buildEmblem;
   // Versioned PNG URL ensures the interactive canvas does not reuse the removed JPG.
-  logo.src = "assets/images/hero/logo.png?v=20260823";
+  logo.src = "/assets/images/hero/logo-v2.png";
 
   function buildEmblem() {
     var size = 160;
