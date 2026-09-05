@@ -53,6 +53,7 @@ function buildPage(participant) {
     : "/" + participant.image;
   const description = escapeHtml(participant.description);
   const cohort = escapeHtml(participant.cohort);
+  const certificateId = escapeHtml(participant.id || "");
   const role = participant.role || "Participant";
   const position = participant.position || `AlgoLab ${cohort} Participant`;
   const badgeText = role === "Participant" ? "Verified Certificate" : `Verified ${role}`;
@@ -93,6 +94,13 @@ function buildPage(participant) {
       .al-verified-badge i {
         font-size: 0.9em;
       }
+      .al-certificate-id {
+        font-family: monospace;
+        font-size: 0.85rem;
+        color: #666666;
+        letter-spacing: 0.03em;
+        margin: 0 0 1em;
+      }
     </style>
   </head>
   <body>
@@ -107,6 +115,7 @@ function buildPage(participant) {
         <article class="al-profile-view" id="participant-profile" aria-live="polite">
           <img src="${image}" alt="${name}" />
           <span class="al-verified-badge"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> ${badgeText}</span>
+          ${certificateId ? `<p class="al-certificate-id">Certificate ID: ${certificateId}</p>` : ""}
           <h1>${name}</h1>
           <span class="al-alumni-cohort">${escapeHtml(position)}</span>
           <p>${description}</p>
