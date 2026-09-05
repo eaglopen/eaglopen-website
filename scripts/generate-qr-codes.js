@@ -18,6 +18,7 @@ const { Jimp } = require("jimp");
 
 const SITE_URL = "https://eaglopen.org";
 const DATA_FILE = path.join(__dirname, "algolab-participants-data.json");
+const TEAM_FILE = path.join(__dirname, "algolab-team-data.json");
 const OUTPUT_DIR = path.join(__dirname, "..", "qrcodes");
 const LOGO_PATH = path.join(__dirname, "..", "assets", "images", "hero", "logo-v2.png");
 
@@ -25,7 +26,14 @@ const LOGO_PATH = path.join(__dirname, "..", "assets", "images", "hero", "logo-v
 const QR_SIZE = 600;
 // how much of the QR the logo covers, keep this under 0.25 or scanners
 // can start struggling even with high error correction
-const LOGO_RATIO = 0.22;
+const LOGO_RATIO = 0.2;
+// white breathing room around the logo, as a fraction of the logo size
+const LOGO_PADDING_RATIO = 0.12;
+// thickness of the gold ring around the logo badge, in pixels on a 600px QR
+const RING_WIDTH = 8;
+// EAGLOPEN brand gold ring around the logo badge
+const RING_COLOR = 0xc9a84cff;
+const WHITE = 0xffffffff;
 
 function firstNameSlug(fullName) {
   return fullName.trim().split(/\s+/)[0].toLowerCase().replace(/[^a-z0-9]/g, "");
@@ -33,6 +41,18 @@ function firstNameSlug(fullName) {
 
 function fullNameSlug(fullName) {
   return fullName.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+}
+
+async function writeWithRetry(image, outPath, attempts = 5) {
+  for (let i = 1; i <= attempts; i++) {
+    try {
+      await image.write(outPath);
+      return;
+    } catch (err) {
+      if (i === attempts) throw err;
+      await new Promise((resolve) => setTimeout(resolve, 250 * i));
+    }
+  }
 }
 
 async function makeQrWithLogo(url, logoImage) {
@@ -46,19 +66,26 @@ async function makeQrWithLogo(url, logoImage) {
   if (!logoImage) return qrImage;
 
   const logoSize = Math.round(QR_SIZE * LOGO_RATIO);
-  const padding = Math.round(logoSize * 0.18);
+  const padding = Math.round(logoSize * LOGO_PADDING_RATIO);
   const backingSize = logoSize + padding * 2;
+  const badgeSize = backingSize + RING_WIDTH * 2;
 
-  const logo = logoImage.clone().resize({ w: logoSize, h: logoSize });
+  // logo cropped to a clean circle
+  const logo = logoImage.clone().resize({ w: logoSize, h: logoSize }).circle();
 
-  // white backing square so the logo has clean contrast against the QR pattern
-  const backing = new Jimp({ width: backingSize, height: backingSize, color: 0xffffffff });
+  // build the logo badge on its own layer: gold ring + white circle + logo.
+  // the badge is much tighter than before so it barely touches the QR pattern.
+  const badge = new Jimp({ width: badgeSize, height: badgeSize, color: RING_COLOR }).circle();
 
-  const backingPos = Math.round((QR_SIZE - backingSize) / 2);
-  const logoPos = Math.round((QR_SIZE - logoSize) / 2);
+  const backing = new Jimp({ width: backingSize, height: backingSize, color: WHITE }).circle();
+  const backingOffset = Math.round((badgeSize - backingSize) / 2);
+  badge.composite(backing, backingOffset, backingOffset);
 
-  qrImage.composite(backing, backingPos, backingPos);
-  qrImage.composite(logo, logoPos, logoPos);
+  const logoOffset = Math.round((backingSize - logoSize) / 2);
+  badge.composite(logo, backingOffset + logoOffset, backingOffset + logoOffset);
+
+  const badgePos = Math.round((QR_SIZE - badgeSize) / 2);
+  qrImage.composite(badge, badgePos, badgePos);
 
   return qrImage;
 }
@@ -81,6 +108,15 @@ async function main() {
     }
   }
 
+  let people = participants;
+  const team = fs.existsSync(TEAM_FILE)
+    ? JSON.parse(fs.readFileSync(TEAM_FILE, "utf8"))
+    : [];
+  for (const member of team) {
+    finalSlugs.set(member, fullNameSlug(member.name));
+    people = people.concat(member);
+  }
+
   let logoImage = null;
   if (fs.existsSync(LOGO_PATH)) {
     logoImage = await Jimp.read(LOGO_PATH);
@@ -91,15 +127,15 @@ async function main() {
 
   if (!fs.existsSync(OUTPUT_DIR)) fs.mkdirSync(OUTPUT_DIR, { recursive: true });
 
-  for (const p of participants) {
+  for (const p of people) {
     const slug = finalSlugs.get(p);
     const url = `${SITE_URL}/algolab/${slug}`;
-    const outPath = path.join(OUTPUT_DIR, `${fullNameSlug(p.name)}.png`);
+    const outPath = path.join(OUTPUT_DIR, `${slug}.png`);
     const image = await makeQrWithLogo(url, logoImage);
-    await image.write(outPath);
+    await writeWithRetry(image, outPath);
   }
 
-  console.log(`Done. Saved ${participants.length} QR codes into the qrcodes folder.`);
+  console.log(`Done. Saved ${people.length} QR codes (${participants.length} participants + ${team.length} team) into the qrcodes folder.`);
 }
 
 main();

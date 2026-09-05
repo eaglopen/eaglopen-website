@@ -16,6 +16,7 @@ const fs = require("fs");
 const path = require("path");
 
 const DATA_FILE = path.join(__dirname, "algolab-participants-data.json");
+const TEAM_FILE = path.join(__dirname, "algolab-team-data.json");
 const OUTPUT_ROOT = path.join(__dirname, "..", "algolab");
 
 function escapeHtml(str) {
@@ -52,6 +53,16 @@ function buildPage(participant) {
     : "/" + participant.image;
   const description = escapeHtml(participant.description);
   const cohort = escapeHtml(participant.cohort);
+  const role = participant.role || "Participant";
+  const position = participant.position || `AlgoLab ${cohort} Participant`;
+  const badgeText = role === "Participant" ? "Verified Certificate" : `Verified ${role}`;
+  const metaLabel = role === "Participant" ? "participant" : role.toLowerCase();
+  const backTarget = role === "Participant"
+    ? "/algolab-participants.html"
+    : "/algolab.html#algolab-team";
+  const backLabel = role === "Participant"
+    ? "Back to participants"
+    : "Back to the AlgoLab team";
 
   return `<!doctype html>
 <html lang="en">
@@ -59,7 +70,7 @@ function buildPage(participant) {
     <link rel="icon" type="image/png" href="/assets/images/hero/logo-v2.png" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="${name} is a verified EAGLOPEN AlgoLab ${cohort} participant." />
+    <meta name="description" content="${name} is a verified EAGLOPEN AlgoLab ${cohort} ${metaLabel}." />
     <title>${name} | EAGLOPEN AlgoLab</title>
     <script src="https://kit.fontawesome.com/bc43529ae8.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/assets/css/base.css" />
@@ -95,11 +106,11 @@ function buildPage(participant) {
       <div class="container">
         <article class="al-profile-view" id="participant-profile" aria-live="polite">
           <img src="${image}" alt="${name}" />
-          <span class="al-verified-badge"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Verified Certificate</span>
+          <span class="al-verified-badge"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> ${badgeText}</span>
           <h1>${name}</h1>
-          <span class="al-alumni-cohort">AlgoLab ${cohort}</span>
+          <span class="al-alumni-cohort">${escapeHtml(position)}</span>
           <p>${description}</p>
-          <a class="al-profile-back" href="/algolab-participants.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to participants</a>
+          <a class="al-profile-back" href="${backTarget}"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> ${backLabel}</a>
         </article>
       </div>
     </main>
@@ -111,6 +122,9 @@ function buildPage(participant) {
 
 function main() {
   const participants = JSON.parse(fs.readFileSync(DATA_FILE, "utf8"));
+  const team = fs.existsSync(TEAM_FILE)
+    ? JSON.parse(fs.readFileSync(TEAM_FILE, "utf8"))
+    : [];
 
   // work out a slug for everyone, first name only by default
   const bySlug = new Map();
@@ -133,6 +147,12 @@ function main() {
     }
   }
 
+  // instructors and coordinators always get a full "first-last" URL so that
+  // nobody shares a page with a student (e.g. /algolab/fikir-solomon)
+  for (const member of team) {
+    finalSlugs.set(member, fullNameSlug(member.name));
+  }
+
   if (!fs.existsSync(OUTPUT_ROOT)) fs.mkdirSync(OUTPUT_ROOT, { recursive: true });
 
   for (const p of participants) {
@@ -142,7 +162,14 @@ function main() {
     fs.writeFileSync(path.join(dir, "index.html"), buildPage(p));
   }
 
-  console.log(`Done. Wrote ${participants.length} pages into the algolab folder.`);
+  for (const member of team) {
+    const slug = finalSlugs.get(member);
+    const dir = path.join(OUTPUT_ROOT, slug);
+    fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(path.join(dir, "index.html"), buildPage(member));
+  }
+
+  console.log(`Done. Wrote ${participants.length} participant pages and ${team.length} team pages into the algolab folder.`);
   if (collisions.length) {
     console.log("");
     console.log("Heads up, these first names were shared by more than one student,");

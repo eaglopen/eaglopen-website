@@ -1,0 +1,66 @@
+[
+  {
+    "name": "Biniyam Aschalew",
+    "image": "assets/images/programs/biny.jpg",
+    "role": "Instructor",
+    "position": "AI and ML Instructor",
+    "description": "Biniyam is pursuing his Master's in Electrical Engineering at KAIST, South Korea. He completed his BSc in Computer Science with a minor in Industrial Engineering at KAIST on a full Scholarship, and earned the Hanseong Scholarship for academic excellence. His research focuses on AI and foundation models. He is this year's AlgoLab instructor for AI.",
+    "cohort": "2026"
+  },
+  {
+    "name": "Naol Samuel",
+    "image": "assets/images/programs/naol.jpg",
+    "role": "Instructor",
+    "position": "Aerospace Instructor",
+    "description": "Naol is a student at KAIST specializing in aerospace engineering and neural control systems. His work bridges hardware, control systems, and aerospace applications. He is this year's AlgoLab instructor for aerospace.",
+    "cohort": "2026"
+  },
+  {
+    "name": "Mesay Shemsu",
+    "image": "assets/images/programs/Mesay-Shemsu.webp",
+    "role": "Instructor",
+    "position": "Python Programming Instructor",
+    "description": "Mesay is a lecturer and researcher in Computer Science at Adama Science and Technology University, with expertise in computer networking, ICT, and network security. He is this year's AlgoLab instructor for Python.",
+    "cohort": "2026"
+  },
+  {
+    "name": "Melkamu Abetu",
+    "image": "assets/images/programs/melkamu.jpg",
+    "role": "Instructor",
+    "position": "C++ Instructor",
+    "description": "Melkamu is a lecturer and researcher at Adama Science and Technology University, with an MSc in Information Science and expertise in artificial intelligence, machine learning, deep learning, and natural language processing. He is this year's AlgoLab instructor for AI & Machine Learning.",
+    "cohort": "2026"
+  },
+  {
+    "name": "Negasa Reta",
+    "image": "assets/images/research/team/negasa.jpg",
+    "role": "Coordinator",
+    "position": "Program Coordinator",
+    "description": "Software Engineer · Founder @ Dungoo Software Solutions · European Union Youth Sounding Board (EU YSB) Member · UNDP Student Ambassador - FTL Track · Entrepreneur · Knowledge Engineering · AI Dev & Automation",
+    "cohort": "2026"
+  },
+  {
+    "name": "Lencho Taye",
+    "image": "assets/images/research/team/lenisuit.jpg",
+    "role": "Coordinator",
+    "position": "Program Coordinator",
+    "description": "Founder & Executive Director, EAGLOPEN · Lead Instructor (2023, 24, 25 Cohort) · AddisCoder '25 Alumnus · IAAC Ambassador · Student Researcher & Software Developer",
+    "cohort": "2026"
+  },
+  {
+    "name": "Lelise Tatek",
+    "image": "assets/images/programs/lelise.jpg",
+    "role": "Coordinator",
+    "position": "Event Lead",
+    "description": "Lelise Tatek is the Event Lead for EAGLOPEN AlgoLab 2026, bringing strong communication, leadership, and professionalism to the program. She serves as one of the key representatives of EAGLOPEN throughout the event. She is also an AlgoLab 2026 Participant.",
+    "cohort": "2026"
+  },
+  {
+    "name": "Fikir Solomon",
+    "image": "assets/images/programs/fikir.png",
+    "role": "Coordinator",
+    "position": "Technical Coordinator",
+    "description": "Fikir is the Technical Coordinator for EAGLOPEN AlgoLab 2026, supporting the program with technical preparation, materials, documentation, and event photography. He is also an AlgoLab 2025 graduate.",
+    "cohort": "2026"
+  }
+]
