@@ -24,7 +24,8 @@
     "position": "Python Programming Instructor",
     "description": "Mesay is a lecturer and researcher in Computer Science at Adama Science and Technology University, with expertise in computer networking, ICT, and network security. He is this year's AlgoLab instructor for Python.",
     "cohort": "2026",
-    "id": "EAGLOPEN-ALG-2026-INS-003"
+    "id": "EAGLOPEN-ALG-2026-INS-003",
+    "certificate": "certificates/mesay-shemsu.png"
   },
   {
     "name": "Melkamu Abetu",

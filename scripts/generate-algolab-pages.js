@@ -46,7 +46,7 @@ function fullNameSlug(fullName) {
     .replace(/(^-|-$)/g, "");
 }
 
-function buildPage(participant) {
+function buildPage(participant, slug) {
   const name = escapeHtml(participant.name);
   const image = participant.image.startsWith("/")
     ? participant.image
@@ -54,9 +54,14 @@ function buildPage(participant) {
   const description = escapeHtml(participant.description);
   const cohort = escapeHtml(participant.cohort);
   const certificateId = escapeHtml(participant.id || "");
+  const certificate = participant.certificate
+    ? (participant.certificate.startsWith("/")
+        ? participant.certificate
+        : "/" + participant.certificate)
+    : "";
   const role = participant.role || "Participant";
   const position = participant.position || `AlgoLab ${cohort} Participant`;
-  const badgeText = role === "Participant" ? "Verified Certificate" : `Verified ${role}`;
+  const badgeText = role === "Participant" ? "Verified Profile" : `Verified ${role}`;
   const metaLabel = role === "Participant" ? "participant" : role.toLowerCase();
   const backTarget = role === "Participant"
     ? "/algolab-participants.html"
@@ -64,6 +69,22 @@ function buildPage(participant) {
   const backLabel = role === "Participant"
     ? "Back to participants"
     : "Back to the AlgoLab team";
+
+  const certificateIdLine = certificateId
+    ? `<p class="al-certificate-id">Certificate ID: ${certificateId}</p>`
+    : "";
+  const certificateHtml = certificate
+    ? `<section class="al-certificate">
+        <span class="al-verified-badge al-certificate-badge"><i class="fa-solid fa-certificate" aria-hidden="true"></i> Verified Certificate</span>
+        ${certificateIdLine}
+        <figure class="al-certificate-figure">
+          <img src="${certificate}" alt="${name}'s EAGLOPEN AlgoLab verified certificate" />
+        </figure>
+        <a class="al-certificate-download" href="${certificate}" download="${slug || "certificate"}-EAGLOPEN-Algolab-Certificate.png" aria-label="Download ${name}'s verified certificate">
+          <i class="fa-solid fa-download" aria-hidden="true"></i> <span>Download Certificate</span>
+        </a>
+      </section>`
+    : "";
 
   return `<!doctype html>
 <html lang="en">
@@ -97,9 +118,66 @@ function buildPage(participant) {
       .al-certificate-id {
         font-family: monospace;
         font-size: 0.85rem;
-        color: #666666;
+        color: #bbbbbb;
         letter-spacing: 0.03em;
         margin: 0 0 1em;
+      }
+      .al-certificate {
+        margin-top: 40px;
+        padding-top: 34px;
+        border-top: 1px solid rgba(255, 255, 255, 0.16);
+      }
+      .al-verified-badge.al-certificate-badge {
+        background: #c9a84c;
+        color: #14202e;
+        margin-bottom: 0.35em;
+      }
+      .al-certificate-figure {
+        width: 100%;
+        max-width: 560px;
+        margin: 16px auto 20px;
+        padding: 8px;
+        background: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 14px;
+        box-shadow: 0 24px 50px -30px rgba(0, 0, 0, 0.85);
+      }
+      .al-profile-view .al-certificate-figure img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        border: none;
+        border-radius: 8px;
+        outline: none;
+      }
+      .al-certificate-download {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 22px;
+        border-radius: 999px;
+        background: linear-gradient(110deg, #c9a84c, #f0d98f);
+        box-shadow: 0 14px 28px -16px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        color: #14202e;
+        font-size: 0.95rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        text-decoration: none;
+        transition: transform 0.3s var(--ease-expo), box-shadow 0.3s ease;
+      }
+      .al-certificate-download i {
+        color: #14202e;
+      }
+      .al-certificate-download:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 22px 38px -18px rgba(201, 168, 76, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      }
+      .al-certificate-download:active {
+        transform: translateY(-1px) scale(0.98);
+      }
+      .al-certificate-download:focus-visible {
+        outline: 3px solid var(--color-secondary-light);
+        outline-offset: 4px;
       }
     </style>
   </head>
@@ -115,10 +193,11 @@ function buildPage(participant) {
         <article class="al-profile-view" id="participant-profile" aria-live="polite">
           <img src="${image}" alt="${name}" />
           <span class="al-verified-badge"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> ${badgeText}</span>
-          ${certificateId ? `<p class="al-certificate-id">Certificate ID: ${certificateId}</p>` : ""}
+          ${certificate ? "" : certificateIdLine}
           <h1>${name}</h1>
           <span class="al-alumni-cohort">${escapeHtml(position)}</span>
           <p>${description}</p>
+          ${certificateHtml}
           <a class="al-profile-back" href="${backTarget}"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> ${backLabel}</a>
         </article>
       </div>
@@ -168,14 +247,14 @@ function main() {
     const slug = finalSlugs.get(p);
     const dir = path.join(OUTPUT_ROOT, slug);
     fs.mkdirSync(dir, { recursive: true });
-    fs.writeFileSync(path.join(dir, "index.html"), buildPage(p));
+    fs.writeFileSync(path.join(dir, "index.html"), buildPage(p, slug));
   }
 
   for (const member of team) {
     const slug = finalSlugs.get(member);
     const dir = path.join(OUTPUT_ROOT, slug);
     fs.mkdirSync(dir, { recursive: true });
-    fs.writeFileSync(path.join(dir, "index.html"), buildPage(member));
+    fs.writeFileSync(path.join(dir, "index.html"), buildPage(member, slug));
   }
 
   console.log(`Done. Wrote ${participants.length} participant pages and ${team.length} team pages into the algolab folder.`);

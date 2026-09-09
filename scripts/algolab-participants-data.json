@@ -4,7 +4,8 @@
     "image": "assets/images/algolab-2026/algo2026/Matthias Amsalu.jpg",
     "description": "A passionate student exploring coding, AI, and technology through EAGLOPEN AlgoLab 2026.",
     "cohort": "2026",
-    "id": "EAGLOPEN-ALG-2026-P-001"
+    "id": "EAGLOPEN-ALG-2026-P-001",
+    "certificate": "certificates/mathias certificate.png"
   },
   {
     "name": "Sinbone Birhanu",
@@ -18,70 +19,80 @@
     "image": "assets/images/algolab-2026/algo2026/Dagem Guta.jpg",
     "description": "A passionate student exploring coding, AI, and technology through EAGLOPEN AlgoLab 2026.",
     "cohort": "2026",
-    "id": "EAGLOPEN-ALG-2026-P-003"
+    "id": "EAGLOPEN-ALG-2026-P-003",
+    "certificate": "certificates/dagem certifcate.png"
   },
   {
     "name": "Milky Gosa Bedada",
     "image": "assets/images/algolab-2026/algo2026/Milky Gosa Bedada.png",
     "description": "A passionate student exploring coding, AI, and technology through EAGLOPEN AlgoLab 2026.",
     "cohort": "2026",
-    "id": "EAGLOPEN-ALG-2026-P-004"
+    "id": "EAGLOPEN-ALG-2026-P-004",
+    "certificate": "certificates/milky certificate.png"
   },
   {
     "name": "Saron Getahun",
     "image": "assets/images/algolab-2026/algo2026/Saron Getahun.jpeg",
     "description": "A passionate student exploring coding, AI, and technology through EAGLOPEN AlgoLab 2026.",
     "cohort": "2026",
-    "id": "EAGLOPEN-ALG-2026-P-005"
+    "id": "EAGLOPEN-ALG-2026-P-005",
+    "certificate": "certificates/saron.png"
   },
   {
     "name": "Yisak Ibrahim",
     "image": "assets/images/algolab-2026/algo2026/Ebra esak.jpg",
     "description": "A passionate student exploring coding, AI, and technology through EAGLOPEN AlgoLab 2026.",
     "cohort": "2026",
-    "id": "EAGLOPEN-ALG-2026-P-006"
+    "id": "EAGLOPEN-ALG-2026-P-006",
+    "certificate": "certificates/yisak.png"
   },
   {
     "name": "Umayma Hassan",
     "image": "assets/images/algolab-2026/algo2026/Umayma Hassan.jpg",
     "description": "A passionate student exploring coding, AI, and technology through EAGLOPEN AlgoLab 2026.",
     "cohort": "2026",
-    "id": "EAGLOPEN-ALG-2026-P-007"
+    "id": "EAGLOPEN-ALG-2026-P-007",
+    "certificate": "certificates/umayma.png"
   },
   {
     "name": "Danayit Gsilasse",
     "image": "assets/images/algolab-2026/algo2026/danayit gsilasse.jpg",
     "description": "A passionate student exploring coding, AI, and technology through EAGLOPEN AlgoLab 2026.",
     "cohort": "2026",
-    "id": "EAGLOPEN-ALG-2026-P-008"
+    "id": "EAGLOPEN-ALG-2026-P-008",
+    "certificate": "certificates/danayit.png"
   },
   {
     "name": "Alia Abdulbasit",
     "image": "assets/images/algolab-2026/algo2026/Alia Abdulbasit.jpg",
     "description": "A passionate student exploring coding, AI, and technology through EAGLOPEN AlgoLab 2026.",
     "cohort": "2026",
-    "id": "EAGLOPEN-ALG-2026-P-009"
+    "id": "EAGLOPEN-ALG-2026-P-009",
+    "certificate": "certificates/alia.png"
   },
   {
     "name": "Abidan Adem",
     "image": "assets/images/algolab-2026/algo2026/Abidan Adem.jpg",
     "description": "A passionate student exploring coding, AI, and technology through EAGLOPEN AlgoLab 2026.",
     "cohort": "2026",
-    "id": "EAGLOPEN-ALG-2026-P-010"
+    "id": "EAGLOPEN-ALG-2026-P-010",
+    "certificate": "certificates/abidan.png"
   },
   {
     "name": "Hadhiya Alemu",
     "image": "assets/images/algolab-2026/algo2026/Hadhiya Alemu.jpg",
     "description": "A passionate student exploring coding, AI, and technology through EAGLOPEN AlgoLab 2026.",
     "cohort": "2026",
-    "id": "EAGLOPEN-ALG-2026-P-011"
+    "id": "EAGLOPEN-ALG-2026-P-011",
+    "certificate": "certificates/hadhiya.png"
   },
   {
     "name": "Maranatha Esayas Fikresilase",
     "image": "assets/images/algolab-2026/algo2026/Maranatha Esayas.png",
     "description": "A passionate student exploring coding, AI, and technology through EAGLOPEN AlgoLab 2026.",
     "cohort": "2026",
-    "id": "EAGLOPEN-ALG-2026-P-012"
+    "id": "EAGLOPEN-ALG-2026-P-012",
+    "certificate": "certificates/maranatha.png"
   },
   {
     "name": "Ansif Abdela",
@@ -109,7 +120,8 @@
     "image": "assets/images/algolab-2026/algo2026/Melala Adugna.jpg",
     "description": "A passionate student exploring coding, AI, and technology through EAGLOPEN AlgoLab 2026.",
     "cohort": "2026",
-    "id": "EAGLOPEN-ALG-2026-P-016"
+    "id": "EAGLOPEN-ALG-2026-P-016",
+    "certificate": "certificates/melala.png"
   },
   {
     "name": "Bethelhem Mengistu Tigro",
@@ -200,7 +212,8 @@
     "image": "assets/images/algolab-2026/algo2026/Mihret Yimenu.png",
     "description": "A passionate student exploring coding, AI, and technology through EAGLOPEN AlgoLab 2026.",
     "cohort": "2026",
-    "id": "EAGLOPEN-ALG-2026-P-029"
+    "id": "EAGLOPEN-ALG-2026-P-029",
+    "certificate": "certificates/mihret.png"
   },
   {
     "name": "Boni Herko Belay",
@@ -235,14 +248,16 @@
     "image": "assets/images/algolab-2026/algo2026/Gelila.jpg",
     "description": "A passionate student exploring coding, AI, and technology through EAGLOPEN AlgoLab 2026.",
     "cohort": "2026",
-    "id": "EAGLOPEN-ALG-2026-P-034"
+    "id": "EAGLOPEN-ALG-2026-P-034",
+    "certificate": "certificates/gelila.png"
   },
   {
     "name": "Fikir Adugna Reda",
     "image": "assets/images/algolab-2026/algo2026/Fiker Adugna.jpg",
     "description": "A passionate student exploring coding, AI, and technology through EAGLOPEN AlgoLab 2026.",
     "cohort": "2026",
-    "id": "EAGLOPEN-ALG-2026-P-035"
+    "id": "EAGLOPEN-ALG-2026-P-035",
+    "certificate": "certificates/fikir.png"
   },
   {
     "name": "Biniyam Mengistu",

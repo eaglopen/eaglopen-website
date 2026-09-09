@@ -30,9 +30,66 @@
       .al-certificate-id {
         font-family: monospace;
         font-size: 0.85rem;
-        color: #666666;
+        color: #bbbbbb;
         letter-spacing: 0.03em;
         margin: 0 0 1em;
+      }
+      .al-certificate {
+        margin-top: 40px;
+        padding-top: 34px;
+        border-top: 1px solid rgba(255, 255, 255, 0.16);
+      }
+      .al-verified-badge.al-certificate-badge {
+        background: #c9a84c;
+        color: #14202e;
+        margin-bottom: 0.35em;
+      }
+      .al-certificate-figure {
+        width: 100%;
+        max-width: 560px;
+        margin: 16px auto 20px;
+        padding: 8px;
+        background: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 14px;
+        box-shadow: 0 24px 50px -30px rgba(0, 0, 0, 0.85);
+      }
+      .al-profile-view .al-certificate-figure img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        border: none;
+        border-radius: 8px;
+        outline: none;
+      }
+      .al-certificate-download {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 22px;
+        border-radius: 999px;
+        background: linear-gradient(110deg, #c9a84c, #f0d98f);
+        box-shadow: 0 14px 28px -16px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        color: #14202e;
+        font-size: 0.95rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        text-decoration: none;
+        transition: transform 0.3s var(--ease-expo), box-shadow 0.3s ease;
+      }
+      .al-certificate-download i {
+        color: #14202e;
+      }
+      .al-certificate-download:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 22px 38px -18px rgba(201, 168, 76, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      }
+      .al-certificate-download:active {
+        transform: translateY(-1px) scale(0.98);
+      }
+      .al-certificate-download:focus-visible {
+        outline: 3px solid var(--color-secondary-light);
+        outline-offset: 4px;
       }
     </style>
   </head>
@@ -47,11 +104,12 @@
       <div class="container">
         <article class="al-profile-view" id="participant-profile" aria-live="polite">
           <img src="/assets/images/algolab-2026/algo2026/Weknesh Hailu.jpg" alt="Ansif Abdela" />
-          <span class="al-verified-badge"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Verified Certificate</span>
+          <span class="al-verified-badge"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Verified Profile</span>
           <p class="al-certificate-id">Certificate ID: EAGLOPEN-ALG-2026-P-013</p>
           <h1>Ansif Abdela</h1>
           <span class="al-alumni-cohort">AlgoLab 2026 Participant</span>
           <p>A passionate student exploring coding, AI, and technology through EAGLOPEN AlgoLab 2026.</p>
+          
           <a class="al-profile-back" href="/algolab-participants.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to participants</a>
         </article>
       </div>
