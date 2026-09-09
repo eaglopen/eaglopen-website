@@ -48,9 +48,11 @@ function fullNameSlug(fullName) {
 
 function buildPage(participant, slug) {
   const name = escapeHtml(participant.name);
-  const image = participant.image.startsWith("/")
-    ? participant.image
-    : "/" + participant.image;
+  const image = participant.image
+    ? (participant.image.startsWith("/")
+        ? participant.image
+        : "/" + participant.image)
+    : "/assets/images/hero/logo-v2.png";
   const description = escapeHtml(participant.description);
   const cohort = escapeHtml(participant.cohort);
   const certificateId = escapeHtml(participant.id || "");
@@ -65,10 +67,14 @@ function buildPage(participant, slug) {
   const metaLabel = role === "Participant" ? "participant" : role.toLowerCase();
   const backTarget = role === "Participant"
     ? "/algolab-participants.html"
-    : "/algolab.html#algolab-team";
+    : (role === "Contributor"
+        ? "/algolab.html#algolab-special-thanks"
+        : "/algolab.html#algolab-team");
   const backLabel = role === "Participant"
     ? "Back to participants"
-    : "Back to the AlgoLab team";
+    : (role === "Contributor"
+        ? "Back to special thanks"
+        : "Back to the AlgoLab team");
 
   const certificateIdLine = certificateId
     ? `<p class="al-certificate-id">Certificate ID: ${certificateId}</p>`

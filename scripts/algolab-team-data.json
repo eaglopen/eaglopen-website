@@ -19,7 +19,7 @@
   },
   {
     "name": "Mesay Shemsu",
-    "image": "assets/images/programs/Mesay-Shemsu.webp",
+    "image": "assets/images/programs/Mesay-Shemsu.png",
     "role": "Instructor",
     "position": "Python Programming Instructor",
     "description": "Mesay is a lecturer and researcher in Computer Science at Adama Science and Technology University, with expertise in computer networking, ICT, and network security. He is this year's AlgoLab instructor for Python.",
@@ -29,7 +29,7 @@
   },
   {
     "name": "Melkamu Abetu",
-    "image": "assets/images/programs/melkamu.jpg",
+    "image": "assets/images/programs/melkamu.png",
     "role": "Instructor",
     "position": "C++ Instructor",
     "description": "Melkamu is a lecturer and researcher at Adama Science and Technology University, with an MSc in Information Science and expertise in artificial intelligence, machine learning, deep learning, and natural language processing. He is this year's AlgoLab instructor for AI & Machine Learning.",
@@ -71,5 +71,32 @@
     "description": "Fikir is the Technical Coordinator for EAGLOPEN AlgoLab 2026, supporting the program with technical preparation, materials, documentation, and event photography. He is also an AlgoLab 2025 graduate.",
     "cohort": "2026",
     "id": "EAGLOPEN-ALG-2026-COORD-004"
+  },
+  {
+    "name": "Getahun Degefa",
+    "image": "assets/images/programs/gech.png",
+    "role": "Contributor",
+    "position": "Technical Support",
+    "description": "Getahun acted as technical support for EAGLOPEN AlgoLab and helped us along our journey. We are deeply grateful for his support.",
+    "cohort": "2026",
+    "id": "EAGLOPEN-ALG-2026-TS-001"
+  },
+  {
+    "name": "Zerihun Tadesse",
+    "image": "assets/images/programs/zerihun.png",
+    "role": "Contributor",
+    "position": "Technical Support",
+    "description": "Zerihun acted as technical support for EAGLOPEN AlgoLab and helped us along our journey. We are deeply grateful for his support.",
+    "cohort": "2026",
+    "id": "EAGLOPEN-ALG-2026-TS-002"
+  },
+  {
+    "name": "Tsegaye",
+    "image": "/assets/images/hero/logo-v2.png",
+    "role": "Contributor",
+    "position": "Technical Support",
+    "description": "Tsegaye acted as technical support for EAGLOPEN AlgoLab and helped us along our journey. We are deeply grateful for the support.",
+    "cohort": "2026",
+    "id": "EAGLOPEN-ALG-2026-TS-003"
   }
 ]
