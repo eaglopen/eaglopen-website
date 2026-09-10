@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="icon" type="image/png" href="/assets/images/hero/logo-v2.png" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find My Certificate | EAGLOPEN AlgoLab</title>
+    <meta
+      name="description"
+      content="Find and verify your EAGLOPEN AlgoLab certificate using your unique Student ID."
+    />
+    <script
+      src="https://kit.fontawesome.com/bc43529ae8.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/header.css" />
+    <link rel="stylesheet" href="assets/css/footer.css" />
+    <link rel="stylesheet" href="assets/css/animations.css" />
+    <link rel="stylesheet" href="assets/css/algolab.css" />
+    <style>
+      .find-cert-page {
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 4rem 1rem;
+      }
+      .find-cert-card {
+        width: 100%;
+        max-width: 560px;
+        background: var(--color-surface, #1a1f2e);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 20px;
+        padding: 3rem 2.5rem;
+        box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.7);
+        text-align: center;
+      }
+      .find-cert-card .cert-icon {
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #c9a84c, #f0d98f);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        color: #14202e;
+        margin-bottom: 1.5rem;
+      }
+      .find-cert-card h1 {
+        font-size: 1.6rem;
+        margin: 0 0 0.5rem;
+        color: var(--color-text, #ffffff);
+      }
+      .find-cert-card .subtitle {
+        color: var(--color-text-muted, #8a8f98);
+        font-size: 0.95rem;
+        margin: 0 0 2rem;
+      }
+      .cert-search-form {
+        display: flex;
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+      }
+      .cert-search-input {
+        flex: 1;
+        padding: 0.85rem 1.1rem;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--color-text, #ffffff);
+        font-size: 1rem;
+        font-family: monospace;
+        letter-spacing: 0.04em;
+        outline: none;
+        transition: border-color 0.25s ease;
+      }
+      .cert-search-input::placeholder {
+        color: rgba(255, 255, 255, 0.25);
+        font-family: sans-serif;
+        letter-spacing: 0;
+      }
+      .cert-search-input:focus {
+        border-color: #c9a84c;
+      }
+      .cert-search-btn {
+        padding: 0.85rem 1.5rem;
+        border-radius: 12px;
+        border: none;
+        background: linear-gradient(110deg, #c9a84c, #f0d98f);
+        color: #14202e;
+        font-size: 0.95rem;
+        font-weight: 700;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5em;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        white-space: nowrap;
+      }
+      .cert-search-btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 8px 20px -8px rgba(201, 168, 76, 0.6);
+      }
+      .cert-search-btn:active {
+        transform: translateY(0) scale(0.98);
+      }
+      .cert-result {
+        display: none;
+        margin-top: 1.5rem;
+        padding: 1.25rem;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .cert-result.found {
+        display: block;
+        border-color: rgba(28, 138, 76, 0.3);
+        background: rgba(28, 138, 76, 0.06);
+      }
+      .cert-result.not-found {
+        display: block;
+        border-color: rgba(220, 60, 60, 0.3);
+        background: rgba(220, 60, 60, 0.06);
+      }
+      .cert-result .result-label {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--color-text-muted, #8a8f98);
+        margin-bottom: 0.5rem;
+      }
+      .cert-result .result-name {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--color-text, #ffffff);
+        margin: 0 0 0.25rem;
+      }
+      .cert-result .result-id {
+        font-family: monospace;
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.35);
+        margin-bottom: 1rem;
+      }
+      .cert-result .result-cohort {
+        font-size: 0.9rem;
+        color: var(--color-text-muted, #8a8f98);
+        margin-bottom: 1rem;
+      }
+      .cert-result .result-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5em;
+        padding: 0.7rem 1.4rem;
+        border-radius: 999px;
+        background: linear-gradient(110deg, #c9a84c, #f0d98f);
+        color: #14202e;
+        font-size: 0.9rem;
+        font-weight: 700;
+        text-decoration: none;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .cert-result .result-link:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 10px 24px -10px rgba(201, 168, 76, 0.6);
+      }
+      .cert-result.not-found .result-name {
+        color: #e55;
+      }
+      .find-cert-back {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5em;
+        margin-top: 1.5rem;
+        color: var(--color-text-muted, #8a8f98);
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.2s ease;
+      }
+      .find-cert-back:hover {
+        color: var(--color-text, #ffffff);
+      }
+      @media (max-width: 540px) {
+        .find-cert-card {
+          padding: 2rem 1.25rem;
+        }
+        .cert-search-form {
+          flex-direction: column;
+        }
+        .cert-search-btn {
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="container">
+        <a class="logo" href="index.html" aria-label="EAGLOPEN home"
+          ><img src="/assets/images/hero/logo-v2.png" alt="" /><span
+            >EAGLOPEN</span
+          ></a
+        >
+        <nav class="nav" aria-label="Primary navigation">
+          <ul>
+            <li><a href="algolab.html">ALGOLAB</a></li>
+            <li>
+              <a href="algolab-participants.html">PARTICIPANTS</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="find-cert-page">
+      <div class="find-cert-card fade-in">
+        <div class="cert-icon">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <h1>Find My Certificate</h1>
+        <p class="subtitle">
+          Enter your AlgoLab Student ID to find and verify your certificate.
+        </p>
+        <form class="cert-search-form" id="certSearchForm" onsubmit="return false;">
+          <input
+            type="text"
+            class="cert-search-input"
+            id="certSearchInput"
+            placeholder="e.g. EAGLOPEN-ALG-2026-P-001"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <button type="submit" class="cert-search-btn" id="certSearchBtn">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            Search
+          </button>
+        </form>
+        <div class="cert-result" id="certResult"></div>
+        <a href="algolab-participants.html" class="find-cert-back">
+          <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to
+          Participants
+        </a>
+      </div>
+    </main>
+
+    <footer class="main-footer" aria-labelledby="footer-heading">
+      <div class="footer-signal" aria-hidden="true">
+        <span>Science</span><span>Technology</span><span>Open inquiry</span>
+      </div>
+      <div class="container footer-shell">
+        <div class="footer-bottom footer-bottom-modern">
+          <p>&copy; 2026 EAGLOPEN Science &amp; Technology Organization</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/animations.js"></script>
+    <script>
+      (() => {
+        const participants = [
+          { name: "Mathias Amsalu", id: "EAGLOPEN-ALG-2026-P-001", cohort: "2026", slug: "mathias", certificate: "certificates/mathias certificate.png" },
+          { name: "Sinbone Birhanu", id: "EAGLOPEN-ALG-2026-P-002", cohort: "2026", slug: "sinbone", certificate: "certificates/sinbone.png" },
+          { name: "Dagem Guta", id: "EAGLOPEN-ALG-2026-P-003", cohort: "2026", slug: "dagem", certificate: "certificates/dagem certifcate.png" },
+          { name: "Milky Gosa Bedada", id: "EAGLOPEN-ALG-2026-P-004", cohort: "2026", slug: "milky", certificate: "certificates/milky certificate.png" },
+          { name: "Saron Getahun", id: "EAGLOPEN-ALG-2026-P-005", cohort: "2026", slug: "saron", certificate: "certificates/saron.png" },
+          { name: "Yisak Ibrahim", id: "EAGLOPEN-ALG-2026-P-006", cohort: "2026", slug: "yisak", certificate: "certificates/yisak.png" },
+          { name: "Umayma Hassan", id: "EAGLOPEN-ALG-2026-P-007", cohort: "2026", slug: "umayma", certificate: "certificates/umayma.png" },
+          { name: "Danayit Gsilasse", id: "EAGLOPEN-ALG-2026-P-008", cohort: "2026", slug: "danayit", certificate: "certificates/danayit.png" },
+          { name: "Alia Abdulbasit", id: "EAGLOPEN-ALG-2026-P-009", cohort: "2026", slug: "alia", certificate: "certificates/alia.png" },
+          { name: "Abidan Adem", id: "EAGLOPEN-ALG-2026-P-010", cohort: "2026", slug: "abidan", certificate: "certificates/abidan.png" },
+          { name: "Hadhiya Alemu", id: "EAGLOPEN-ALG-2026-P-011", cohort: "2026", slug: "hadhiya", certificate: "certificates/hadhiya.png" },
+          { name: "Maranatha Esayas Fikresilase", id: "EAGLOPEN-ALG-2026-P-012", cohort: "2026", slug: "maranatha", certificate: "certificates/maranatha.png" },
+          { name: "Ansif Abdela", id: "EAGLOPEN-ALG-2026-P-013", cohort: "2026", slug: "ansif", certificate: "certificates/ansif.png" },
+          { name: "Abana Aklilu Abreha", id: "EAGLOPEN-ALG-2026-P-014", cohort: "2026", slug: "abana", certificate: "certificates/abana.png" },
+          { name: "Bamlak Bezuayehu", id: "EAGLOPEN-ALG-2026-P-015", cohort: "2026", slug: "bamlak", certificate: "certificates/bamlak.png" },
+          { name: "Melala Adugna", id: "EAGLOPEN-ALG-2026-P-016", cohort: "2026", slug: "melala", certificate: "certificates/melala.png" },
+          { name: "Bethelhem Mengistu Tigro", id: "EAGLOPEN-ALG-2026-P-017", cohort: "2026", slug: "bethelhem", certificate: "certificates/bethelhem.png" },
+          { name: "Micheale kibrom hagos", id: "EAGLOPEN-ALG-2026-P-018", cohort: "2026", slug: "micheale", certificate: "certificates/micheale.png" },
+          { name: "Ephrata Yilma", id: "EAGLOPEN-ALG-2026-P-019", cohort: "2026", slug: "ephrata", certificate: "certificates/ephrata.png" },
+          { name: "Nazrawit Genetu", id: "EAGLOPEN-ALG-2026-P-020", cohort: "2026", slug: "nazrawit", certificate: "certificates/nazrawit.png" },
+          { name: "Luna Abay", id: "EAGLOPEN-ALG-2026-P-021", cohort: "2026", slug: "luna", certificate: "certificates/luna.png" },
+          { name: "Madan Solomon Kassa", id: "EAGLOPEN-ALG-2026-P-022", cohort: "2026", slug: "madan", certificate: "certificates/madan.png" },
+          { name: "Yididiya Meseret", id: "EAGLOPEN-ALG-2026-P-023", cohort: "2026", slug: "yididiya", certificate: "certificates/yididiya.png" },
+          { name: "Muaz abdela ahmed", id: "EAGLOPEN-ALG-2026-P-024", cohort: "2026", slug: "muaz", certificate: "certificates/muaz.png" },
+          { name: "Sossna Abemelec Sadok", id: "EAGLOPEN-ALG-2026-P-025", cohort: "2026", slug: "sossna", certificate: "certificates/sossna.png" },
+          { name: "Natnael Zeray Gebrehiwet", id: "EAGLOPEN-ALG-2026-P-026", cohort: "2026", slug: "natnael", certificate: "certificates/natnael.png" },
+          { name: "Beneyas Tadu", id: "EAGLOPEN-ALG-2026-P-027", cohort: "2026", slug: "beneyas", certificate: "certificates/beneyas.png" },
+          { name: "Filmon Gebrecherkos Hailemikael", id: "EAGLOPEN-ALG-2026-P-028", cohort: "2026", slug: "filmon", certificate: "certificates/filmon.png" },
+          { name: "Mihret Degife Yimenu", id: "EAGLOPEN-ALG-2026-P-029", cohort: "2026", slug: "mihret", certificate: "certificates/mihret.png" },
+          { name: "Boni Herko Belay", id: "EAGLOPEN-ALG-2026-P-030", cohort: "2026", slug: "boni", certificate: "certificates/boni.png" },
+          { name: "Amerti Senbeta Abdeta", id: "EAGLOPEN-ALG-2026-P-031", cohort: "2026", slug: "amerti-senbeta-abdeta", certificate: "certificates/amerti-senbeta.png" },
+          { name: "Tirsit Getachew Dagnew", id: "EAGLOPEN-ALG-2026-P-032", cohort: "2026", slug: "tirsit", certificate: "certificates/tirist.png" },
+          { name: "Yordanos Shewangizaw", id: "EAGLOPEN-ALG-2026-P-033", cohort: "2026", slug: "yordanos", certificate: "certificates/yordanos.png" },
+          { name: "Gelila Abi", id: "EAGLOPEN-ALG-2026-P-034", cohort: "2026", slug: "gelila", certificate: "certificates/gelila.png" },
+          { name: "Fikir Adugna Reda", id: "EAGLOPEN-ALG-2026-P-035", cohort: "2026", slug: "fikir-adugna-reda", certificate: "certificates/fikir.png" },
+          { name: "Biniyam Mengistu", id: "EAGLOPEN-ALG-2026-P-036", cohort: "2026", slug: "biniyam-mengistu", certificate: "certificates/biniyam-mengistu.png" },
+          { name: "Yasir Ibrahim Mohammed", id: "EAGLOPEN-ALG-2026-P-037", cohort: "2026", slug: "yasir", certificate: "certificates/yasir.png" },
+          { name: "Maria Behailu", id: "EAGLOPEN-ALG-2026-P-038", cohort: "2026", slug: "maria", certificate: "certificates/maria.png" },
+          { name: "Firebruk Gezu", id: "EAGLOPEN-ALG-2025-P-001", cohort: "2025", slug: "firebruk" },
+          { name: "Esam Tarekegn", id: "EAGLOPEN-ALG-2025-P-002", cohort: "2025", slug: "esam" },
+          { name: "Kader Seyfedin", id: "EAGLOPEN-ALG-2025-P-003", cohort: "2025", slug: "kader" },
+          { name: "Asma Adem", id: "EAGLOPEN-ALG-2025-P-004", cohort: "2025", slug: "asma" },
+          { name: "Abdi Duguma", id: "EAGLOPEN-ALG-2025-P-005", cohort: "2025", slug: "abdi-duguma" },
+          { name: "Sara Eyob Kifelew", id: "EAGLOPEN-ALG-2025-P-006", cohort: "2025", slug: "sara" },
+          { name: "Bontu Abebe Megerso", id: "EAGLOPEN-ALG-2025-P-007", cohort: "2025", slug: "bontu" },
+          { name: "Sifen Getachew Daba", id: "EAGLOPEN-ALG-2025-P-008", cohort: "2025", slug: "sifen" },
+          { name: "Hawi Hussein", id: "EAGLOPEN-ALG-2025-P-009", cohort: "2025", slug: "hawi" },
+          { name: "Abenezer Mesfin Benti", id: "EAGLOPEN-ALG-2025-P-010", cohort: "2025", slug: "abenezer" },
+          { name: "Lamrot Taye Teka", id: "EAGLOPEN-ALG-2025-P-011", cohort: "2025", slug: "lamrot" },
+          { name: "Nanat Daba", id: "EAGLOPEN-ALG-2025-P-012", cohort: "2025", slug: "nanat" },
+          { name: "Kidist Abebe", id: "EAGLOPEN-ALG-2025-P-013", cohort: "2025", slug: "kidist" },
+          { name: "Nanati Mesfin Benti", id: "EAGLOPEN-ALG-2025-P-014", cohort: "2025", slug: "nanati" },
+          { name: "Amerti Biru", id: "EAGLOPEN-ALG-2025-P-015", cohort: "2025", slug: "amerti-biru" },
+          { name: "Ezadin Mohammad", id: "EAGLOPEN-ALG-2025-P-016", cohort: "2025", slug: "ezadin" },
+          { name: "Faiz Tajudin Teib", id: "EAGLOPEN-ALG-2025-P-017", cohort: "2025", slug: "faiz" },
+          { name: "Fetea Aman", id: "EAGLOPEN-ALG-2025-P-018", cohort: "2025", slug: "fetea" },
+          { name: "Bama Melese", id: "EAGLOPEN-ALG-2025-P-019", cohort: "2025", slug: "bama" },
+          { name: "Rediet Teshome Sileshi", id: "EAGLOPEN-ALG-2025-P-020", cohort: "2025", slug: "rediet" },
+          { name: "Abdi Bedru Beshir", id: "EAGLOPEN-ALG-2025-P-021", cohort: "2025", slug: "abdi-bedru-beshir" },
+          { name: "Iftuu Usmaan Nuura", id: "EAGLOPEN-ALG-2025-P-022", cohort: "2025", slug: "iftuu" },
+          { name: "Yostena Gezu Eshete", id: "EAGLOPEN-ALG-2025-P-023", cohort: "2025", slug: "yostena" }
+        ];
+
+        const form = document.getElementById("certSearchForm");
+        const input = document.getElementById("certSearchInput");
+        const resultEl = document.getElementById("certResult");
+
+        function doSearch() {
+          const query = input.value.trim();
+          if (!query) {
+            resultEl.className = "cert-result";
+            resultEl.innerHTML = "";
+            return;
+          }
+
+          const match = participants.find(
+            (p) => p.id.toUpperCase() === query.toUpperCase()
+          );
+
+          if (match && match.certificate) {
+            resultEl.className = "cert-result found";
+            resultEl.innerHTML =
+              '<div class="result-label">Certificate Found</div>' +
+              '<p class="result-name">' + match.name + "</p>" +
+              '<p class="result-id">' + match.id + "</p>" +
+              '<p class="result-cohort">AlgoLab ' + match.cohort + " Cohort</p>" +
+              '<a class="result-link" href="algolab/' + match.slug + '/">' +
+              '<i class="fa-solid fa-certificate" aria-hidden="true"></i> View Certificate' +
+              "</a>";
+          } else if (match) {
+            resultEl.className = "cert-result found";
+            resultEl.innerHTML =
+              '<div class="result-label">Student Found</div>' +
+              '<p class="result-name">' + match.name + "</p>" +
+              '<p class="result-id">' + match.id + "</p>" +
+              '<p class="result-cohort">AlgoLab ' + match.cohort + " Cohort</p>" +
+              '<a class="result-link" href="algolab/' + match.slug + '/">' +
+              '<i class="fa-solid fa-user" aria-hidden="true"></i> View Profile' +
+              "</a>";
+          } else {
+            resultEl.className = "cert-result not-found";
+            resultEl.innerHTML =
+              '<div class="result-label">Not Found</div>' +
+              '<p class="result-name">No matching Student ID found</p>' +
+              '<p class="result-cohort" style="margin-bottom:0;">Please double-check your ID and try again.</p>';
+          }
+        }
+
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          doSearch();
+        });
+
+        input.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            doSearch();
+          }
+        });
+      })();
+    </script>
+    <script src="assets/js/clean-routes.js"></script>
+  </body>
+</html>
