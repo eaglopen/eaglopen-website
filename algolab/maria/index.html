@@ -91,6 +91,16 @@
         outline: 3px solid var(--color-secondary-light);
         outline-offset: 4px;
       }
+      .al-verified-badge.al-excellence-badge {
+        background: linear-gradient(110deg, #b8860b, #daa520);
+        color: #14202e;
+        margin-bottom: 0.35em;
+      }
+      .al-excellence-section {
+        margin-top: 30px;
+        padding-top: 30px;
+        border-top: 2px solid rgba(218, 165, 32, 0.3);
+      }
     </style>
   </head>
   <body>
@@ -105,10 +115,20 @@
         <article class="al-profile-view" id="participant-profile" aria-live="polite">
           <img src="/assets/images/algolab-2026/algo2026/zzMaria Behailu.jpg" alt="Maria Behailu" />
           <span class="al-verified-badge"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Verified Profile</span>
-          <p class="al-certificate-id">Certificate ID: EAGLOPEN-ALG-2026-P-038</p>
+          
           <h1>Maria Behailu</h1>
           <span class="al-alumni-cohort">AlgoLab 2026 Participant</span>
           <p>A passionate student exploring coding, AI, and technology through EAGLOPEN AlgoLab 2026.</p>
+          <section class="al-certificate">
+        <span class="al-verified-badge al-certificate-badge"><i class="fa-solid fa-certificate" aria-hidden="true"></i> Verified Certificate</span>
+        <p class="al-certificate-id">Certificate ID: EAGLOPEN-ALG-2026-P-038</p>
+        <figure class="al-certificate-figure">
+          <img src="/certificates/maria.png" alt="Maria Behailu's EAGLOPEN AlgoLab verified certificate" />
+        </figure>
+        <a class="al-certificate-download" href="/certificates/maria.png" download="maria-EAGLOPEN-Algolab-Certificate.png" aria-label="Download Maria Behailu's verified certificate">
+          <i class="fa-solid fa-download" aria-hidden="true"></i> <span>Download Certificate</span>
+        </a>
+      </section>
           
           <a class="al-profile-back" href="/algolab-participants.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to participants</a>
         </article>

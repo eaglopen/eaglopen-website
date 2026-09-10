@@ -79,6 +79,11 @@ function buildPage(participant, slug) {
   const certificateIdLine = certificateId
     ? `<p class="al-certificate-id">Certificate ID: ${certificateId}</p>`
     : "";
+  const excellenceCert = participant.excellenceCertificate
+    ? (participant.excellenceCertificate.startsWith("/")
+        ? participant.excellenceCertificate
+        : "/" + participant.excellenceCertificate)
+    : "";
   const certificateHtml = certificate
     ? `<section class="al-certificate">
         <span class="al-verified-badge al-certificate-badge"><i class="fa-solid fa-certificate" aria-hidden="true"></i> Verified Certificate</span>
@@ -88,6 +93,17 @@ function buildPage(participant, slug) {
         </figure>
         <a class="al-certificate-download" href="${certificate}" download="${slug || "certificate"}-EAGLOPEN-Algolab-Certificate.png" aria-label="Download ${name}'s verified certificate">
           <i class="fa-solid fa-download" aria-hidden="true"></i> <span>Download Certificate</span>
+        </a>
+      </section>`
+    : "";
+  const excellenceHtml = excellenceCert
+    ? `<section class="al-certificate al-excellence-section">
+        <span class="al-verified-badge al-excellence-badge"><i class="fa-solid fa-award" aria-hidden="true"></i> Certificate of Excellence</span>
+        <figure class="al-certificate-figure">
+          <img src="${excellenceCert}" alt="${name}'s EAGLOPEN AlgoLab Certificate of Excellence" />
+        </figure>
+        <a class="al-certificate-download" href="${excellenceCert}" download="${slug || "certificate"}-EAGLOPEN-Algolab-Certificate-of-Excellence.png" aria-label="Download ${name}'s Certificate of Excellence">
+          <i class="fa-solid fa-download" aria-hidden="true"></i> <span>Download Certificate of Excellence</span>
         </a>
       </section>`
     : "";
@@ -185,6 +201,16 @@ function buildPage(participant, slug) {
         outline: 3px solid var(--color-secondary-light);
         outline-offset: 4px;
       }
+      .al-verified-badge.al-excellence-badge {
+        background: linear-gradient(110deg, #b8860b, #daa520);
+        color: #14202e;
+        margin-bottom: 0.35em;
+      }
+      .al-excellence-section {
+        margin-top: 30px;
+        padding-top: 30px;
+        border-top: 2px solid rgba(218, 165, 32, 0.3);
+      }
     </style>
   </head>
   <body>
@@ -204,6 +230,7 @@ function buildPage(participant, slug) {
           <span class="al-alumni-cohort">${escapeHtml(position)}</span>
           <p>${description}</p>
           ${certificateHtml}
+          ${excellenceHtml}
           <a class="al-profile-back" href="${backTarget}"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> ${backLabel}</a>
         </article>
       </div>
