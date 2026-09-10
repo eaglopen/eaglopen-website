@@ -20,6 +20,22 @@
     <link rel="stylesheet" href="assets/css/home.css" />
     <link rel="stylesheet" href="assets/css/algolab.css" />
     <link rel="stylesheet" href="assets/css/responsiveness.css" />
+    <style>
+      .al-card-cid {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4em;
+        font-family: monospace;
+        font-size: 0.78rem;
+        letter-spacing: 0.03em;
+        color: rgba(255, 255, 255, 0.45);
+        margin-top: 0.25em;
+      }
+      .al-card-cid i {
+        font-size: 0.85em;
+        opacity: 0.7;
+      }
+    </style>
   </head>
   <body>
     <header class="main-header fade-in">
@@ -784,23 +800,21 @@
         },
       ];
 
+      const firstNameSlug = (n) => n.trim().split(/\s+/)[0].toLowerCase().replace(/[^a-z0-9]/g, "");
+      const fullNameSlug = (n) => n.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+      const allParticipants = [...participants2026, ...participants2025];
+      const slugCount = {};
+      allParticipants.forEach((p) => { const s = firstNameSlug(p.name); slugCount[s] = (slugCount[s] || 0) + 1; });
+      const getSlug = (p) => slugCount[firstNameSlug(p.name)] > 1 ? fullNameSlug(p.name) : firstNameSlug(p.name);
+
       const renderParticipants = (target, participants, cohort) => {
         document.querySelector(target).innerHTML = participants
           .map((participant) => {
-            const query = new URLSearchParams({
-              name: participant.name,
-              image: participant.image,
-              description: participant.description,
-              cohort,
-            });
-            if (participant.id) query.set("id", participant.id);
-            if (participant.certificate) {
-              query.set("certificate", participant.certificate);
-            }
-            const verified = participant.certificate
-              ? '<span class="al-card-verified"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Verified Profile</span>'
+            const slug = getSlug(participant);
+            const idLine = participant.id
+              ? '<span class="al-card-cid"><i class="fa-solid fa-fingerprint" aria-hidden="true"></i> C-ID: ' + participant.id + "</span>"
               : "";
-            return `<article class="al-alumni-card"><span class="al-alumni-quote-mark" aria-hidden="true">&rdquo;</span><div class="al-alumni-head"><div class="al-alumni-photo"><img src="${participant.image}" alt="${participant.name}" loading="lazy" /></div><div><h3>${participant.name}</h3><span class="al-alumni-cohort">AlgoLab ${cohort}</span>${verified}</div></div><p>${participant.description}</p><a class="al-profile-cta" href="participant-profile.html?${query.toString()}" aria-label="Explore ${participant.name}'s profile"><span>Explore Profile</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></article>`;
+            return '<article class="al-alumni-card"><span class="al-alumni-quote-mark" aria-hidden="true">&rdquo;</span><div class="al-alumni-head"><div class="al-alumni-photo"><img src="' + participant.image + '" alt="' + participant.name + '" loading="lazy" /></div><div><h3>' + participant.name + "</h3>" + idLine + "</div></div><p>" + participant.description + '</p><a class="al-profile-cta" href="algolab/' + slug + '/" aria-label="View ' + participant.name + "'s profile\"><span>View Profile</span><i class=\"fa-solid fa-arrow-right\" aria-hidden=\"true\"></i></a></article>";
           })
           .join("");
       };
