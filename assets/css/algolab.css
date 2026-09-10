@@ -688,6 +688,58 @@
   margin: 0;
 }
 
+/* ===== ALUMNI COHORT HEADINGS ===== */
+.al-cohort-head {
+  margin-bottom: 1.5rem;
+}
+
+.al-cohort-head + .al-alumni-grid {
+  margin-top: 0;
+}
+
+.al-cohort-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.72rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 0.45rem;
+}
+
+.al-cohort-eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 2px;
+  background: var(--color-gold);
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.al-cohort-title {
+  color: var(--color-white);
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin: 0 0 0.35rem;
+}
+
+.al-cohort-sub {
+  color: rgba(255, 255, 255, 0.76);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+}
+
+.al-cohort-head--spaced {
+  margin-top: 3.75rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
 /* ===== PARTICIPANT PROFILE CTA ===== */
 .al-profile-cta {
   position: relative;
