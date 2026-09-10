@@ -347,10 +347,11 @@
       // Edit only this list when updating the AlgoLab 2026 cohort.
       const participants2026 = [
         {
-          name: "Mathias Amsalu",
+          name: "Matthias Amsalu",
           image: "assets/images/algolab-2026/algo2026/Matthias Amsalu.jpg",
           id: "EAGLOPEN-ALG-2026-P-001",
-          certificate: "certificates/mathias certificate.png",
+          slug: "mathias",
+          certificate: "certificates/matthias.png",
           description:
             "A passionate student exploring coding, AI, and technology through EAGLOPEN AlgoLab 2026.",
         },
@@ -659,6 +660,14 @@
           description:
             "A passionate student exploring coding, AI, and technology through EAGLOPEN AlgoLab 2026.",
         },
+        {
+          name: "Hikma Salah Sultan",
+          image: "assets/images/algolab-2026/algo2026/hikma-salah.jpg",
+          id: "EAGLOPEN-ALG-2026-P-039",
+          certificate: "certificates/hikma.png",
+          description:
+            "A passionate student exploring coding, AI, and technology through EAGLOPEN AlgoLab 2026.",
+        },
       ];
       const participants2025 = [
         {
@@ -805,7 +814,7 @@
       const allParticipants = [...participants2026, ...participants2025];
       const slugCount = {};
       allParticipants.forEach((p) => { const s = firstNameSlug(p.name); slugCount[s] = (slugCount[s] || 0) + 1; });
-      const getSlug = (p) => slugCount[firstNameSlug(p.name)] > 1 ? fullNameSlug(p.name) : firstNameSlug(p.name);
+      const getSlug = (p) => p.slug || (slugCount[firstNameSlug(p.name)] > 1 ? fullNameSlug(p.name) : firstNameSlug(p.name));
 
       const renderParticipants = (target, participants, cohort) => {
         document.querySelector(target).innerHTML = participants

@@ -1,11 +1,12 @@
 [
   {
-    "name": "Mathias Amsalu",
+    "name": "Matthias Amsalu",
     "image": "assets/images/algolab-2026/algo2026/Matthias Amsalu.jpg",
     "description": "A passionate student exploring coding, AI, and technology through EAGLOPEN AlgoLab 2026.",
     "cohort": "2026",
     "id": "EAGLOPEN-ALG-2026-P-001",
-    "certificate": "certificates/mathias certificate.png"
+    "slug": "mathias",
+    "certificate": "certificates/matthias.png"
   },
   {
     "name": "Sinbone Birhanu",
@@ -305,6 +306,14 @@
     "cohort": "2026",
     "id": "EAGLOPEN-ALG-2026-P-038",
     "certificate": "certificates/maria.png"
+  },
+  {
+    "name": "Hikma Salah Sultan",
+    "image": "assets/images/algolab-2026/algo2026/hikma-salah.jpg",
+    "description": "A passionate student exploring coding, AI, and technology through EAGLOPEN AlgoLab 2026.",
+    "cohort": "2026",
+    "id": "EAGLOPEN-ALG-2026-P-039",
+    "certificate": "certificates/hikma.png"
   },
   {
     "name": "Firebruk Gezu",

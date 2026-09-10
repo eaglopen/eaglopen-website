@@ -94,12 +94,17 @@ async function main() {
   const participants = JSON.parse(fs.readFileSync(DATA_FILE, "utf8"));
 
   const bySlug = new Map();
+  const explicitSlugs = new Map();
   for (const p of participants) {
+    if (p.slug) {
+      explicitSlugs.set(p, p.slug);
+      continue;
+    }
     const slug = firstNameSlug(p.name);
     if (!bySlug.has(slug)) bySlug.set(slug, []);
     bySlug.get(slug).push(p);
   }
-  const finalSlugs = new Map();
+  const finalSlugs = new Map(explicitSlugs);
   for (const group of bySlug.values()) {
     if (group.length === 1) {
       finalSlugs.set(group[0], firstNameSlug(group[0].name));

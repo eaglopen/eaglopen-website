@@ -247,15 +247,21 @@ function main() {
     ? JSON.parse(fs.readFileSync(TEAM_FILE, "utf8"))
     : [];
 
-  // work out a slug for everyone, first name only by default
+  // work out a slug for everyone, first name only by default.
+  // an explicit "slug" field in the data always wins over the auto-slug.
   const bySlug = new Map();
+  const explicitSlugs = new Map();
   for (const p of participants) {
+    if (p.slug) {
+      explicitSlugs.set(p, p.slug);
+      continue;
+    }
     const slug = firstNameSlug(p.name);
     if (!bySlug.has(slug)) bySlug.set(slug, []);
     bySlug.get(slug).push(p);
   }
 
-  const finalSlugs = new Map(); // participant -> slug
+  const finalSlugs = new Map(explicitSlugs); // participant -> slug
   const collisions = [];
   for (const [slug, group] of bySlug.entries()) {
     if (group.length === 1) {
@@ -269,7 +275,7 @@ function main() {
   }
 
   // instructors and coordinators always get a full "first-last" URL so that
-  // nobody shares a page with a student (e.g. /algolab/fikir-solomon)
+  // nobody shares a page with a student (e.g. /algolab/amerti-biru)
   for (const member of team) {
     finalSlugs.set(member, fullNameSlug(member.name));
   }
