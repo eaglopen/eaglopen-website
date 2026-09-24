@@ -45,7 +45,8 @@
     "position": "Program Coordinator",
     "description": "Software Engineer · Founder @ Dungoo Software Solutions · European Union Youth Sounding Board (EU YSB) Member · UNDP Student Ambassador - FTL Track · Entrepreneur · Knowledge Engineering · AI Dev & Automation",
     "cohort": "2026",
-    "id": "EAGLOPEN-ALG-2026-COORD-001"
+    "id": "EAGLOPEN-ALG-2026-COORD-001",
+    "certificate": "certificates/negasa-reta.png"
   },
   {
     "name": "Lencho Taye",
@@ -63,7 +64,8 @@
     "position": "Event Lead",
     "description": "Lelise Tatek is the Event Lead for EAGLOPEN AlgoLab 2026, bringing strong communication, leadership, and professionalism to the program. She serves as one of the key representatives of EAGLOPEN throughout the event. She is also an AlgoLab 2026 Participant.",
     "cohort": "2026",
-    "id": "EAGLOPEN-ALG-2026-COORD-003"
+    "id": "EAGLOPEN-ALG-2026-COORD-003",
+    "certificate": "certificates/lelise-tatek.png"
   },
   {
     "name": "Amerti Biru",
@@ -72,7 +74,8 @@
     "position": "Technical Coordinator",
     "description": "Amerti is the Technical Coordinator for EAGLOPEN AlgoLab 2026, supporting the program with technical preparation, materials, documentation, and event coordination. She is also an AlgoLab 2025 graduate.",
     "cohort": "2026",
-    "id": "EAGLOPEN-ALG-2026-COORD-004"
+    "id": "EAGLOPEN-ALG-2026-COORD-004",
+    "certificate": "certificates/amerti-biru.png"
   },
   {
     "name": "Getahun Degefa",
