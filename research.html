@@ -15,6 +15,10 @@
       src="https://kit.fontawesome.com/bc43529ae8.js"
       crossorigin="anonymous"
     ></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap"
+    />
     <link rel="stylesheet" href="assets/css/base.css" />
     <link rel="stylesheet" href="assets/css/header.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
@@ -24,6 +28,7 @@
     <link rel="stylesheet" href="assets/css/programs.css" />
     <link rel="stylesheet" href="assets/css/algolab.css" />
     <link rel="stylesheet" href="assets/css/research.css" />
+    <link rel="stylesheet" href="assets/css/researchers-section.css" />
     <link rel="stylesheet" href="assets/css/yt-embed.css" />
     <link rel="stylesheet" href="assets/css/hero-engine-badge.css" />
     <link rel="stylesheet" href="assets/css/community.css" />
@@ -839,6 +844,62 @@
         </div>
       </div>
     </section>
+
+    <!-- RESEARCHERS SECTION START -->
+    <!-- Styles: assets/css/researchers-section.css   Script: bottom of page -->
+    <section class="ry" id="researchers" aria-labelledby="ry-heading">
+      <div class="ry-floor" aria-hidden="true"></div>
+      <div class="ry-glow a" aria-hidden="true"></div>
+      <div class="ry-glow b" aria-hidden="true"></div>
+
+      <div class="ry-wrap">
+        <div class="ry-copy">
+          <span class="ry-chip"><span class="ry-dot"></span>2026 cohort about to be announced</span>
+          <h2 class="ry-title" id="ry-heading">This year&rsquo;s researchers</h2>
+          <span class="ry-rule" aria-hidden="true"></span>
+          <p class="ry-lead">Meet the researchers and innovators selected by <strong>EAGLOPEN</strong> this year. Curious minds from every background and every corner of the world, turning bold ideas into work that solves real problems.</p>
+
+          <ul class="ry-points">
+            <li><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.5 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/></svg>Selected by EAGLOPEN</li>
+            <li><svg viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4a2 2 0 0 0 1.8-3l-5-9V3"/></svg>Researchers &amp; innovators</li>
+            <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>Real-world impact</li>
+          </ul>
+
+          <a class="ry-cta" href="/research/">
+            View all researchers
+            <span class="ry-cta-ico"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+        </div>
+
+        <div class="ry-stage" aria-hidden="true">
+          <div class="ry-scene" id="ry-scene">
+            <div class="ry-orbit"><i></i></div>
+            <div class="ry-orbit two"><i></i></div>
+
+            <!-- Replace the placeholder text/avatars below with real researchers -->
+            <article class="ry-card c1">
+              <div class="ry-avatar"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div>
+              <div class="ry-meta"><p class="ry-name">Researcher name</p><p class="ry-field">Artificial Intelligence</p></div>
+              <span class="ry-tag">AI</span>
+            </article>
+            <article class="ry-card c2">
+              <div class="ry-avatar"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div>
+              <div class="ry-meta"><p class="ry-name">Innovator name</p><p class="ry-field">Programming &amp; Algorithms</p></div>
+              <span class="ry-tag">Featured</span>
+            </article>
+            <article class="ry-card c3">
+              <div class="ry-avatar"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div>
+              <div class="ry-meta"><p class="ry-name">Researcher name</p><p class="ry-field">Aerospace Foundations</p></div>
+              <span class="ry-tag">Aerospace</span>
+            </article>
+
+            <div class="ry-badge t"><b>2026</b> research cohort</div>
+            <div class="ry-badge b">Open to <b>innovators worldwide</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- RESEARCHERS SECTION END -->
 
     <!-- ===== Projects videos ===== -->
     <section
@@ -1697,6 +1758,50 @@
           if (document.hidden) return;
           safePlay(videoElements[activeElementIndex]);
         });
+      })();
+    </script>
+    <script id="ry-script">
+      (function(){
+        var sec=document.querySelector('.ry'); if(!sec) return;
+        var scene=document.getElementById('ry-scene');
+        var cards=sec.querySelectorAll('.ry-card');
+        var calm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        // one-time entrance when scrolled into view
+        if('IntersectionObserver' in window){
+          var io=new IntersectionObserver(function(e){
+            if(e[0].isIntersecting){sec.classList.add('is-in');io.disconnect();}
+          },{threshold:.25});
+          io.observe(sec);
+        } else { sec.classList.add('is-in'); }
+        if(calm){ sec.classList.add('is-in'); return; }
+
+        // pointer-driven 3D tilt with smoothing; gentle idle sway when no pointer
+        var tx=0,ty=0,cx=0,cy=0,hover=false,t0=performance.now();
+        sec.addEventListener('pointermove',function(e){
+          var r=sec.getBoundingClientRect();
+          var nx=(e.clientX-r.left)/r.width-.5, ny=(e.clientY-r.top)/r.height-.5;
+          tx=nx*26; ty=-ny*18; hover=true;
+          cards.forEach(function(c){
+            var b=c.getBoundingClientRect();
+            c.style.setProperty('--mx',((e.clientX-b.left)/b.width*100)+'%');
+            c.style.setProperty('--my',((e.clientY-b.top)/b.height*100)+'%');
+          });
+        });
+        sec.addEventListener('pointerleave',function(){hover=false;});
+
+        var vis=true;
+        new IntersectionObserver(function(e){vis=e[0].isIntersecting;}).observe(sec);
+
+        (function loop(now){
+          if(vis){
+            if(!hover){var s=(now-t0)/1000; tx=Math.sin(s*.7)*10; ty=Math.cos(s*.5)*5;}
+            cx+=(tx-cx)*.07; cy+=(ty-cy)*.07;
+            scene.style.setProperty('--ry',cx.toFixed(2)+'deg');
+            scene.style.setProperty('--rx',cy.toFixed(2)+'deg');
+          }
+          requestAnimationFrame(loop);
+        })(t0);
       })();
     </script>
     <script src="assets/js/clean-routes.js"></script>

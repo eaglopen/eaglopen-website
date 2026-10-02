@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Name work | EAGLOPEN Research</title>
+<meta name="description" content="Every project and paper by Your Name at EAGLOPEN: Student researcher and builder turning ideas into work the world can use.">
+<link rel="canonical" href="https://eaglopen.org/research/yourname/work/">
+<meta name="robots" content="noindex, follow" />
+<link rel="icon" href="/assets/images/hero/logo-v2.png">
+<link rel="apple-touch-icon" href="/assets/images/hero/logo-v2.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/base.css">
+<link rel="stylesheet" href="/assets/css/header.css">
+<link rel="stylesheet" href="/assets/css/footer.css">
+<link rel="stylesheet" href="/assets/css/responsiveness.css">
+<script src="https://kit.fontawesome.com/bc43529ae8.js" crossorigin="anonymous"></script>
+<style>
+/* ============================================================
+   WORKS PAGE DESIGN SYSTEM.
+   Same tokens as the profile page so the two look like one
+   product. Every rule is scoped under .rwk, and the site header
+   and footer are injected OUTSIDE .rwk, so this page can never
+   change any other page on the site.
+   ============================================================ */
+:root{
+  --ink:#0d0b2e; --ink2:#161240; --indigo:#2b206b; --violet:#5b3abd; --violet2:#7c52e0;
+  --lav:#c8b6f4; --lav2:#e3c4ff; --paper:#f5f3fb; --card:#ffffff; --line:#e1dcf0; --text:#1d1a3d; --mute:#5e5a80;
+  --head:"Newsreader",Georgia,"Times New Roman",serif; --body:"Inter","Segoe UI",Arial,sans-serif;
+}
+html{scroll-behavior:smooth}
+:focus-visible{outline:3px solid var(--violet2);outline-offset:3px;border-radius:6px}
+
+.rwk{font-family:var(--body);background:var(--paper);color:var(--text);line-height:1.7;font-size:16.5px;-webkit-font-smoothing:antialiased}
+.rwk *{box-sizing:border-box;margin:0;padding:0}
+.rwk a{color:inherit}
+.rwk .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+
+/* notice + breadcrumb */
+.rwk .notice{background:var(--lav);color:var(--ink);font-size:15px;text-align:center;padding:10px 24px}
+.rwk .notice a{font-weight:600}
+
+/* page head */
+.rwk .head{background:var(--ink);color:#fff;padding:44px 0 40px;position:relative;overflow:hidden}
+.rwk .head::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(200,182,244,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(200,182,244,.06) 1px,transparent 1px);background-size:56px 56px;mask-image:linear-gradient(#000 40%,transparent)}
+.rwk .head .wrap{position:relative}
+.rwk .crumb{font-size:14.5px;color:var(--lav);margin-bottom:18px}
+.rwk .crumb a{text-decoration:none;border-bottom:1px solid var(--violet)}
+.rwk .person{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.rwk .avatar{width:104px;height:104px;border-radius:50%;background:var(--ink2);border:4px solid var(--violet);padding:6px;flex:0 0 auto}
+.rwk .avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block}
+.rwk .who h1{font-family:var(--head);font-weight:500;font-size:clamp(30px,4.2vw,50px);line-height:1.05;letter-spacing:-.02em}
+.rwk .who p{color:var(--lav);font-family:var(--head);font-style:italic;font-size:clamp(17px,2vw,22px);line-height:1.4;margin-top:6px;max-width:640px}
+.rwk .pills{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}
+.rwk .pill{display:inline-flex;align-items:center;gap:7px;background:var(--indigo);border:1px solid var(--violet);color:var(--lav2);padding:5px 13px;border-radius:999px;font-size:13.5px;font-weight:600}
+.rwk .pill svg{width:14px;height:14px;flex:0 0 auto}
+
+/* toolbar */
+.rwk .bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:30px 0 6px}
+.rwk .bar h2{font-family:var(--head);font-weight:500;font-size:clamp(24px,3vw,32px);letter-spacing:-.01em}
+.rwk .count{color:var(--mute);font-size:15px}
+.rwk .back{display:inline-flex;align-items:center;gap:9px;text-decoration:none;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:9px 18px;font-size:15px;font-weight:600;transition:border-color .2s,color .2s}
+.rwk .back:hover{border-color:var(--violet);color:var(--violet)}
+.rwk .back svg{width:16px;height:16px}
+
+/* work cards */
+.rwk .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;padding:22px 0 64px}
+.rwk .card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s,border-color .2s}
+.rwk .card:hover{transform:translateY(-3px);border-color:var(--lav);box-shadow:0 14px 34px rgba(43,32,107,.11)}
+.rwk .thumb{position:relative;aspect-ratio:16/9;background:linear-gradient(135deg,var(--indigo),var(--violet));display:flex;align-items:center;justify-content:center;padding:18px}
+.rwk .thumb.r{background:linear-gradient(135deg,var(--ink),var(--indigo))}
+.rwk .thumb img{width:56%;opacity:.9}
+.rwk .thumb em{position:absolute;left:12px;bottom:12px;background:rgba(13,11,46,.82);color:var(--lav2);font-style:normal;font-size:12.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:4px 10px;border-radius:999px}
+.rwk .body{padding:20px;display:flex;flex-direction:column;flex:1 1 auto;gap:10px}
+.rwk .body h3{font-family:var(--head);font-weight:600;font-size:21px;line-height:1.25}
+.rwk .body p{color:var(--mute);font-size:15.5px}
+.rwk .chips{display:flex;flex-wrap:wrap;gap:7px}
+.rwk .chip{font-size:12.5px;font-weight:600;color:var(--indigo);background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+.rwk .need{font-size:12.5px;font-weight:700;color:#8a5a00;background:#fff5e0;border:1px solid #f0d49a;border-radius:999px;padding:4px 11px;align-self:flex-start}
+.rwk .foot{margin-top:auto;padding-top:14px}
+.rwk .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;width:100%;text-decoration:none;background:var(--violet);color:#fff;border:0;border-radius:999px;padding:13px 22px;font-family:var(--body);font-size:15.5px;font-weight:600;cursor:pointer;transition:background .2s}
+.rwk .btn:hover{background:var(--indigo)}
+.rwk .btn svg{width:17px;height:17px}
+
+/* ============================================================
+   PREMIUM DEPTH. Same restraint as the profile page: one slow
+   ring behind the avatar, hover-only lift and tilt on the cards,
+   and a sheen that follows the pointer. Nothing loops except the
+   48s ring, and all of it stops for reduced motion.
+   ============================================================ */
+.rwk .head{perspective:1400px}
+.rwk .avatar{position:relative;isolation:isolate;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.rwk .avatar::before{content:"";position:absolute;inset:-16px;border-radius:50%;z-index:-1;
+  background:conic-gradient(from 0deg,transparent 0 58%,rgba(200,182,244,.95) 72%,rgba(227,196,255,.55) 80%,transparent 88%);
+  -webkit-mask:radial-gradient(circle,transparent 0 61%,#000 63%);
+          mask:radial-gradient(circle,transparent 0 61%,#000 63%);
+  animation:rwk-ring 48s linear infinite}
+@keyframes rwk-ring{to{transform:rotate(360deg)}}
+
+.rwk .grid{perspective:1300px}
+.rwk .card{position:relative;transform-style:preserve-3d;
+  box-shadow:0 2px 4px -2px rgba(22,18,64,.13),0 12px 28px -20px rgba(43,32,107,.34);
+  transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s ease,border-color .45s}
+.rwk .card::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;
+  pointer-events:none;z-index:2;
+  background:linear-gradient(150deg,rgba(124,82,224,.5),rgba(200,182,244,.1) 45%,rgba(91,58,189,.34));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude}
+.rwk .card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;z-index:1;
+  transition:opacity .4s ease;
+  background:radial-gradient(380px 240px at var(--px,50%) var(--py,50%),rgba(124,82,224,.14),transparent 62%)}
+/* Keep the sheen over the thumbnail (reads as glass) but under the text. */
+.rwk .card .body{position:relative;z-index:2}
+.rwk .card:hover{transform:translateY(-4px) rotateX(1.8deg) rotateY(-1.8deg);
+  box-shadow:0 6px 10px -6px rgba(22,18,64,.16),0 28px 48px -26px rgba(43,32,107,.48)}
+.rwk .card:hover::after{opacity:1}
+
+@media (prefers-reduced-motion:reduce){
+  .rwk .avatar::before{animation:none}
+  .rwk .avatar,.rwk .card,.rwk .card::after{transition:none}
+  .rwk .card:hover{transform:none}
+}
+
+/* empty */
+.rwk .none{background:var(--card);border:1px dashed var(--line);border-radius:18px;padding:52px 28px;text-align:center;margin:22px 0 64px}
+.rwk .none h3{font-family:var(--head);font-weight:500;font-size:23px;margin-bottom:8px}
+.rwk .none p{color:var(--mute)}
+
+.rwk .foot-note{text-align:center;color:var(--mute);font-size:15px;padding:0 0 56px}
+
+@media (max-width:980px){.rwk .grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:680px){
+  .rwk .grid{grid-template-columns:1fr}
+  .rwk .person{gap:16px}
+  .rwk .avatar{width:84px;height:84px}
+  .rwk .bar{align-items:flex-start;flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<!-- Site header and mobile menu. Copied verbatim from the profile template by
+     _build/build.py so both pages always share one copy of the site chrome. -->
+<header class="main-header">
+      <div class="container">
+        <div class="logo">
+          <img src="/assets/images/hero/logo-v2.png" alt="EAGLOPEN Logo" />
+          <span>EAGLOPEN</span>
+        </div>
+        <nav class="nav">
+          <ul>
+            <li><a href="/index.html">HOME</a></li>
+            <li class="dropdown">
+              <a href="/about.html"
+                >ABOUT
+                <span class="dropdown-icon">
+                  <i class="fa-solid fa-chevron-down"></i> </span
+              ></a>
+              <ul class="dropdown-menu">
+                <li><a href="/about.html#who-we-are">Who We Are</a></li>
+                <li>
+                  <a href="/about.html#vision-mission">Vision & Mission</a>
+                </li>
+                <li><a href="/about.html#founder">Founders Message</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="/programs.html"
+                >PROGRAMS
+                <span class="dropdown-icon">
+                  <i class="fa-solid fa-chevron-down"></i> </span
+              ></a>
+              <ul class="dropdown-menu">
+                <li><a href="/programs.html">Overview</a></li>
+                <li><a href="/programs.html#programs-grid">Our Programs</a></li>
+                <li><a href="/programs.html#your-journey">Explore More</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="/algolab.html"
+                >ALGOLAB
+                <span class="dropdown-icon">
+                  <i class="fa-solid fa-chevron-down"></i> </span
+              ></a>
+              <ul class="dropdown-menu">
+                <li><a href="/algolab.html">Overview</a></li>
+                <li>
+                  <a href="/algolab.html#program-playground"
+                    >Algolab Playground</a
+                  >
+                </li>
+                <li>
+                  <a href="/algolab.html#algolab-team">Algolab Alumni</a>
+                </li>
+                <li>
+                  <a href="/algolab.html#algolab-admission"
+                    >Algolab Admission</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li><a href="/research.html">RESEARCH</a></li>
+            <li><a href="/community.html">COMMUNITY</a></li>
+            <li><a href="/media.html">MEDIA</a></li>
+            <li><a href="/news.html">NEWS</a></li>
+            <li><a href="/contact.html">CONTACT</a></li>
+          </ul>
+        </nav>
+        <button class="mobile-menu-btn" aria-label="Toggle mobile menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <nav class="mobile-nav">
+      <div class="mobile-nav-header">
+        <div class="logo">
+          <img src="/assets/images/hero/logo-v2.png" alt="EAGLOPEN Logo" />
+          <span>EAGLOPEN</span>
+        </div>
+        <button class="mobile-nav-close" aria-label="Close mobile menu">
+          &times;
+        </button>
+      </div>
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li class="dropdown">
+          <a href="/about.html"
+            >About
+            <span class="dropdown-icon">
+              <i class="fa-solid fa-chevron-down"></i> </span
+          ></a>
+          <ul class="dropdown-menu">
+            <li><a href="/about.html#who-we-are">Who We Are</a></li>
+            <li><a href="/about.html#vision-mission">Vision & Mission</a></li>
+            <li><a href="/about.html#founder">Founders Message</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="/programs.html"
+            >Programs
+            <span class="dropdown-icon">
+              <i class="fa-solid fa-chevron-down"></i> </span
+          ></a>
+          <ul class="dropdown-menu">
+            <li><a href="/programs.html">Overview</a></li>
+            <li><a href="/programs.html#programs-grid">Our Programs</a></li>
+            <li><a href="/programs.html#your-journey">Explore More</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="/algolab.html"
+            >AlgoLab
+            <span class="dropdown-icon">
+              <i class="fa-solid fa-chevron-down"></i> </span
+          ></a>
+          <ul class="dropdown-menu">
+            <li><a href="/algolab.html">Overview</a></li>
+            <li>
+              <a href="/algolab.html#program-playground">Algolab Playground</a>
+            </li>
+            <li><a href="/algolab.html#algolab-team">Algolab Alumni</a></li>
+            <li>
+              <a href="/algolab.html#algolab-admission">Algolab Admission</a>
+            </li>
+          </ul>
+        </li>
+        <li><a href="/research.html">Research</a></li>
+        <li><a href="/community.html">Community</a></li>
+        <li><a href="/media.html">Media</a></li>
+        <li><a href="/news.html">News</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+<div class="rp" id="rp">
+  <main id="app"></main>
+  <div class="toast" id="toast" role="status"></div>
+</div>
+
+<footer class="main-footer" aria-labelledby="footer-heading">
+      <div class="footer-signal" aria-hidden="true">
+        <span>Science</span><span>Technology</span><span>Open inquiry</span>
+      </div>
+      <div class="container footer-shell">
+        <section class="footer-opening">
+          <p class="footer-kicker">The next question starts here</p>
+          <h2 id="footer-heading">
+            Build what<br />moves us <em>forward.</em>
+          </h2>
+          <a class="footer-cta" href="/contact.html"
+            ><span>Start a conversation</span
+            ><i class="fa-solid fa-arrow-right" aria-hidden="true"></i
+          ></a>
+        </section>
+        <div class="footer-body">
+          <div class="footer-grid">
+            <div class="footer-brand">
+              <a
+                class="footer-brand-lockup"
+                href="/index.html"
+                aria-label="EAGLOPEN home"
+              >
+                <img
+                  class="footer-brand-logo"
+                  src="/assets/images/hero/logo-v2.png"
+                  alt=""
+                  width="52"
+                  height="52"
+                  decoding="async"
+                />
+                <span class="footer-brand-text">
+                  <span class="footer-brand-name">EAGLOPEN</span>
+                  <span class="footer-brand-org"
+                    >Science &amp; Technology Organization</span
+                  >
+                </span>
+              </a>
+              <p class="footer-brand-statement">
+                Building opportunities for students to learn, innovate, and
+                create technologies that shape Africa&apos;s future.
+              </p>
+              <div
+                class="footer-slogan-rotator"
+                aria-live="polite"
+                aria-label="EAGLOPEN slogans"
+              >
+                <span class="footer-slogan"
+                  >A Community of Learners, Builders, and Leaders.</span
+                >
+                <span class="footer-slogan"
+                  >Empowering Africa&apos;s Future Innovators.</span
+                >
+                <span class="footer-slogan"
+                  >Building Tomorrow&apos;s Problem Solvers.</span
+                >
+                <span class="footer-slogan">Learn. Build. Innovate.</span>
+                <span class="footer-slogan">Turning Ideas Into Impact.</span>
+                <span class="footer-slogan"
+                  >Science. Technology. Innovation.</span
+                >
+                <span class="footer-slogan"
+                  >Building Skills. Creating Solutions.</span
+                >
+                <span class="footer-slogan"
+                  >Where Curiosity Becomes Innovation.</span
+                >
+              </div>
+            </div>
+
+            <div class="footer-nav-quad" aria-label="Footer navigation">
+              <h3
+                class="footer-nav-quad-title footer-nav-quad-title--quick"
+                id="footer-quick-links-heading"
+              >
+                Quick Links
+              </h3>
+              <h3
+                class="footer-nav-quad-title footer-nav-quad-title--programs"
+                id="footer-programs-heading"
+              >
+                Programs
+              </h3>
+
+              <ul
+                class="footer-link-col"
+                aria-labelledby="footer-quick-links-heading"
+              >
+                <li><a class="footer-link" href="/index.html">Home</a></li>
+                <li><a class="footer-link" href="/about.html">About</a></li>
+                <li>
+                  <a class="footer-link" href="/programs.html">Programs</a>
+                </li>
+                <li><a class="footer-link" href="/algolab.html">AlgoLab</a></li>
+              </ul>
+              <ul
+                class="footer-link-col"
+                aria-labelledby="footer-quick-links-heading"
+              >
+                <li>
+                  <a class="footer-link" href="/research.html">Research</a>
+                </li>
+                <li><a class="footer-link" href="/news.html">News</a></li>
+                <li>
+                  <a class="footer-link" href="/community.html">Community</a>
+                </li>
+                <li><a class="footer-link" href="/contact.html">Contact</a></li>
+              </ul>
+              <ul
+                class="footer-link-col footer-link-col--programs"
+                aria-labelledby="footer-programs-heading"
+              >
+                <li><a class="footer-link" href="/algolab.html">AlgoLab</a></li>
+                <li>
+                  <a class="footer-link" href="/research.html"
+                    >Research Projects</a
+                  >
+                </li>
+                <li>
+                  <a class="footer-link" href="/programs.html#programs-grid"
+                    >Startup Team</a
+                  >
+                </li>
+              </ul>
+              <ul
+                class="footer-link-col"
+                aria-labelledby="footer-programs-heading"
+              >
+                <li>
+                  <a class="footer-link" href="/community.html">Community</a>
+                </li>
+                <li>
+                  <a class="footer-link" href="/programs.html#programs-glance"
+                    >Workshops</a
+                  >
+                </li>
+                <li>
+                  <a class="footer-link" href="/programs.html#your-journey"
+                    >Future Programs</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="footer-column footer-connect">
+              <h3 id="footer-connect-heading">Connect</h3>
+              <ul class="footer-contact-list">
+                <li>
+                  <span class="footer-contact-label">Contact Us</span>
+                  <a
+                    class="footer-contact-value"
+                    href="mailto:contact@eaglopen.org"
+                    >contact@eaglopen.org</a
+                  >
+                </li>
+                <li>
+                  <span class="footer-contact-label">Official Email</span>
+                  <a
+                    class="footer-contact-value"
+                    href="mailto:info@eaglopen.org"
+                    >info@eaglopen.org</a
+                  >
+                </li>
+                <li>
+                  <span class="footer-contact-label">Location</span>
+                  <span class="footer-contact-value footer-contact-static"
+                    >Adama, Ethiopia</span
+                  >
+                </li>
+              </ul>
+              <div
+                class="footer-social"
+                role="list"
+                aria-label="EAGLOPEN social media"
+              >
+                <a
+                  class="footer-social-link"
+                  href="https://linkedin.com/company/eaglopen/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  role="listitem"
+                  aria-label="EAGLOPEN on LinkedIn"
+                  ><i class="fab fa-linkedin-in" aria-hidden="true"></i
+                ></a>
+                <a
+                  class="footer-social-link"
+                  href="https://www.youtube.com/@eaglopen"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  role="listitem"
+                  aria-label="EAGLOPEN on YouTube"
+                  ><i class="fab fa-youtube" aria-hidden="true"></i
+                ></a>
+                <a
+                  class="footer-social-link"
+                  href="https://t.me/Eaglopen"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  role="listitem"
+                  aria-label="EAGLOPEN on Telegram"
+                  ><i class="fab fa-telegram" aria-hidden="true"></i
+                ></a>
+                <a
+                  class="footer-social-link"
+                  href="https://www.instagram.com/eaglopen"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  role="listitem"
+                  aria-label="EAGLOPEN on Instagram"
+                  ><i class="fab fa-instagram" aria-hidden="true"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-secondary">
+            <article class="footer-mission-card">
+              <span class="footer-mission-accent" aria-hidden="true"></span>
+              <h3>Mission</h3>
+              <p>
+                Empowering young Africans through science, technology,
+                innovation, collaboration, and practical learning.
+              </p>
+            </article>
+
+            <div class="footer-stay-connected">
+              <h3>Stay Connected</h3>
+              <p>
+                Receive updates about programs, research, events, and
+                opportunities.
+              </p>
+              <form
+                class="footer-newsletter-form"
+                action="/contact.html"
+                method="get"
+                aria-label="Stay connected with EAGLOPEN"
+              >
+                <label class="visually-hidden" for="footer-newsletter-email"
+                  >Email address</label
+                >
+                <input
+                  id="footer-newsletter-email"
+                  type="email"
+                  name="email"
+                  placeholder="you@university.edu"
+                  autocomplete="email"
+                  required
+                />
+                <button type="submit">
+                  <span>Subscribe</span>
+                  <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <div class="footer-bottom footer-bottom-modern">
+            <p>© 2026 EAGLOPEN Science &amp; Technology Organization</p>
+            <p class="footer-bottom-tagline">
+              Made with passion for the next generation of African innovators.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+<div class="rwk" id="rwk">
+  <main id="rwkApp"></main>
+</div>
+
+<script src="/assets/js/animations.js"></script>
+<script src="/assets/js/clean-routes.js"></script>
+<script>
+/* Everything is rendered from the one object injected at build time.
+   Works live at eaglopen.org/research/<slug>/work/ */
+const LOGO = "/assets/images/hero/logo-v2.png";
+const PROFILE = {
+  "name": "Your Name",
+  "cardTitle": "Build Your Profile",
+  "photo": "/assets/images/research/profilepic.png",
+  "logo": "/assets/images/hero/logo-v2.png",
+  "headline": "Student researcher and builder turning ideas into work the world can use.",
+  "status": "Sample profile",
+  "selected": "Selected in October 2026",
+  "university": "Your University",
+  "location": "Your country",
+  "field": "Software and AI",
+  "email": "yourname@eaglopen.org",
+  "links": [
+    [
+      "GitHub",
+      "#"
+    ],
+    [
+      "LinkedIn",
+      "#"
+    ],
+    [
+      "Website",
+      "#"
+    ]
+  ],
+  "about": [
+    "This is a sample profile. It shows exactly how a researcher page looks, so you can see the layout before anyone writes their own. Every box here is filled with example text that you replace with your own story.",
+    "A real researcher would use these paragraphs to explain what they are working on, why it matters to them, and what they hope to build next. Short and specific beats long and vague, so aim for two or three clear paragraphs.",
+    "Once you have your own copy, open research/data/researchers.json, find the entry with your slug, and start editing. Nothing on this site needs a build step for that, just run the build script again."
+  ],
+  "stats": [
+    [
+      "3",
+      "Projects"
+    ],
+    [
+      "1",
+      "Research paper"
+    ],
+    [
+      "2",
+      "Collaborators"
+    ],
+    [
+      "Oct 2026",
+      "Joined"
+    ]
+  ],
+  "works": [
+    {
+      "type": "project",
+      "title": "Sample project title",
+      "tags": [
+        "AI",
+        "Software"
+      ],
+      "year": "2026",
+      "summary": "One clear sentence about what you built and the problem it solves.",
+      "result": "Add your best result, such as how many people used it or how well it worked.",
+      "detail": "Add the full story here. What did you build, how does it work, what were the results, and what proof do you have? Demo videos, photos and test results all belong on this page.",
+      "links": [
+        [
+          "Demo video",
+          "#"
+        ],
+        [
+          "GitHub",
+          "#"
+        ],
+        [
+          "Live site",
+          "#"
+        ]
+      ]
+    },
+    {
+      "type": "research",
+      "title": "Sample research paper title",
+      "tags": [
+        "Research paper",
+        "Data"
+      ],
+      "year": "2026",
+      "summary": "One clear sentence about your research question and what you found.",
+      "result": "Add your main finding in one line, with a number if you have one.",
+      "detail": "Add your method, your main findings, and what you would study next. Link the full paper and any supporting files so anyone can check your work.",
+      "links": [
+        [
+          "Read the paper",
+          "#"
+        ],
+        [
+          "Supporting files",
+          "#"
+        ]
+      ]
+    },
+    {
+      "type": "project",
+      "title": "Another project, with research",
+      "tags": [
+        "Hardware",
+        "Research"
+      ],
+      "year": "2025",
+      "summary": "A project backed by a study, shown together so people can see both.",
+      "result": "Add what the study showed about how well the project works.",
+      "detail": "Projects with supporting research are the strongest. Show the build and the evidence side by side.",
+      "links": [
+        [
+          "Photos",
+          "#"
+        ],
+        [
+          "Results",
+          "#"
+        ]
+      ]
+    }
+  ],
+  "impact": [
+    {
+      "t": "Built something people can use",
+      "d": "Describe the real result in one line, with a number if you have one. For example, how many people tested it."
+    },
+    {
+      "t": "Backed by evidence",
+      "d": "Say what proof you shared with the EAGLOPEN review team, such as a demo, test results or a paper."
+    },
+    {
+      "t": "Ready to work with others",
+      "d": "Say what kind of project you want to join next and what you can offer a team."
+    }
+  ],
+  "verified": [
+    [
+      "Reviewed by",
+      "EAGLOPEN review team"
+    ],
+    [
+      "Evidence checked",
+      "Demo, files and paper"
+    ],
+    [
+      "Selected",
+      "October 2026"
+    ],
+    [
+      "Profile ID",
+      "EAG-R-0001"
+    ]
+  ],
+  "open": "Open to joint projects and research with other EAGLOPEN members.",
+  "education": "BSc student, second year",
+  "languages": "English and your other languages",
+  "skills": [
+    "Python",
+    "Machine learning",
+    "Web development",
+    "Data analysis",
+    "Technical writing"
+  ],
+  "collaborators": [
+    {
+      "name": "Senior researcher name",
+      "role": "Has completed several EAGLOPEN projects",
+      "photo": "/assets/images/hero/logo-v2.png"
+    },
+    {
+      "name": "Project partner name",
+      "role": "Co builder on a shared project",
+      "photo": "/assets/images/hero/logo-v2.png"
+    }
+  ],
+  "timeline": [
+    [
+      "Selected by EAGLOPEN",
+      "October 2026"
+    ],
+    [
+      "Published first research paper",
+      "2026"
+    ],
+    [
+      "Built and tested the first prototype",
+      "2025"
+    ]
+  ],
+  "sample": true,
+  "slug": "yourname"
+};
+
+const $ = (s, r = document) => r.querySelector(s);
+const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+const icon = {
+  school:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-5 9 5-9 5-9-5z"/><path d="M7 11.5V16c0 1.5 2.2 3 5 3s5-1.5 5-3v-4.5"/></svg>',
+  flask:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-9V3"/></svg>',
+  arrow:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
+  back:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>'
+};
+
+function render(p) {
+  document.title = `${p.name} work | EAGLOPEN Research`;
+  const slug = p.slug;
+  const profileUrl = `/research/${encodeURIComponent(slug)}/`;
+  const works = Array.isArray(p.works) ? p.works : [];
+
+  $("#rwkApp").innerHTML = `
+  ${p.sample ? `<div class="notice">This is a sample profile with made-up projects. Replace them in <code>research/data/researchers.json</code>.</div>` : ""}
+
+  <section class="head"><div class="wrap">
+    <div class="crumb"><a href="/research.html">Research</a> / <a href="/research/">Researchers</a> / <a href="${esc(profileUrl)}">${esc(slug)}</a> / Work</div>
+    <div class="person">
+      <div class="avatar"><img src="${esc(p.photo)}" alt="${esc(p.name)}"></div>
+      <div class="who">
+        <h1>${esc(p.name)}</h1>
+        <p>${esc(p.headline)}</p>
+        <div class="pills">
+          <span class="pill">${icon.school}${esc(p.university)}</span>
+          <span class="pill">${icon.flask}${esc(p.field)}</span>
+          ${p.sample ? `<span class="pill">Sample</span>` : ""}
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+  <div class="wrap">
+    <div class="bar">
+      <div>
+        <h2>All work</h2>
+        <p class="count">${works.length} ${works.length === 1 ? "project" : "projects"} by ${esc(p.name)}</p>
+      </div>
+      <a class="back" href="${esc(profileUrl)}">${icon.back} Back to full profile</a>
+    </div>
+
+    ${
+      works.length
+        ? `<div class="grid">${works.map(w => `
+          <article class="card">
+            <div class="thumb${w.type === "research" ? " r" : ""}">
+              <img src="${esc(LOGO)}" alt="">
+              <em>${w.type === "research" ? "Research" : "Project"} &middot; ${esc(w.year)}</em>
+            </div>
+            <div class="body">
+              ${w.placeholder ? `<span class="need">Needs content</span>` : ""}
+              <h3>${esc(w.title)}</h3>
+              <p>${esc(w.summary)}</p>
+              <div class="chips">${(w.tags || []).map(t => `<span class="chip">${esc(t)}</span>`).join("")}</div>
+              <div class="foot">
+                <a class="btn" href="${esc(profileUrl)}#work">${icon.arrow} View ${p.sample ? "their" : "his"} work</a>
+              </div>
+            </div>
+          </article>`).join("")}</div>`
+        : `<div class="none">
+             <h3>No work listed yet</h3>
+             <p>${esc(p.name)} has not added any projects to their profile yet.</p>
+           </div>`
+    }
+
+    <p class="foot-note">Each project links to the full profile, where the method, results and links are shown in detail.</p>
+  </div>`;
+  /* Sheen that follows the pointer across the cards. One rAF-throttled
+     listener, no loops, and skipped on touch and reduced motion. */
+  const calm = matchMedia("(prefers-reduced-motion: reduce)");
+  const cards = [...document.querySelectorAll(".rwk .card")];
+  const person = document.querySelector(".rwk .person");
+  const head = document.querySelector(".rwk .head");
+  const avatar = document.querySelector(".rwk .avatar");
+  const live = cards.length && person && head && avatar
+    && matchMedia("(hover:hover)").matches && !matchMedia("(max-width:680px)").matches;
+  let queued = false;
+
+  if (live){
+    person.addEventListener("pointermove", e => {
+      if (calm.matches) return;
+      const r = head.getBoundingClientRect();
+      const x = Math.max(-1, Math.min(1, ((e.clientX - r.left) / r.width - .5) * 2));
+      const y = Math.max(-1, Math.min(1, ((e.clientY - r.top) / r.height - .5) * 2));
+      if (!queued){
+        queued = true;
+        requestAnimationFrame(() => {
+          queued = false;
+          avatar.style.transform = "rotateY(" + (x * 3).toFixed(2) + "deg) rotateX(" + (-y * 2).toFixed(2) + "deg)";
+        });
+      }
+    });
+    person.addEventListener("pointerleave", () => { avatar.style.transform = ""; });
+
+    for (const c of cards){
+      c.addEventListener("pointermove", e => {
+        if (calm.matches) return;
+        const r = c.getBoundingClientRect();
+        c.style.setProperty("--px", (((e.clientX - r.left) / r.width) * 100).toFixed(1) + "%");
+        c.style.setProperty("--py", (((e.clientY - r.top) / r.height) * 100).toFixed(1) + "%");
+      });
+    }
+  }
+}
+
+render(PROFILE);
+</script>
+</body>
+</html>

@@ -1,0 +1,268 @@
+{
+  "_readme": "PARKED RESEARCHERS. Real people with complete entries, but not shown on the site right now. Only the sample profile ('yourname') is public, until EAGLOPEN is ready to publish real profiles. Nothing deletes this file, so they are always here to bring back. TO BRING THEM BACK: (1) run 'python research/_build/build.py --with-parked' to merge everyone in here into the build, or (2) copy the entries you want out of 'researchers' below into research/data/researchers.json alongside the sample. Before publishing, read each works entry: anything marked \"placeholder\": true shows a yellow 'Needs content' badge and is a prompt to fill in. No paper titles are invented here. Where a real citation is needed the entry says so instead of guessing.",
+  "researchers": [
+    {
+      "slug": "lencho-taye",
+      "approved": true,
+      "sample": false,
+      "year": 2026,
+      "name": "Lencho Taye",
+      "photo": "/assets/images/research/team/lenisuit.jpg",
+      "logo": "/assets/images/hero/logo-v2.png",
+      "headline": "Founder and Executive Director of EAGLOPEN Science and Technology Organization.",
+      "status": "Founder and Executive Director",
+      "selected": "Founding team",
+      "university": "EAGLOPEN Science and Technology Organization",
+      "location": "Ethiopia",
+      "field": "Software development, entrepreneurship and community building",
+      "email": "research@eaglopen.org",
+      "links": [],
+      "about": [
+        "Lencho Taye founded EAGLOPEN Science and Technology Organization and serves as its Executive Director. He also founded AlgoLab, the hands-on programme where young people build and test working software.",
+        "He works as a student researcher and software developer. He won the STEM Science and Engineering Fair and was a finalist at the National Science and Engineering Competition.",
+        "His focus is practical: taking an idea from a sketch to something a person can actually use, then helping other young researchers do the same. He is an innovation and startup advocate, a community builder and a youth leadership advocate, and a member of the EAGLOPEN research team."
+      ],
+      "stats": [
+        ["2025", "Founded EAGLOPEN"],
+        ["2024", "Founded AlgoLab"],
+        ["Winner", "STEM fair"],
+        ["Finalist", "National competition"]
+      ],
+      "works": [
+        {
+          "type": "project",
+          "title": "Founding and leading EAGLOPEN",
+          "tags": ["Organisation", "Research programme"],
+          "year": "2025",
+          "summary": "Built the research programme that gives young African researchers funded time, mentors and a public place to show their work.",
+          "result": "Running the student research intake that produced the profiles on this site.",
+          "detail": "EAGLOPEN exists to give students real research work rather than classroom exercises: mentorship, materials and equipment support, a review process, and a public showcase where each selected researcher gets a page like this one.",
+          "links": []
+        },
+        {
+          "type": "project",
+          "title": "Founding AlgoLab",
+          "tags": ["Software", "Education"],
+          "year": "2024",
+          "summary": "Created the programming lab where members build working software and learn by testing it in front of others.",
+          "result": "Members graduate having shipped projects rather than only completing exercises.",
+          "detail": "AlgoLab is the build-first programme run under EAGLOPEN. Members pick a real problem, build a working version, get it reviewed, then teach the next cohort what they learned.",
+          "links": []
+        },
+        {
+          "type": "research",
+          "title": "Competition record",
+          "tags": ["Competition"],
+          "year": "2026",
+          "placeholder": true,
+          "summary": "Add the year, the project title and the category for the fair win and the national final.",
+          "result": "Add the placing, and the judging feedback if it was shared.",
+          "detail": "Replace this with the official competition entries, the project each one covered, and where the results were published.",
+          "links": []
+        }
+      ],
+      "impact": [
+        {
+          "t": "Founded two programmes that are still running",
+          "d": "EAGLOPEN in 2025 and AlgoLab in 2024, both active and mentoring students."
+        },
+        {
+          "t": "Won the STEM Science and Engineering Fair",
+          "d": "Also a finalist at the National Science and Engineering Competition."
+        },
+        {
+          "t": "Building a public research record",
+          "d": "This site exists so young researchers can show evidence for their work instead of only a grade."
+        }
+      ],
+      "verified": [
+        ["Role", "Founder and Executive Director"],
+        ["Also founded", "AlgoLab"],
+        ["Competition", "Fair winner, national finalist"],
+        ["Profile ID", "EAG-R-0002"]
+      ],
+      "open": "Open to mentoring, joint projects and research partnerships.",
+      "education": "Student researcher",
+      "languages": "English",
+      "skills": [
+        "Software development",
+        "Programme leadership",
+        "Entrepreneurship",
+        "Community building",
+        "Youth mentoring"
+      ],
+      "collaborators": [],
+      "timeline": [
+        ["Founded AlgoLab", "2024"],
+        ["Founded EAGLOPEN", "2025"],
+        ["National competition finalist", "2026"]
+      ]
+    },
+    {
+      "slug": "tadele-negash",
+      "approved": true,
+      "sample": false,
+      "year": 2026,
+      "name": "Dr. Tadele Negash",
+      "photo": "/assets/images/research/team/Tadele.webp",
+      "logo": "/assets/images/hero/logo-v2.png",
+      "headline": "Director of the University-Industry Linkage and Technology Transfer Directorate at Adama Science and Technology University.",
+      "status": "Research team",
+      "selected": "Founding team",
+      "university": "Adama Science and Technology University",
+      "location": "Adama, Ethiopia",
+      "field": "Materials science, technology transfer and engineering innovation",
+      "email": "research@eaglopen.org",
+      "links": [],
+      "about": [
+        "Dr. Tadele Negash directs the University-Industry Linkage and Technology Transfer Directorate at Adama Science and Technology University.",
+        "He is an assistant professor, researcher and educator specialising in materials science, technology transfer and engineering innovation.",
+        "His work sits between the laboratory and industry: supporting collaboration between academia and industry, mentoring student researchers, and promoting innovation, intellectual property and inclusive technology development."
+      ],
+      "stats": [
+        ["Director", "University-industry linkage"],
+        ["Assistant", "Professor"],
+        ["PhD", "Materials science"],
+        ["Profile ID", "EAG-R-0003"]
+      ],
+      "works": [
+        {
+          "type": "project",
+          "title": "University-industry linkage programme",
+          "tags": ["Technology transfer", "Partnerships"],
+          "year": "2026",
+          "summary": "Runs the directorate that moves university research out of the lab and into working partnerships with industry.",
+          "result": "Add how many partnerships or transfers the directorate has delivered.",
+          "detail": "The directorate convenes university researchers and industry partners, supports agreement and intellectual-property work, and helps findings reach users. Replace this with the directorate's own published figures.",
+          "links": []
+        },
+        {
+          "type": "research",
+          "title": "Materials science research",
+          "tags": ["Materials science"],
+          "year": "2025",
+          "placeholder": true,
+          "summary": "Add the real paper titles, co-authors and journals from this line of work.",
+          "result": "Add the specific findings and, where possible, a link to each paper.",
+          "detail": "No paper titles are listed here on purpose. Copy the citation list from the faculty profile or the university repository, then add one card per paper with a 'Read the paper' link.",
+          "links": []
+        }
+      ],
+      "impact": [
+        {
+          "t": "Bridges academia and industry",
+          "d": "Directs the university-industry linkage directorate at ASTU."
+        },
+        {
+          "t": "Mentors student researchers",
+          "d": "Supports research students and promotes inclusive technology development."
+        },
+        {
+          "t": "Promotes intellectual property",
+          "d": "Helps research findings move into practice through proper IP and transfer routes."
+        }
+      ],
+      "verified": [
+        ["Role", "Director, university-industry linkage"],
+        ["University", "Adama Science and Technology University"],
+        ["Field", "Materials science"],
+        ["Profile ID", "EAG-R-0003"]
+      ],
+      "open": "Open to university-industry collaboration and mentoring student researchers.",
+      "education": "PhD",
+      "languages": "English",
+      "skills": [
+        "Materials science",
+        "Technology transfer",
+        "Engineering innovation",
+        "Intellectual property",
+        "Research mentoring"
+      ],
+      "collaborators": [],
+      "timeline": []
+    },
+    {
+      "slug": "tadesse-hailu",
+      "approved": true,
+      "sample": false,
+      "year": 2026,
+      "name": "Dr. Tadesse Hailu",
+      "photo": "/assets/images/research/team/Tadesse-Hailu-3.webp",
+      "logo": "/assets/images/hero/logo-v2.png",
+      "headline": "Associate Dean of the Research and Technology Transfer Office at Adama Science and Technology University.",
+      "status": "Research team",
+      "selected": "Founding team",
+      "university": "Adama Science and Technology University",
+      "location": "Adama, Ethiopia",
+      "field": "Electronics, communication engineering and telecommunications",
+      "email": "research@eaglopen.org",
+      "links": [],
+      "about": [
+        "Dr. Tadesse Hailu is Associate Dean of the Research and Technology Transfer Office at Adama Science and Technology University.",
+        "He is an assistant professor and researcher with expertise in electronics, communication engineering and telecommunications.",
+        "He provides academic leadership, supervises research activities, and mentors undergraduate and graduate students while supporting innovation and technology development."
+      ],
+      "stats": [
+        ["Assoc. Dean", "Research and technology transfer"],
+        ["Assistant", "Professor"],
+        ["PhD", "Electronics"],
+        ["Profile ID", "EAG-R-0004"]
+      ],
+      "works": [
+        {
+          "type": "project",
+          "title": "Research and Technology Transfer Office",
+          "tags": ["Technology transfer", "Academic leadership"],
+          "year": "2026",
+          "summary": "Leads the office that supports research output and technology transfer across the university.",
+          "result": "Add how many research outputs or transfers the office supported last year.",
+          "detail": "The office supports researchers through the research process and helps results reach industry and users. Replace this with the office's own published figures.",
+          "links": []
+        },
+        {
+          "type": "research",
+          "title": "Electronics and telecommunications research",
+          "tags": ["Electronics", "Telecommunications"],
+          "year": "2025",
+          "placeholder": true,
+          "summary": "Add the real paper titles, co-authors and journals from this line of work.",
+          "result": "Add the specific findings and, where possible, a link to each paper.",
+          "detail": "No paper titles are listed here on purpose. Copy the citation list from the faculty profile or the university repository, then add one card per paper with a 'Read the paper' link.",
+          "links": []
+        }
+      ],
+      "impact": [
+        {
+          "t": "Academic leadership",
+          "d": "Associate Dean of the Research and Technology Transfer Office at ASTU."
+        },
+        {
+          "t": "Supervises postgraduate research",
+          "d": "Mentors undergraduate and graduate students through their research."
+        },
+        {
+          "t": "Supports technology development",
+          "d": "Works on innovation and technology development across the university."
+        }
+      ],
+      "verified": [
+        ["Role", "Associate Dean, research and technology transfer"],
+        ["University", "Adama Science and Technology University"],
+        ["Field", "Electronics and telecommunications"],
+        ["Profile ID", "EAG-R-0004"]
+      ],
+      "open": "Open to research collaboration and mentoring undergraduate and graduate students.",
+      "education": "PhD",
+      "languages": "English",
+      "skills": [
+        "Electronics",
+        "Communication engineering",
+        "Telecommunications",
+        "Research supervision",
+        "Academic leadership"
+      ],
+      "collaborators": [],
+      "timeline": []
+    }
+  ]
+}

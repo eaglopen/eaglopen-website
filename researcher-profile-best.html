@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Researcher profile | EAGLOPEN</title>
+<meta name="description" content="Approved researcher profile on EAGLOPEN.">
+<link rel="icon" href="https://eaglopen.org/assets/images/hero/logo-v2.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0d0b2e; --ink2:#161240; --indigo:#2b206b; --violet:#5b3abd; --violet2:#7c52e0;
+  --lav:#c8b6f4; --lav2:#e3c4ff; --paper:#f5f3fb; --card:#ffffff; --line:#e1dcf0; --text:#1d1a3d; --mute:#5e5a80;
+  --head:"Newsreader",Georgia,"Times New Roman",serif; --body:"Inter","Segoe UI",Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--paper);color:var(--text);line-height:1.7;font-size:16.5px;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--violet2);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+
+/* top bar */
+.bar{background:var(--ink);color:#fff}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:var(--body);font-weight:700;font-size:15px;letter-spacing:.18em}
+.brand img{width:38px;height:38px;border-radius:50%}
+.bar nav a{color:var(--lav);text-decoration:none;font-size:15px;font-weight:500}
+.bar nav a:hover{color:#fff}
+.notice{background:var(--lav);color:var(--ink);font-size:15px;text-align:center;padding:10px 24px}
+.notice a{font-weight:600}
+
+/* hero */
+.hero{background:var(--ink);color:#fff;padding:56px 0 0;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(200,182,244,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(200,182,244,.06) 1px,transparent 1px);background-size:56px 56px;mask-image:linear-gradient(#000 40%,transparent)}
+.hero .wrap{position:relative}
+.hero-grid{display:grid;grid-template-columns:230px 1fr;gap:44px;align-items:center;padding-bottom:48px}
+.avatar{width:230px;height:230px;border-radius:50%;background:var(--ink2);border:6px solid var(--violet);padding:10px;box-shadow:0 0 0 2px var(--lav) inset}
+.avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--indigo);border:1px solid var(--violet);color:var(--lav2);padding:6px 14px;border-radius:999px;font-size:14px;font-weight:600}
+.badge svg{width:16px;height:16px}
+h1{font-family:var(--head);font-weight:500;font-size:clamp(46px,6.6vw,84px);line-height:1;letter-spacing:-.03em;margin:20px 0 14px}
+.tag{font-family:var(--head);font-style:italic;font-weight:400;font-size:clamp(21px,2.4vw,27px);line-height:1.4;color:var(--lav);max-width:640px}
+.meta{display:flex;flex-wrap:wrap;gap:10px 22px;margin:22px 0;color:#d9d3ef;font-size:15.5px}
+.meta span{display:flex;align-items:center;gap:8px}
+.meta svg{width:17px;height:17px;color:var(--lav)}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn{font:600 16px var(--body);border:0;border-radius:12px;padding:13px 22px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn.main{background:var(--violet);color:#fff}
+.btn.main:hover{background:var(--violet2)}
+.btn.ghost{background:transparent;color:#fff;border:1.5px solid var(--lav)}
+.btn.ghost:hover{background:var(--indigo)}
+.urlbox{display:flex;align-items:center;justify-content:space-between;gap:16px;background:var(--ink2);border-top:1px solid var(--indigo);padding:16px 0;color:var(--lav);font-size:15px}
+.urlbox code{font-family:ui-monospace,Consolas,monospace;color:#fff;font-size:15px;word-break:break-all}
+
+/* stats */
+.stats{background:var(--card);border-bottom:1px solid var(--line)}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:22px 8px 22px 0}
+.stat b{font-family:var(--head);font-size:42px;font-weight:500;letter-spacing:-.02em;color:var(--indigo);display:block;line-height:1.1}
+.stat span{color:var(--mute);font-size:15px}
+
+/* layout */
+.main{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:40px;padding:48px 0 72px;align-items:start}
+section{margin-bottom:46px}
+h2{font-family:var(--head);font-weight:600;font-size:32px;letter-spacing:-.015em;line-height:1.15;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.about p{max-width:68ch;color:#37335a;margin-bottom:12px}
+
+.tabs{display:flex;gap:8px;margin:0 0 20px;flex-wrap:wrap}
+.tab{font:600 15px var(--body);padding:9px 18px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--text);cursor:pointer}
+.tab[aria-selected=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+.works{display:grid;gap:18px}
+.work{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:grid;grid-template-columns:230px 1fr}
+.thumb{background:var(--indigo);display:grid;place-items:center;min-height:190px;position:relative}
+.thumb.r{background:var(--violet)}
+.thumb img{width:84px;height:84px;opacity:.85;border-radius:50%}
+.thumb em{position:absolute;left:14px;bottom:12px;font-style:normal;font-size:13px;font-weight:600;color:var(--lav2)}
+.wbody{padding:22px 24px}
+.wbody h3{font-family:var(--head);font-weight:600;font-size:26px;letter-spacing:-.01em;line-height:1.2;margin-bottom:10px}
+.wbody p{color:var(--mute);font-size:16px;margin-bottom:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.chip{background:var(--paper);border:1px solid var(--line);color:var(--indigo);padding:4px 12px;border-radius:999px;font-size:14px;font-weight:500}
+.links{display:flex;flex-wrap:wrap;gap:16px}
+.links a{color:var(--violet);font-weight:600;font-size:15px;text-decoration:none;border-bottom:2px solid var(--lav)}
+.links a:hover{border-color:var(--violet)}
+.more{display:none;margin-top:14px;padding-top:14px;border-top:1px dashed var(--line);color:#37335a;font-size:16px}
+.work.open .more{display:block}
+.toggle{background:none;border:0;color:var(--indigo);font:600 15px var(--body);cursor:pointer;padding:0;margin-top:2px}
+
+/* timeline */
+.tl{border-left:3px solid var(--lav);padding-left:22px;display:grid;gap:22px;margin-left:6px}
+.tl div{position:relative}
+.tl div::before{content:"";position:absolute;left:-31px;top:7px;width:13px;height:13px;border-radius:50%;background:var(--violet);border:3px solid var(--paper)}
+.tl b{display:block;font-size:16.5px}
+.tl small{color:var(--mute);font-size:14.5px}
+
+/* sidebar */
+aside .box{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:18px}
+aside h2{font-size:22px;margin-bottom:14px;padding-bottom:10px}
+.row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:15.5px}
+.row:last-child{border:0}
+.row span{color:var(--mute)}
+.row b{font-weight:600;text-align:right;word-break:break-word}
+.skills{display:flex;flex-wrap:wrap;gap:8px}
+.person{display:flex;gap:12px;align-items:center;padding:10px 0}
+.person img{width:46px;height:46px;border-radius:50%;background:var(--ink2);padding:3px}
+.person b{display:block;font-size:16px;line-height:1.2}
+.person small{color:var(--mute);font-size:14px}
+.cta{background:var(--ink);color:#fff;border-radius:18px;padding:26px}
+.cta h2{color:#fff;font-size:24px;border:0;padding:0}
+.cta p{color:var(--lav);font-size:15.5px;margin-bottom:16px}
+.cta .btn{width:100%;justify-content:center}
+
+footer{background:var(--ink);color:var(--lav);padding:34px 0;font-size:15px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+footer a{text-decoration:none;color:#fff}
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,40px);background:var(--ink);color:#fff;padding:12px 20px;border-radius:12px;opacity:0;transition:.25s;pointer-events:none;border:1px solid var(--violet)}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+section{scroll-margin-top:84px}
+.crumb{font-size:14.5px;color:var(--lav);margin-bottom:14px}
+.crumb a{text-decoration:none;border-bottom:1px solid var(--violet)}
+.sub{position:sticky;top:0;z-index:5;background:rgba(245,243,251,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.sub .wrap{display:flex;gap:6px;overflow-x:auto}
+.sub a{padding:17px 16px 14px;text-decoration:none;font-weight:600;font-size:15px;color:var(--mute);border-bottom:3px solid transparent;white-space:nowrap}
+.sub a.on,.sub a:hover{color:var(--ink);border-color:var(--violet)}
+.res{border-left:3px solid var(--violet);padding:2px 0 2px 14px;margin-bottom:14px;font-size:15.5px;color:var(--text)}
+.res b{display:block;color:var(--violet);font-size:13.5px;font-weight:700}
+.impact{list-style:none;display:grid;gap:14px}
+.impact li{display:grid;grid-template-columns:5px 1fr;gap:16px;max-width:70ch}
+.impact li::before{content:"";background:var(--violet);border-radius:3px}
+.impact b{display:block;font-family:var(--head);font-size:21px;font-weight:600;line-height:1.3}
+.impact span{color:var(--mute);font-size:16px}
+.verify{background:var(--ink);color:#fff;border-radius:18px;padding:24px;margin-bottom:18px}
+.verify h2{color:#fff;border-color:var(--indigo)}
+.verify .row{border-color:var(--indigo);font-size:15px}
+.verify .row span{color:var(--lav)}
+.about p:first-of-type{font-family:var(--head);font-size:23px;line-height:1.5;color:var(--ink)}
+@media(max-width:900px){
+  .main{grid-template-columns:1fr}
+  .hero-grid{grid-template-columns:1fr;text-align:left}
+  .avatar{width:170px;height:170px}
+  .stats .wrap{grid-template-columns:repeat(2,1fr)}
+  .work{grid-template-columns:1fr}
+  .thumb{min-height:130px}
+}
+@media(prefers-reduced-motion:no-preference){
+  .avatar{animation:rise .7s ease-out both}
+  @keyframes rise{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
+}
+</style>
+</head>
+<body>
+
+<header class="bar"><div class="wrap">
+  <a class="brand" href="https://eaglopen.org/index.html"><img src="https://eaglopen.org/assets/images/hero/logo-v2.png" alt="EAGLOPEN logo"> EAGLOPEN</a>
+  <nav><a href="https://eaglopen.org/research.html">All researchers</a></nav>
+</div></header>
+
+<div class="notice" id="notice">This is a sample profile. Approved researchers get a page like this. <a href="https://eaglopen.org/research.html#apply">Apply to get yours</a></div>
+
+<main id="app"></main>
+
+<footer><div class="wrap">
+  <span>© 2026 EAGLOPEN Science &amp; Technology Organization</span>
+  <span><a href="https://eaglopen.org">eaglopen.org</a></span>
+</div></footer>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* ============================================================
+   ONE DATA OBJECT. Replace these values for each approved
+   researcher. Everything on the page is rendered from it.
+   The slug comes from the URL: eaglopen.org/research/<slug>
+   ============================================================ */
+const LOGO = "https://eaglopen.org/assets/images/hero/logo-v2.png";
+const PROFILE = {
+  sample: true,
+  name: "Your Name",
+  photo: LOGO,                      // replace with the researcher photo
+  headline: "Student researcher and builder turning ideas into work the world can use.",
+  status: "Approved EAGLOPEN researcher",
+  selected: "Selected in October 2026",
+  university: "Your University",
+  location: "Your country",
+  field: "Software and AI",
+  email: "yourname@eaglopen.org",
+  links: [["GitHub","#"],["LinkedIn","#"],["Website","#"]],
+  about: [
+    "Write two or three short paragraphs here. Say what you work on, why it matters, and what you want to build next.",
+    "This space is for your story: how the idea started, who it helps, and what you have already shown with real results."
+  ],
+  stats: [["3","Projects"],["1","Research paper"],["2","Collaborators"],["Oct 2026","Joined"]],
+  works: [
+    { type:"project", title:"Sample project title", tags:["AI","Software"], year:"2026",
+      summary:"One clear sentence about what you built and the problem it solves.",
+      result:"Add your best result, such as how many people used it or how well it worked.",
+      detail:"Add the full story here. What did you build, how does it work, what were the results, and what proof do you have? Demo videos, photos and test results all belong on this page.",
+      links:[["Demo video","#"],["GitHub","#"],["Live site","#"]] },
+    { type:"research", title:"Sample research paper title", tags:["Research paper","Data"], year:"2026",
+      summary:"One clear sentence about your research question and what you found.",
+      result:"Add your main finding in one line, with a number if you have one.",
+      detail:"Add your method, your main findings, and what you would study next. Link the full paper and any supporting files so anyone can check your work.",
+      links:[["Read the paper","#"],["Supporting files","#"]] },
+    { type:"project", title:"Another project, with research", tags:["Hardware","Research"], year:"2025",
+      summary:"A project backed by a study, shown together so people can see both.",
+      result:"Add what the study showed about how well the project works.",
+      detail:"Projects with supporting research are the strongest. Show the build and the evidence side by side.",
+      links:[["Photos","#"],["Results","#"]] }
+  ],
+  impact:[
+    {t:"Built something people can use", d:"Describe the real result in one line, with a number if you have one. For example, how many people tested it."},
+    {t:"Backed by evidence", d:"Say what proof you shared with the EAGLOPEN review team, such as a demo, test results or a paper."},
+    {t:"Ready to work with others", d:"Say what kind of project you want to join next and what you can offer a team."}
+  ],
+  verified:[["Reviewed by","EAGLOPEN review team"],["Evidence checked","Demo, files and paper"],["Selected","October 2026"],["Profile ID","EAG-R-0001"]],
+  open:"Open to joint projects and research with other EAGLOPEN members.",
+  education:"BSc student, second year",
+  languages:"English and your other languages",
+  skills:["Python","Machine learning","Web development","Data analysis","Technical writing"],
+  collaborators:[
+    {name:"Senior researcher name", role:"Has completed several EAGLOPEN projects", photo:LOGO},
+    {name:"Project partner name", role:"Co builder on a shared project", photo:LOGO}
+  ],
+  timeline:[
+    ["Selected by EAGLOPEN","October 2026"],
+    ["Published first research paper","2026"],
+    ["Built and tested the first prototype","2025"]
+  ]
+};
+
+const $ = (s,r=document)=>r.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const parts = location.pathname.split("/").filter(Boolean);
+let slug = decodeURIComponent(parts[parts.length-1]||"");
+if(!slug || /\.html?$/i.test(slug) || slug==="research") slug="yourname";
+const url = `eaglopen.org/research/${slug}`;
+
+const icon = {
+  check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>',
+  school:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-5 9 5-9 5-9-5z"/><path d="M7 11.5V16c0 1.5 2.2 3 5 3s5-1.5 5-3v-4.5"/></svg>',
+  pin:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>',
+  flask:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-9V3"/></svg>',
+  mail:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>'
+};
+
+function render(p){
+  document.title = `${p.name} | EAGLOPEN Research`;
+  if(!p.sample) $("#notice").remove();
+  $("#app").innerHTML = `
+  <section class="hero"><div class="wrap">
+    <div class="hero-grid">
+      <div class="avatar"><img src="${esc(p.photo)}" alt="${esc(p.name)}"></div>
+      <div>
+        <div class="crumb"><a href="https://eaglopen.org/research.html">Research</a> / ${esc(slug)}</div>
+        <span class="badge">${icon.check} ${esc(p.status)}</span>
+        <h1>${esc(p.name)}</h1>
+        <p class="tag">${esc(p.headline)}</p>
+        <div class="meta">
+          <span>${icon.school}${esc(p.university)}</span>
+          <span>${icon.pin}${esc(p.location)}</span>
+          <span>${icon.flask}${esc(p.field)}</span>
+        </div>
+        <div class="actions">
+          <a class="btn main" href="mailto:${esc(p.email)}">${icon.mail} Contact ${esc(p.name.split(" ")[0])}</a>
+          <button class="btn ghost" id="copy">Copy profile link</button>
+        </div>
+      </div>
+    </div>
+    <div class="urlbox"><span>${esc(p.selected)}</span><code>${esc(url)}</code></div>
+  </div></section>
+
+  <div class="stats"><div class="wrap">
+    ${p.stats.map(s=>`<div class="stat"><b>${esc(s[0])}</b><span>${esc(s[1])}</span></div>`).join("")}
+  </div></div>
+
+  <nav class="sub" aria-label="Profile sections"><div class="wrap"><a href="#about">About</a><a href="#impact">Impact</a><a href="#work">Work</a><a href="#journey">Journey</a></div></nav>
+
+  <div class="wrap main">
+    <div>
+      <section class="about" id="about"><h2>About</h2>${p.about.map(t=>`<p>${esc(t)}</p>`).join("")}</section>
+
+      <section id="impact"><h2>Impact</h2><ul class="impact">${p.impact.map(i=>`<li><div><b>${esc(i.t)}</b><span>${esc(i.d)}</span></div></li>`).join("")}</ul></section>
+
+      <section id="work"><h2>Work</h2>
+        <div class="tabs" role="tablist">
+          <button class="tab" role="tab" aria-selected="true" data-f="all">All work</button>
+          <button class="tab" role="tab" aria-selected="false" data-f="project">Projects</button>
+          <button class="tab" role="tab" aria-selected="false" data-f="research">Research</button>
+        </div>
+        <div class="works" id="works"></div>
+      </section>
+
+      <section id="journey"><h2>Journey</h2>
+        <div class="tl">${p.timeline.map(t=>`<div><b>${esc(t[0])}</b><small>${esc(t[1])}</small></div>`).join("")}</div>
+      </section>
+    </div>
+
+    <aside>
+      <div class="verify"><h2>Verified by EAGLOPEN</h2>${p.verified.map(v=>`<div class="row"><span>${esc(v[0])}</span><b>${esc(v[1])}</b></div>`).join("")}</div>
+      <div class="box"><h2>Details</h2>
+        <div class="row"><span>Field</span><b>${esc(p.field)}</b></div>
+        <div class="row"><span>University</span><b>${esc(p.university)}</b></div>
+        <div class="row"><span>Education</span><b>${esc(p.education)}</b></div>
+        <div class="row"><span>Languages</span><b>${esc(p.languages)}</b></div>
+        <div class="row"><span>Email</span><b>${esc(p.email)}</b></div>
+        ${p.links.map(l=>`<div class="row"><span>${esc(l[0])}</span><b><a href="${esc(l[1])}">Open</a></b></div>`).join("")}
+      </div>
+      <div class="box"><h2>Open to</h2><p style="color:var(--mute);font-size:16px">${esc(p.open)}</p></div>
+      <div class="box"><h2>Skills</h2><div class="skills">${p.skills.map(s=>`<span class="chip">${esc(s)}</span>`).join("")}</div></div>
+      <div class="box"><h2>Works with</h2>
+        ${p.collaborators.map(c=>`<div class="person"><img src="${esc(c.photo)}" alt=""><div><b>${esc(c.name)}</b><small>${esc(c.role)}</small></div></div>`).join("")}
+      </div>
+      <div class="cta"><h2>Have a project or research?</h2><p>Applications are free. Selected students get a profile like this one and an eaglopen.org email.</p>
+        <a class="btn main" href="https://eaglopen.org/research.html#apply">Apply to EAGLOPEN</a></div>
+    </aside>
+  </div>`;
+
+  const box = $("#works");
+  const draw = f => {
+    box.innerHTML = p.works.filter(w=>f==="all"||w.type===f).map((w,i)=>`
+      <article class="work">
+        <div class="thumb ${w.type==="research"?"r":""}"><img src="${LOGO}" alt=""><em>${w.type==="research"?"Research":"Project"} · ${esc(w.year)}</em></div>
+        <div class="wbody">
+          <h3>${esc(w.title)}</h3>
+          <p>${esc(w.summary)}</p>
+          ${w.result?`<p class="res"><b>Result</b>${esc(w.result)}</p>`:""}<div class="chips">${w.tags.map(t=>`<span class="chip">${esc(t)}</span>`).join("")}</div>
+          <div class="links">${w.links.map(l=>`<a href="${esc(l[1])}">${esc(l[0])}</a>`).join("")}</div>
+          <div class="more">${esc(w.detail)}</div>
+          <button class="toggle" aria-expanded="false">Read more</button>
+        </div>
+      </article>`).join("") || "<p>No work in this group yet.</p>";
+  };
+  draw("all");
+  box.addEventListener("click",e=>{
+    const b=e.target.closest(".toggle"); if(!b) return;
+    const a=b.closest(".work"); const open=a.classList.toggle("open");
+    b.textContent=open?"Show less":"Read more"; b.setAttribute("aria-expanded",open);
+  });
+  document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click",()=>{
+    document.querySelectorAll(".tab").forEach(x=>x.setAttribute("aria-selected",x===t));
+    draw(t.dataset.f);
+  }));
+  const ld=document.createElement("script");ld.type="application/ld+json";
+  ld.textContent=JSON.stringify({"@context":"https://schema.org","@type":"Person",name:p.name,description:p.headline,url:"https://"+url,affiliation:{"@type":"Organization",name:"EAGLOPEN"}});
+  document.head.appendChild(ld);
+  const links=[...document.querySelectorAll(".sub a")];
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id))}),{rootMargin:"-30% 0px -60% 0px"});
+  document.querySelectorAll("section[id]").forEach(x=>io.observe(x));
+  $("#copy").addEventListener("click",async()=>{
+    try{ await navigator.clipboard.writeText("https://"+url); }catch(e){}
+    const t=$("#toast"); t.textContent="Profile link copied"; t.classList.add("on");
+    setTimeout(()=>t.classList.remove("on"),1800);
+  });
+}
+render(PROFILE);
+</script>
+</body>
+</html>

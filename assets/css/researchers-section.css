@@ -1,0 +1,144 @@
+/* ============================================================
+   This year's researchers section (3D).
+   Styles for <section class="ry" id="researchers"> in
+   research.html. Script: the inline #ry-script block at the
+   bottom of that page. Every rule is prefixed "ry-" so it
+   cannot collide with the rest of the site.
+   Font: Sora, loaded from Google Fonts in the page <head>.
+   ============================================================ */
+
+.ry{
+  --ry-navy-950:#05192b; --ry-navy-900:#071f33; --ry-navy-700:#0b3a5b; --ry-navy-500:#16537f;
+  --ry-gold:#c9a646; --ry-gold-light:#ecd187; --ry-ink:#eef4f9; --ry-muted:#a4b9cb;
+  position:relative; overflow:hidden; isolation:isolate;
+  padding:clamp(72px,10vw,132px) clamp(20px,5vw,72px);
+  background:
+    radial-gradient(900px 520px at 82% 30%, rgba(22,83,127,.75), transparent 70%),
+    radial-gradient(700px 420px at 8% 100%, rgba(201,166,70,.14), transparent 70%),
+    linear-gradient(160deg,var(--ry-navy-700) 0%,var(--ry-navy-900) 55%,var(--ry-navy-950) 100%);
+  color:var(--ry-ink);
+  font-family:"Sora","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+.ry *,.ry *::before,.ry *::after{box-sizing:border-box}
+
+/* perspective floor grid */
+.ry-floor{position:absolute;left:-20%;right:-20%;bottom:-6%;height:62%;z-index:-1;pointer-events:none;
+  background:
+    linear-gradient(rgba(201,166,70,.28) 1px,transparent 1px) 0 0/100% 56px,
+    linear-gradient(90deg,rgba(201,166,70,.2) 1px,transparent 1px) 0 0/72px 100%;
+  transform:perspective(520px) rotateX(64deg); transform-origin:50% 100%;
+  -webkit-mask-image:linear-gradient(to top,#000 5%,transparent 85%);
+          mask-image:linear-gradient(to top,#000 5%,transparent 85%);
+  animation:ry-floor 6s linear infinite;
+}
+@keyframes ry-floor{to{background-position:0 56px,0 0}}
+.ry-glow{position:absolute;z-index:-1;border-radius:50%;filter:blur(70px);pointer-events:none}
+.ry-glow.a{width:360px;height:360px;right:6%;top:8%;background:rgba(201,166,70,.18)}
+.ry-glow.b{width:300px;height:300px;left:-80px;top:10%;background:rgba(22,83,127,.55)}
+
+.ry-wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.02fr 1fr;gap:clamp(24px,5vw,72px);align-items:center}
+
+/* ---------- copy ---------- */
+.ry-chip{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border-radius:999px;
+  font-size:.82rem;font-weight:500;color:var(--ry-gold-light);
+  background:rgba(201,166,70,.1);border:1px solid rgba(201,166,70,.35);backdrop-filter:blur(6px)}
+.ry-dot{width:8px;height:8px;border-radius:50%;background:var(--ry-gold);box-shadow:0 0 0 0 rgba(201,166,70,.7);animation:ry-ping 2s infinite}
+@keyframes ry-ping{70%{box-shadow:0 0 0 10px rgba(201,166,70,0)}100%{box-shadow:0 0 0 0 rgba(201,166,70,0)}}
+
+.ry-title{margin:22px 0 0;font-size:clamp(2.3rem,5.2vw,4.1rem);line-height:1.04;font-weight:800;letter-spacing:-.035em;
+  background:linear-gradient(180deg,#fff 30%,#bcd2e4 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ry-rule{display:block;width:84px;height:4px;border-radius:4px;margin:26px 0 24px;
+  background:linear-gradient(90deg,var(--ry-gold),var(--ry-gold-light),var(--ry-gold));background-size:200% 100%;animation:ry-shimmer 3.5s linear infinite}
+@keyframes ry-shimmer{to{background-position:-200% 0}}
+.ry-lead{margin:0;max-width:46ch;font-size:clamp(1.02rem,1.6vw,1.2rem);line-height:1.7;color:var(--ry-muted)}
+.ry-lead strong{color:#fff;font-weight:600}
+
+.ry-points{list-style:none;margin:30px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:12px}
+.ry-points li{display:flex;align-items:center;gap:10px;padding:10px 16px;border-radius:14px;font-size:.9rem;font-weight:500;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(6px)}
+.ry-points svg{width:18px;height:18px;flex:none;stroke:var(--ry-gold);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+.ry-cta{position:relative;display:inline-flex;align-items:center;gap:14px;margin-top:38px;padding:18px 18px 18px 34px;border-radius:999px;overflow:hidden;
+  font:700 1rem/1 "Sora","Segoe UI",system-ui,sans-serif;color:#10202e;text-decoration:none;
+  background:linear-gradient(135deg,#e3c466,var(--ry-gold) 55%,#b08d2e);
+  box-shadow:0 14px 34px -8px rgba(201,166,70,.65),0 0 0 1px rgba(255,255,255,.25) inset,0 -3px 0 rgba(0,0,0,.14) inset;
+  transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
+.ry-cta::before{content:"";position:absolute;top:0;bottom:0;width:60%;left:-80%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);transition:left .7s}
+.ry-cta:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 22px 44px -10px rgba(201,166,70,.85),0 0 0 1px rgba(255,255,255,.3) inset,0 -3px 0 rgba(0,0,0,.14) inset}
+.ry-cta:hover::before{left:130%}
+.ry-cta:active{transform:translateY(0) scale(.99)}
+.ry-cta-ico{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:#0b3a5b;transition:transform .3s}
+.ry-cta-ico svg{width:18px;height:18px;stroke:var(--ry-gold-light);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.ry-cta:hover .ry-cta-ico{transform:translateX(4px) rotate(-45deg)}
+.ry-cta:focus-visible{outline:3px solid #fff;outline-offset:4px}
+
+/* ---------- 3D stage ---------- */
+.ry-stage{position:relative;height:460px;perspective:1300px;display:grid;place-items:center;touch-action:pan-y}
+.ry-scene{position:relative;width:300px;height:400px;transform-style:preserve-3d;
+  transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));will-change:transform}
+
+.ry-orbit{position:absolute;left:50%;top:50%;width:520px;height:520px;margin:-260px 0 0 -260px;border-radius:50%;
+  border:1px solid rgba(201,166,70,.4);transform-style:preserve-3d;
+  transform:translateZ(-30px) rotateX(74deg);animation:ry-spin 14s linear infinite;
+  box-shadow:0 0 40px rgba(201,166,70,.12),inset 0 0 40px rgba(201,166,70,.08)}
+.ry-orbit.two{width:400px;height:400px;margin:-200px 0 0 -200px;border-style:dashed;border-color:rgba(236,209,135,.28);animation-duration:22s;animation-direction:reverse}
+.ry-orbit i{position:absolute;top:-7px;left:calc(50% - 7px);width:14px;height:14px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#fff,var(--ry-gold) 55%);box-shadow:0 0 18px 4px rgba(201,166,70,.8)}
+@keyframes ry-spin{to{transform:translateZ(-30px) rotateX(74deg) rotateZ(360deg)}}
+
+.ry-card{position:absolute;left:0;top:0;width:100%;height:100%;border-radius:26px;padding:22px;
+  display:flex;flex-direction:column;
+  background:linear-gradient(155deg,rgba(255,255,255,.2),rgba(255,255,255,.05) 45%,rgba(11,58,91,.55));
+  border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 40px 70px -20px rgba(0,0,0,.65),0 0 0 1px rgba(201,166,70,.12) inset,0 1px 0 rgba(255,255,255,.4) inset;
+  overflow:hidden;opacity:0;transform:translate3d(0,80px,-200px) rotateX(30deg);
+  transition:transform 1.1s cubic-bezier(.16,1,.3,1),opacity .9s}
+.ry-card::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+  background:radial-gradient(260px 260px at var(--mx,30%) var(--my,10%),rgba(255,255,255,.26),transparent 60%)}
+.ry.is-in .ry-card{opacity:1}
+.ry.is-in .ry-card.c1{transform:translate3d(-150px,34px,-90px) rotateZ(-9deg) rotateY(14deg);transition-delay:.15s}
+.ry.is-in .ry-card.c2{transform:translate3d(0,0,60px);transition-delay:.4s}
+.ry.is-in .ry-card.c3{transform:translate3d(150px,-24px,-50px) rotateZ(8deg) rotateY(-14deg);transition-delay:.65s}
+.ry-card.c1,.ry-card.c3{opacity:.0}
+.ry.is-in .ry-card.c1,.ry.is-in .ry-card.c3{opacity:.9}
+
+.ry-avatar{position:relative;flex:1;border-radius:18px;display:grid;place-items:center;overflow:hidden;
+  background:linear-gradient(160deg,#1b5f8f,#0b3a5b 60%,#082a43);border:1px solid rgba(255,255,255,.12)}
+.ry-avatar::before{content:"";position:absolute;inset:-40%;background:conic-gradient(from 0deg,transparent,rgba(201,166,70,.35),transparent 30%);animation:ry-spin2 7s linear infinite}
+@keyframes ry-spin2{to{transform:rotate(360deg)}}
+.ry-avatar::after{content:"";position:absolute;inset:2px;border-radius:16px;background:linear-gradient(160deg,#1a5a88,#0a3452)}
+.ry-avatar svg,.ry-avatar img{position:relative;z-index:1}
+.ry-avatar svg{width:46%;fill:none;stroke:var(--ry-gold-light);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;opacity:.9}
+.ry-avatar img{width:100%;height:100%;object-fit:cover;border-radius:16px}
+.ry-meta{padding:18px 4px 2px}
+.ry-name{margin:0;font-size:1.12rem;font-weight:700;color:#fff;letter-spacing:-.01em}
+.ry-field{margin:4px 0 0;font-size:.82rem;color:var(--ry-muted)}
+.ry-tag{align-self:flex-start;margin-top:14px;padding:6px 12px;border-radius:999px;font-size:.74rem;font-weight:600;
+  color:#10202e;background:linear-gradient(135deg,var(--ry-gold-light),var(--ry-gold))}
+
+.ry-badge{position:absolute;z-index:5;padding:10px 16px;border-radius:14px;font-size:.8rem;font-weight:600;color:#fff;
+  background:rgba(7,31,51,.7);border:1px solid rgba(201,166,70,.4);backdrop-filter:blur(10px);
+  box-shadow:0 18px 30px -12px rgba(0,0,0,.6);transform:translateZ(140px);animation:ry-float 5s ease-in-out infinite}
+.ry-badge.t{top:2%;right:-6%}
+.ry-badge.b{bottom:4%;left:-8%;animation-delay:-2.5s}
+.ry-badge b{color:var(--ry-gold-light)}
+@keyframes ry-float{50%{translate:0 -10px}}
+
+/* ---------- responsive ---------- */
+@media (max-width:960px){
+  .ry-wrap{grid-template-columns:1fr;text-align:center}
+  .ry-lead{margin-inline:auto}
+  .ry-rule{margin-inline:auto}
+  .ry-points{justify-content:center}
+  .ry-stage{height:430px}
+}
+@media (max-width:560px){
+  .ry-stage{height:380px}
+  .ry-scene{transform:scale(.76) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg))}
+  .ry-badge.t{right:0}.ry-badge.b{left:0}
+  .ry-cta{padding-left:26px}
+}
+@media (prefers-reduced-motion:reduce){
+  .ry *,.ry *::before,.ry *::after{animation:none!important;transition-duration:.01ms!important}
+}

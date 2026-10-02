@@ -1,0 +1,196 @@
+[
+  {
+    "slug": "yourname",
+    "approved": true,
+    "sample": true,
+    "year": 2026,
+    "name": "Your Name",
+    "cardTitle": "Build Your Profile",
+    "photo": "/assets/images/research/profilepic.png",
+    "logo": "/assets/images/hero/logo-v2.png",
+    "headline": "Student researcher and builder turning ideas into work the world can use.",
+    "status": "Sample profile",
+    "selected": "Selected in October 2026",
+    "university": "Your University",
+    "location": "Your country",
+    "field": "Software and AI",
+    "email": "yourname@eaglopen.org",
+    "links": [
+      [
+        "GitHub",
+        "#"
+      ],
+      [
+        "LinkedIn",
+        "#"
+      ],
+      [
+        "Website",
+        "#"
+      ]
+    ],
+    "about": [
+      "This is a sample profile. It shows exactly how a researcher page looks, so you can see the layout before anyone writes their own. Every box here is filled with example text that you replace with your own story.",
+      "A real researcher would use these paragraphs to explain what they are working on, why it matters to them, and what they hope to build next. Short and specific beats long and vague, so aim for two or three clear paragraphs.",
+      "Once you have your own copy, open research/data/researchers.json, find the entry with your slug, and start editing. Nothing on this site needs a build step for that, just run the build script again."
+    ],
+    "stats": [
+      [
+        "3",
+        "Projects"
+      ],
+      [
+        "1",
+        "Research paper"
+      ],
+      [
+        "2",
+        "Collaborators"
+      ],
+      [
+        "Oct 2026",
+        "Joined"
+      ]
+    ],
+    "works": [
+      {
+        "type": "project",
+        "title": "Sample project title",
+        "tags": [
+          "AI",
+          "Software"
+        ],
+        "year": "2026",
+        "summary": "One clear sentence about what you built and the problem it solves.",
+        "result": "Add your best result, such as how many people used it or how well it worked.",
+        "detail": "Add the full story here. What did you build, how does it work, what were the results, and what proof do you have? Demo videos, photos and test results all belong on this page.",
+        "links": [
+          [
+            "Demo video",
+            "#"
+          ],
+          [
+            "GitHub",
+            "#"
+          ],
+          [
+            "Live site",
+            "#"
+          ]
+        ]
+      },
+      {
+        "type": "research",
+        "title": "Sample research paper title",
+        "tags": [
+          "Research paper",
+          "Data"
+        ],
+        "year": "2026",
+        "summary": "One clear sentence about your research question and what you found.",
+        "result": "Add your main finding in one line, with a number if you have one.",
+        "detail": "Add your method, your main findings, and what you would study next. Link the full paper and any supporting files so anyone can check your work.",
+        "links": [
+          [
+            "Read the paper",
+            "#"
+          ],
+          [
+            "Supporting files",
+            "#"
+          ]
+        ]
+      },
+      {
+        "type": "project",
+        "title": "Another project, with research",
+        "tags": [
+          "Hardware",
+          "Research"
+        ],
+        "year": "2025",
+        "summary": "A project backed by a study, shown together so people can see both.",
+        "result": "Add what the study showed about how well the project works.",
+        "detail": "Projects with supporting research are the strongest. Show the build and the evidence side by side.",
+        "links": [
+          [
+            "Photos",
+            "#"
+          ],
+          [
+            "Results",
+            "#"
+          ]
+        ]
+      }
+    ],
+    "impact": [
+      {
+        "t": "Built something people can use",
+        "d": "Describe the real result in one line, with a number if you have one. For example, how many people tested it."
+      },
+      {
+        "t": "Backed by evidence",
+        "d": "Say what proof you shared with the EAGLOPEN review team, such as a demo, test results or a paper."
+      },
+      {
+        "t": "Ready to work with others",
+        "d": "Say what kind of project you want to join next and what you can offer a team."
+      }
+    ],
+    "verified": [
+      [
+        "Reviewed by",
+        "EAGLOPEN review team"
+      ],
+      [
+        "Evidence checked",
+        "Demo, files and paper"
+      ],
+      [
+        "Selected",
+        "October 2026"
+      ],
+      [
+        "Profile ID",
+        "EAG-R-0001"
+      ]
+    ],
+    "open": "Open to joint projects and research with other EAGLOPEN members.",
+    "education": "BSc student, second year",
+    "languages": "English and your other languages",
+    "skills": [
+      "Python",
+      "Machine learning",
+      "Web development",
+      "Data analysis",
+      "Technical writing"
+    ],
+    "collaborators": [
+      {
+        "name": "Senior researcher name",
+        "role": "Has completed several EAGLOPEN projects",
+        "photo": "/assets/images/hero/logo-v2.png"
+      },
+      {
+        "name": "Project partner name",
+        "role": "Co builder on a shared project",
+        "photo": "/assets/images/hero/logo-v2.png"
+      }
+    ],
+    "timeline": [
+      [
+        "Selected by EAGLOPEN",
+        "October 2026"
+      ],
+      [
+        "Published first research paper",
+        "2026"
+      ],
+      [
+        "Built and tested the first prototype",
+        "2025"
+      ]
+    ]
+  }
+]

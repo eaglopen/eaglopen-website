@@ -1,0 +1,1122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="icon" type="image/png" href="/assets/images/hero/logo-v2.png" />
+    <link rel="apple-touch-icon" href="/assets/images/hero/logo-v2.png" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Researchers | EAGLOPEN Science &amp; Technology Org</title>
+    <meta
+      name="description"
+      content="The students EAGLOPEN selected this year — their research, their projects, and what they achieved."
+    />
+    <link rel="canonical" href="https://eaglopen.org/research/" />
+    <script
+      src="https://kit.fontawesome.com/bc43529ae8.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="/assets/css/base.css" />
+    <link rel="stylesheet" href="/assets/css/header.css" />
+    <link rel="stylesheet" href="/assets/css/footer.css" />
+    <link rel="stylesheet" href="/assets/css/responsiveness.css" />
+
+    <!-- Research directory styles. Scoped under .rpdir so this page can never
+         change any other page on the site. -->
+    <style>
+      .rpdir {
+        --rpd-ink: #0d0b2e;
+        --rpd-ink2: #161240;
+        --rpd-indigo: #2b206b;
+        --rpd-violet: #5b3abd;
+        --rpd-violet2: #7c52e0;
+        --rpd-lav: #c8b6f4;
+        --rpd-lav2: #e3c4ff;
+        --rpd-paper: #f5f3fb;
+        --rpd-card: #ffffff;
+        --rpd-line: #e1dcf0;
+        --rpd-text: #1d1a3d;
+        --rpd-mute: #5e5a80;
+        --rpd-head: "Newsreader", Georgia, "Times New Roman", serif;
+        --rpd-body: "Inter", "Segoe UI", Arial, sans-serif;
+        font-family: var(--rpd-body);
+        background: var(--rpd-paper);
+        color: var(--rpd-text);
+        line-height: 1.7;
+        font-size: 16.5px;
+        -webkit-font-smoothing: antialiased;
+        padding-bottom: 72px;
+      }
+      .rpdir * {
+        box-sizing: border-box;
+      }
+      .rpdir :focus-visible {
+        outline: 3px solid var(--rpd-violet2);
+        outline-offset: 3px;
+        border-radius: 6px;
+      }
+      .rpdir .rpd-wrap {
+        max-width: 1160px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* page head */
+      .rpdir .rpd-head {
+        background: var(--rpd-ink);
+        color: #fff;
+        padding: 56px 0 52px;
+        position: relative;
+        overflow: hidden;
+      }
+      .rpdir .rpd-head::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: linear-gradient(
+            rgba(200, 182, 244, 0.06) 1px,
+            transparent 1px
+          ),
+          linear-gradient(90deg, rgba(200, 182, 244, 0.06) 1px, transparent 1px);
+        background-size: 56px 56px;
+        mask-image: linear-gradient(#000 40%, transparent);
+      }
+      .rpdir .rpd-head .rpd-wrap {
+        position: relative;
+      }
+      .rpdir .rpd-crumb {
+        font-size: 14.5px;
+        color: var(--rpd-lav);
+        margin-bottom: 14px;
+      }
+      .rpdir .rpd-crumb a {
+        text-decoration: none;
+        border-bottom: 1px solid var(--rpd-violet);
+      }
+      .rpdir h1 {
+        font-family: var(--rpd-head);
+        font-weight: 500;
+        font-size: clamp(40px, 5.4vw, 66px);
+        line-height: 1;
+        letter-spacing: -0.03em;
+        margin: 0 0 16px;
+      }
+      .rpdir .rpd-lede {
+        font-family: var(--rpd-head);
+        font-style: italic;
+        font-weight: 400;
+        font-size: clamp(19px, 2.2vw, 25px);
+        line-height: 1.4;
+        color: var(--rpd-lav);
+        max-width: 640px;
+        margin: 0;
+      }
+
+      /* search */
+      .rpdir .rpd-search {
+        background: var(--rpd-card);
+        border-bottom: 1px solid var(--rpd-line);
+        padding: 26px 0;
+      }
+      .rpdir .rpd-search-inner {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        background: var(--rpd-paper);
+        border: 1.5px solid var(--rpd-line);
+        border-radius: 999px;
+        padding: 4px 22px;
+        transition: border-color 0.2s;
+      }
+      .rpdir .rpd-search-inner:focus-within {
+        border-color: var(--rpd-violet);
+      }
+      .rpdir .rpd-search svg {
+        width: 19px;
+        height: 19px;
+        color: var(--rpd-mute);
+        flex: 0 0 auto;
+      }
+      .rpdir .rpd-search input {
+        flex: 1 1 auto;
+        min-width: 0;
+        border: 0;
+        background: transparent;
+        font: 400 16.5px var(--rpd-body);
+        color: var(--rpd-text);
+        padding: 13px 0;
+      }
+      .rpdir .rpd-search input:focus-visible {
+        outline: 3px solid var(--rpd-violet2);
+        outline-offset: 2px;
+        border-radius: 999px;
+      }
+      .rpdir .rpd-search input::placeholder {
+        color: var(--rpd-mute);
+      }
+      .rpdir .rpd-count {
+        color: var(--rpd-mute);
+        font-size: 15px;
+        margin: 14px 0 0;
+      }
+
+      /* grid */
+      .rpdir .rpd-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
+        gap: 22px;
+        margin-top: 40px;
+      }
+      .rpdir .rpd-card {
+        background: var(--rpd-card);
+        border: 1px solid var(--rpd-line);
+        border-radius: 18px;
+        padding: 26px 24px 22px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-decoration: none;
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.3s ease;
+      }
+      .rpdir .rpd-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 22px 38px -24px rgba(13, 11, 46, 0.55);
+      }
+      .rpdir .rpd-card-avatar {
+        width: 92px;
+        height: 92px;
+        border-radius: 50%;
+        background: var(--rpd-ink2);
+        border: 3px solid var(--rpd-violet);
+        padding: 5px;
+        margin-bottom: 16px;
+      }
+      .rpdir .rpd-card-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        display: block;
+      }
+      .rpdir .rpd-card h2 {
+        font-family: var(--rpd-head);
+        font-weight: 600;
+        font-size: 25px;
+        letter-spacing: -0.01em;
+        line-height: 1.2;
+        margin: 0 0 8px;
+        padding: 0;
+        border: 0;
+      }
+      .rpdir .rpd-card p {
+        color: var(--rpd-mute);
+        font-size: 16px;
+        margin: 0 0 16px;
+      }
+      .rpdir .rpd-card .rpd-field {
+        background: var(--rpd-paper);
+        border: 1px solid var(--rpd-line);
+        color: var(--rpd-indigo);
+        padding: 4px 12px;
+        border-radius: 999px;
+        font-size: 14px;
+        font-weight: 500;
+      }
+      .rpdir .rpd-more {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: auto;
+        padding-top: 18px;
+        color: var(--rpd-violet);
+        font-weight: 600;
+        font-size: 15px;
+      }
+      .rpdir .rpd-more svg {
+        width: 14px;
+        height: 14px;
+      }
+      .rpdir .rpd-card:hover .rpd-more svg {
+        transform: translateX(3px);
+      }
+      .rpdir .rpd-more svg {
+        transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      /* Card actions. The card is an <article>, not a link, because each card
+         now holds two separate links (profile and works) and links cannot be
+         nested. The whole card is still clickable via a stretched pseudo
+         element on the profile link. */
+      .rpdir .rpd-card {
+        position: relative;
+      }
+      .rpdir .rpd-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        width: 100%;
+        margin-top: auto;
+        padding-top: 18px;
+      }
+      .rpdir .rpd-act {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border-radius: 999px;
+        padding: 10px 17px;
+        font-size: 14.5px;
+        font-weight: 600;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: background 0.2s, border-color 0.2s, color 0.2s;
+      }
+      .rpdir .rpd-act svg {
+        width: 14px;
+        height: 14px;
+        transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .rpdir .rpd-act-profile {
+        color: var(--rpd-violet);
+      }
+      .rpdir .rpd-act-work {
+        background: var(--rpd-violet);
+        border: 1px solid var(--rpd-violet);
+        color: #fff;
+      }
+      .rpdir .rpd-act-work:hover {
+        background: var(--rpd-indigo);
+        border-color: var(--rpd-indigo);
+      }
+      .rpdir .rpd-card:hover .rpd-act svg {
+        transform: translateX(3px);
+      }
+
+      /* Sample marker, so the placeholder profile is never mistaken for real. */
+      .rpdir .rpd-sample {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: #fff5e0;
+        border: 1px solid #f0d49a;
+        color: #8a5a00;
+        border-radius: 999px;
+        padding: 4px 11px;
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 12px;
+      }
+      .rpdir .rpd-sample-note {
+        color: var(--rpd-mute);
+        font-size: 14px;
+        margin: 0 0 14px;
+      }
+      .rpdir .rpd-card.is-sample {
+        border-style: dashed;
+        border-color: #f0d49a;
+      }
+
+      /* empty states */
+      .rpdir .rpd-empty {
+        text-align: center;
+        padding: 72px 24px 24px;
+      }
+      .rpdir .rpd-empty img {
+        width: 76px;
+        height: 76px;
+        border-radius: 50%;
+        opacity: 0.85;
+        margin-bottom: 20px;
+      }
+      .rpdir .rpd-empty h2 {
+        font-family: var(--rpd-head);
+        font-weight: 600;
+        font-size: 30px;
+        letter-spacing: -0.015em;
+        line-height: 1.2;
+        margin: 0 0 12px;
+      }
+      .rpdir .rpd-empty p {
+        color: var(--rpd-mute);
+        font-size: 17px;
+        max-width: 52ch;
+        margin: 0 auto 22px;
+      }
+      .rpdir .rpd-empty .rpd-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--rpd-violet);
+        color: #fff;
+        font: 600 16px var(--rpd-body);
+        border-radius: 12px;
+        padding: 13px 22px;
+        text-decoration: none;
+      }
+      .rpdir .rpd-empty .rpd-btn:hover {
+        background: var(--rpd-violet2);
+      }
+      .rpdir .rpd-hidden {
+        display: none;
+      }
+
+      /* ==========================================================
+         PREMIUM DEPTH on the directory cards. A hairline gradient
+         edge, a sheen that follows the pointer, and a few degrees
+         of tilt on hover. No looping animation here — the cards
+         stay still until you reach for one.
+         ========================================================== */
+      .rpdir .rpd-grid {
+        perspective: 1300px;
+      }
+      .rpdir .rpd-card {
+        position: relative;
+        transform-style: preserve-3d;
+        box-shadow: 0 2px 4px -2px rgba(22, 18, 64, 0.13),
+          0 12px 28px -20px rgba(43, 32, 107, 0.34);
+      }
+      .rpdir .rpd-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        padding: 1px;
+        pointer-events: none;
+        background: linear-gradient(
+          150deg,
+          rgba(124, 82, 224, 0.5),
+          rgba(200, 182, 244, 0.1) 45%,
+          rgba(91, 58, 189, 0.34)
+        );
+        -webkit-mask: linear-gradient(#000 0 0) content-box,
+          linear-gradient(#000 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+      }
+      .rpdir .rpd-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        pointer-events: none;
+        opacity: 0;
+        z-index: 1;
+        transition: opacity 0.4s ease;
+        background: radial-gradient(
+          340px 220px at var(--px, 50%) var(--py, 50%),
+          rgba(124, 82, 224, 0.14),
+          transparent 62%
+        );
+      }
+      /* Lift the card content above the sheen so no text sits under it. */
+      .rpdir .rpd-card > * {
+        position: relative;
+        z-index: 2;
+      }
+      .rpdir .rpd-card:hover {
+        transform: translateY(-4px) rotateX(1.6deg) rotateY(-1.6deg);
+        box-shadow: 0 6px 10px -6px rgba(22, 18, 64, 0.16),
+          0 28px 48px -26px rgba(43, 32, 107, 0.48);
+      }
+      .rpdir .rpd-card:hover::after {
+        opacity: 1;
+      }
+      /* The sample card gets a slow ring behind the photo so it reads
+         as the one to copy. The ring is the only thing that moves. */
+      .rpdir .rpd-card-avatar {
+        position: relative;
+        isolation: isolate;
+      }
+      .rpdir .rpd-card.is-sample .rpd-card-avatar::before {
+        content: "";
+        position: absolute;
+        inset: -12px;
+        border-radius: 50%;
+        z-index: -1;
+        background: conic-gradient(
+          from 0deg,
+          transparent 0 58%,
+          rgba(240, 212, 154, 0.95) 72%,
+          rgba(124, 82, 224, 0.6) 80%,
+          transparent 88%
+        );
+        -webkit-mask: radial-gradient(circle, transparent 0 61%, #000 63%);
+        mask: radial-gradient(circle, transparent 0 61%, #000 63%);
+        animation: rpd-ring 48s linear infinite;
+      }
+      @keyframes rpd-ring {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .rpdir .rpd-card-avatar::before {
+          animation: none;
+        }
+        .rpdir .rpd-card,
+        .rpdir .rpd-card::after {
+          transition: none;
+        }
+        .rpdir .rpd-card:hover {
+          transform: none;
+        }
+      }
+      @media (max-width: 620px) {
+        .rpdir .rpd-grid {
+          grid-template-columns: 1fr;
+          gap: 18px;
+        }
+        .rpdir .rpd-head {
+          padding: 40px 0 38px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="container">
+        <div class="logo">
+          <img src="/assets/images/hero/logo-v2.png" alt="EAGLOPEN Logo" />
+          <span>EAGLOPEN</span>
+        </div>
+        <nav class="nav">
+          <ul>
+            <li><a href="/index.html">HOME</a></li>
+            <li class="dropdown">
+              <a href="/about.html"
+                >ABOUT
+                <span class="dropdown-icon">
+                  <i class="fa-solid fa-chevron-down"></i> </span
+              ></a>
+              <ul class="dropdown-menu">
+                <li><a href="/about.html#who-we-are">Who We Are</a></li>
+                <li>
+                  <a href="/about.html#vision-mission">Vision & Mission</a>
+                </li>
+                <li><a href="/about.html#founder">Founders Message</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="/programs.html"
+                >PROGRAMS
+                <span class="dropdown-icon">
+                  <i class="fa-solid fa-chevron-down"></i> </span
+              ></a>
+              <ul class="dropdown-menu">
+                <li><a href="/programs.html">Overview</a></li>
+                <li><a href="/programs.html#programs-grid">Our Programs</a></li>
+                <li><a href="/programs.html#your-journey">Explore More</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="/algolab.html"
+                >ALGOLAB
+                <span class="dropdown-icon">
+                  <i class="fa-solid fa-chevron-down"></i> </span
+              ></a>
+              <ul class="dropdown-menu">
+                <li><a href="/algolab.html">Overview</a></li>
+                <li>
+                  <a href="/algolab.html#program-playground"
+                    >Algolab Playground</a
+                  >
+                </li>
+                <li>
+                  <a href="/algolab.html#algolab-team">Algolab Alumni</a>
+                </li>
+                <li>
+                  <a href="/algolab.html#algolab-admission"
+                    >Algolab Admission</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li><a href="/research.html">RESEARCH</a></li>
+            <li><a href="/community.html">COMMUNITY</a></li>
+            <li><a href="/media.html">MEDIA</a></li>
+            <li><a href="/news.html">NEWS</a></li>
+            <li><a href="/contact.html">CONTACT</a></li>
+          </ul>
+        </nav>
+        <button class="mobile-menu-btn" aria-label="Toggle mobile menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <nav class="mobile-nav">
+      <div class="mobile-nav-header">
+        <div class="logo">
+          <img src="/assets/images/hero/logo-v2.png" alt="EAGLOPEN Logo" />
+          <span>EAGLOPEN</span>
+        </div>
+        <button class="mobile-nav-close" aria-label="Close mobile menu">
+          &times;
+        </button>
+      </div>
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li class="dropdown">
+          <a href="/about.html"
+            >About
+            <span class="dropdown-icon">
+              <i class="fa-solid fa-chevron-down"></i> </span
+          ></a>
+          <ul class="dropdown-menu">
+            <li><a href="/about.html#who-we-are">Who We Are</a></li>
+            <li><a href="/about.html#vision-mission">Vision & Mission</a></li>
+            <li><a href="/about.html#founder">Founders Message</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="/programs.html"
+            >Programs
+            <span class="dropdown-icon">
+              <i class="fa-solid fa-chevron-down"></i> </span
+          ></a>
+          <ul class="dropdown-menu">
+            <li><a href="/programs.html">Overview</a></li>
+            <li><a href="/programs.html#programs-grid">Our Programs</a></li>
+            <li><a href="/programs.html#your-journey">Explore More</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="/algolab.html"
+            >AlgoLab
+            <span class="dropdown-icon">
+              <i class="fa-solid fa-chevron-down"></i> </span
+          ></a>
+          <ul class="dropdown-menu">
+            <li><a href="/algolab.html">Overview</a></li>
+            <li>
+              <a href="/algolab.html#program-playground">Algolab Playground</a>
+            </li>
+            <li><a href="/algolab.html#algolab-team">Algolab Alumni</a></li>
+            <li>
+              <a href="/algolab.html#algolab-admission">Algolab Admission</a>
+            </li>
+          </ul>
+        </li>
+        <li><a href="/research.html">Research</a></li>
+        <li><a href="/community.html">Community</a></li>
+        <li><a href="/media.html">Media</a></li>
+        <li><a href="/news.html">News</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <main class="rpdir">
+      <section class="rpd-head">
+        <div class="rpd-wrap">
+          <p class="rpd-crumb">
+            <a href="/research.html">Research</a> / Researchers
+          </p>
+          <h1>Researchers</h1>
+          <p class="rpd-lede">
+            The students EAGLOPEN selected this year, and the work they showed
+            us.
+          </p>
+        </div>
+      </section>
+
+      <div class="rpd-search">
+        <div class="rpd-wrap">
+          <div class="rpd-search-inner">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <circle cx="11" cy="11" r="7" />
+              <path d="m20 20-3.5-3.5" />
+            </svg>
+            <input
+              id="rpdSearch"
+              type="search"
+              placeholder="Search by name, field or university"
+              aria-label="Search researchers by name, field or university"
+              autocomplete="off"
+            />
+          </div>
+          <p class="rpd-count" id="rpdCount" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+
+      <div class="rpd-wrap">
+        <div class="rpd-grid" id="rpdGrid"></div>
+
+        <div class="rpd-empty rpd-hidden" id="rpdEmpty">
+          <img id="rpdEmptyLogo" alt="" hidden />
+          <h2 id="rpdEmptyTitle">No researchers match your search.</h2>
+          <p id="rpdEmptyText">
+            Try a shorter word, or search by the research field instead.
+          </p>
+          <a class="rpd-btn" id="rpdEmptyBtn" href="/research.html#apply">
+            Apply to EAGLOPEN
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <footer class="main-footer" aria-labelledby="footer-heading">
+      <div class="footer-signal" aria-hidden="true">
+        <span>Science</span><span>Technology</span><span>Open inquiry</span>
+      </div>
+      <div class="container footer-shell">
+        <section class="footer-opening">
+          <p class="footer-kicker">The next question starts here</p>
+          <h2 id="footer-heading">
+            Build what<br />moves us <em>forward.</em>
+          </h2>
+          <a class="footer-cta" href="/contact.html"
+            ><span>Start a conversation</span
+            ><i class="fa-solid fa-arrow-right" aria-hidden="true"></i
+          ></a>
+        </section>
+        <div class="footer-body">
+          <div class="footer-grid">
+            <div class="footer-brand">
+              <a
+                class="footer-brand-lockup"
+                href="/index.html"
+                aria-label="EAGLOPEN home"
+              >
+                <img
+                  class="footer-brand-logo"
+                  src="/assets/images/hero/logo-v2.png"
+                  alt=""
+                  width="52"
+                  height="52"
+                  decoding="async"
+                />
+                <span class="footer-brand-text">
+                  <span class="footer-brand-name">EAGLOPEN</span>
+                  <span class="footer-brand-org"
+                    >Science &amp; Technology Organization</span
+                  >
+                </span>
+              </a>
+              <p class="footer-brand-statement">
+                Building opportunities for students to learn, innovate, and
+                create technologies that shape Africa&apos;s future.
+              </p>
+              <div
+                class="footer-slogan-rotator"
+                aria-live="polite"
+                aria-label="EAGLOPEN slogans"
+              >
+                <span class="footer-slogan"
+                  >A Community of Learners, Builders, and Leaders.</span
+                >
+                <span class="footer-slogan"
+                  >Empowering Africa&apos;s Future Innovators.</span
+                >
+                <span class="footer-slogan"
+                  >Building Tomorrow&apos;s Problem Solvers.</span
+                >
+                <span class="footer-slogan">Learn. Build. Innovate.</span>
+                <span class="footer-slogan">Turning Ideas Into Impact.</span>
+                <span class="footer-slogan"
+                  >Science. Technology. Innovation.</span
+                >
+                <span class="footer-slogan"
+                  >Building Skills. Creating Solutions.</span
+                >
+                <span class="footer-slogan"
+                  >Where Curiosity Becomes Innovation.</span
+                >
+              </div>
+            </div>
+
+            <div class="footer-nav-quad" aria-label="Footer navigation">
+              <h3
+                class="footer-nav-quad-title footer-nav-quad-title--quick"
+                id="footer-quick-links-heading"
+              >
+                Quick Links
+              </h3>
+              <h3
+                class="footer-nav-quad-title footer-nav-quad-title--programs"
+                id="footer-programs-heading"
+              >
+                Programs
+              </h3>
+
+              <ul
+                class="footer-link-col"
+                aria-labelledby="footer-quick-links-heading"
+              >
+                <li><a class="footer-link" href="/index.html">Home</a></li>
+                <li><a class="footer-link" href="/about.html">About</a></li>
+                <li>
+                  <a class="footer-link" href="/programs.html">Programs</a>
+                </li>
+                <li><a class="footer-link" href="/algolab.html">AlgoLab</a></li>
+              </ul>
+              <ul
+                class="footer-link-col"
+                aria-labelledby="footer-quick-links-heading"
+              >
+                <li>
+                  <a class="footer-link" href="/research.html">Research</a>
+                </li>
+                <li><a class="footer-link" href="/news.html">News</a></li>
+                <li>
+                  <a class="footer-link" href="/community.html">Community</a>
+                </li>
+                <li><a class="footer-link" href="/contact.html">Contact</a></li>
+              </ul>
+              <ul
+                class="footer-link-col footer-link-col--programs"
+                aria-labelledby="footer-programs-heading"
+              >
+                <li><a class="footer-link" href="/algolab.html">AlgoLab</a></li>
+                <li>
+                  <a class="footer-link" href="/research.html"
+                    >Research Projects</a
+                  >
+                </li>
+                <li>
+                  <a class="footer-link" href="/programs.html#programs-grid"
+                    >Startup Team</a
+                  >
+                </li>
+              </ul>
+              <ul
+                class="footer-link-col"
+                aria-labelledby="footer-programs-heading"
+              >
+                <li>
+                  <a class="footer-link" href="/community.html">Community</a>
+                </li>
+                <li>
+                  <a class="footer-link" href="/programs.html#programs-glance"
+                    >Workshops</a
+                  >
+                </li>
+                <li>
+                  <a class="footer-link" href="/programs.html#your-journey"
+                    >Future Programs</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="footer-column footer-connect">
+              <h3 id="footer-connect-heading">Connect</h3>
+              <ul class="footer-contact-list">
+                <li>
+                  <span class="footer-contact-label">Contact Us</span>
+                  <a
+                    class="footer-contact-value"
+                    href="mailto:contact@eaglopen.org"
+                    >contact@eaglopen.org</a
+                  >
+                </li>
+                <li>
+                  <span class="footer-contact-label">Official Email</span>
+                  <a
+                    class="footer-contact-value"
+                    href="mailto:info@eaglopen.org"
+                    >info@eaglopen.org</a
+                  >
+                </li>
+                <li>
+                  <span class="footer-contact-label">Location</span>
+                  <span class="footer-contact-value footer-contact-static"
+                    >Adama, Ethiopia</span
+                  >
+                </li>
+              </ul>
+              <div
+                class="footer-social"
+                role="list"
+                aria-label="EAGLOPEN social media"
+              >
+                <a
+                  class="footer-social-link"
+                  href="https://linkedin.com/company/eaglopen/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  role="listitem"
+                  aria-label="EAGLOPEN on LinkedIn"
+                  ><i class="fab fa-linkedin-in" aria-hidden="true"></i
+                ></a>
+                <a
+                  class="footer-social-link"
+                  href="https://www.youtube.com/@eaglopen"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  role="listitem"
+                  aria-label="EAGLOPEN on YouTube"
+                  ><i class="fab fa-youtube" aria-hidden="true"></i
+                ></a>
+                <a
+                  class="footer-social-link"
+                  href="https://t.me/Eaglopen"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  role="listitem"
+                  aria-label="EAGLOPEN on Telegram"
+                  ><i class="fab fa-telegram" aria-hidden="true"></i
+                ></a>
+                <a
+                  class="footer-social-link"
+                  href="https://www.instagram.com/eaglopen"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  role="listitem"
+                  aria-label="EAGLOPEN on Instagram"
+                  ><i class="fab fa-instagram" aria-hidden="true"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-secondary">
+            <article class="footer-mission-card">
+              <span class="footer-mission-accent" aria-hidden="true"></span>
+              <h3>Mission</h3>
+              <p>
+                Empowering young Africans through science, technology,
+                innovation, collaboration, and practical learning.
+              </p>
+            </article>
+
+            <div class="footer-stay-connected">
+              <h3>Stay Connected</h3>
+              <p>
+                Receive updates about programs, research, events, and
+                opportunities.
+              </p>
+              <form
+                class="footer-newsletter-form"
+                action="/contact.html"
+                method="get"
+                aria-label="Stay connected with EAGLOPEN"
+              >
+                <label class="visually-hidden" for="footer-newsletter-email"
+                  >Email address</label
+                >
+                <input
+                  id="footer-newsletter-email"
+                  type="email"
+                  name="email"
+                  placeholder="you@university.edu"
+                  autocomplete="email"
+                  required
+                />
+                <button type="submit">
+                  <span>Subscribe</span>
+                  <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <div class="footer-bottom footer-bottom-modern">
+            <p>© 2026 EAGLOPEN Science &amp; Technology Organization</p>
+            <p class="footer-bottom-tagline">
+              Made with passion for the next generation of African innovators.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/assets/js/animations.js"></script>
+    <script src="/assets/js/clean-routes.js"></script>
+    <script>
+      (() => {
+        const DATA_URL = "/research/data/researchers.json";
+        const grid = document.getElementById("rpdGrid");
+        const search = document.getElementById("rpdSearch");
+        const count = document.getElementById("rpdCount");
+        const empty = document.getElementById("rpdEmpty");
+        const emptyTitle = document.getElementById("rpdEmptyTitle");
+        const emptyText = document.getElementById("rpdEmptyText");
+        const emptyBtn = document.getElementById("rpdEmptyBtn");
+        const emptyLogo = document.getElementById("rpdEmptyLogo");
+
+        const esc = (s) =>
+          String(s == null ? "" : s).replace(
+            /[&<>"]/g,
+            (c) =>
+              ({
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+              })[c],
+          );
+
+        const arrow =
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+
+        // Every image path comes from researchers.json, so replacing a photo
+        // is a one-line data change.
+        let all = [];
+        let logo = "";
+        let loaded = false;
+
+        const matches = (r, q) => {
+          if (!q) return true;
+          const haystack = [r.name, r.field, r.university, r.headline]
+            .filter(Boolean)
+            .join(" ")
+            .toLowerCase();
+          return q
+            .toLowerCase()
+            .split(/\s+/)
+            .filter(Boolean)
+            .every((word) => haystack.includes(word));
+        };
+
+        const card = (r) => {
+          const slug = encodeURIComponent(r.slug);
+          const isSample = r.sample === true;
+          return `
+          <article class="rpd-card${isSample ? " is-sample" : ""}">
+            ${isSample ? `<span class="rpd-sample">Sample &middot; not a real person</span>` : ""}
+            <span class="rpd-card-avatar">
+              <img src="${esc(r.photo || logo)}" alt="${esc(r.name)}" loading="lazy" />
+            </span>
+            <h2>${esc(r.cardTitle || r.name)}</h2>
+            <p>${esc(r.headline)}</p>
+            <span class="rpd-field">${esc(r.field)}</span>
+            <div class="rpd-actions">
+              <a class="rpd-act rpd-act-profile" href="/research/${slug}/">View profile ${arrow}</a>
+              <a class="rpd-act rpd-act-work" href="/research/${slug}/work/">${arrow} View ${isSample ? "their" : "his"} work</a>
+            </div>
+          </article>`;
+        };
+
+        const showEmpty = (title, text, btn, href) => {
+          emptyTitle.textContent = title;
+          emptyText.textContent = text;
+          emptyBtn.textContent = btn;
+          emptyBtn.href = href;
+          emptyBtn.onclick = null;
+          empty.classList.remove("rpd-hidden");
+        };
+
+        const render = () => {
+          const q = search.value.trim();
+          const list = all.filter((r) => matches(r, q));
+
+          grid.innerHTML = list.map(card).join("");
+
+          const people = all.filter((r) => r.sample !== true).length;
+          const samples = all.length - people;
+          // Skip a zero part, so a sample-only directory reads "1 sample"
+          // rather than "0 researchers + 1 sample".
+          const label = [
+            people ? `${people} researcher${people === 1 ? "" : "s"}` : "",
+            samples ? `${samples} sample${samples === 1 ? "" : "s"}` : "",
+          ]
+            .filter(Boolean)
+            .join(" + ");
+
+          count.textContent = loaded
+            ? list.length === all.length
+              ? label
+              : `${list.length} of ${all.length} shown`
+            : "";
+
+          if (all.length === 0) {
+            showEmpty(
+              "The first researchers will appear here soon.",
+              "Applications for this year's Research & Innovation Showcase are open. Selected students get a page on this site.",
+              "Apply to EAGLOPEN",
+              "/research.html#apply",
+            );
+            return;
+          }
+
+          if (list.length === 0) {
+            showEmpty(
+              "No researchers match your search.",
+              "Try a shorter word, or search by the research field instead.",
+              "Clear search",
+              "#",
+            );
+            emptyBtn.onclick = (e) => {
+              e.preventDefault();
+              search.value = "";
+              render();
+              search.focus();
+            };
+            return;
+          }
+
+          empty.classList.add("rpd-hidden");
+        };
+
+        search.addEventListener("input", render);
+        search.addEventListener("search", render);
+
+        /* Sheen for the card depth. Cards are rebuilt on every search
+           keystroke, so this is delegated off the grid rather than bound
+           per card. No loops, and off entirely for touch and for anyone
+           who asked for reduced motion. */
+        const calmDir = matchMedia("(prefers-reduced-motion: reduce)");
+        const gridEl = document.getElementById("rpdGrid");
+        if (
+          gridEl &&
+          matchMedia("(hover:hover)").matches &&
+          !matchMedia("(max-width: 620px)").matches
+        ) {
+          gridEl.addEventListener("pointermove", (e) => {
+            if (calmDir.matches) return;
+            const card = e.target.closest(".rpd-card");
+            if (!card) return;
+            const r = card.getBoundingClientRect();
+            card.style.setProperty(
+              "--px",
+              (((e.clientX - r.left) / r.width) * 100).toFixed(1) + "%"
+            );
+            card.style.setProperty(
+              "--py",
+              (((e.clientY - r.top) / r.height) * 100).toFixed(1) + "%"
+            );
+          });
+        }
+
+        fetch(DATA_URL)
+          .then((r) => (r.ok ? r.json() : Promise.reject(new Error("bad status"))))
+          .then((data) => {
+            const entries = Array.isArray(data) ? data : [];
+            // Approved researchers are shown. The sample profile is kept, but
+            // always first and badged, so the layout is visible without
+            // pretending the placeholder is a real person.
+            all = entries
+              .filter((r) => r && r.approved === true)
+              .slice()
+              .sort((a, b) => {
+                const as = a.sample === true ? 0 : 1;
+                const bs = b.sample === true ? 0 : 1;
+                return as - bs;
+              });
+            logo = entries.length && entries[0].logo
+              ? entries[0].logo
+              : "";
+            if (logo) {
+              emptyLogo.src = logo;
+              emptyLogo.hidden = false;
+            }
+            loaded = true;
+            render();
+          })
+          .catch(() => {
+            // Fetch failed: stay quiet but still show a usable page.
+            loaded = true;
+            all = [];
+            render();
+          });
+      })();
+    </script>
+  </body>
+</html>

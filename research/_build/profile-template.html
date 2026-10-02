@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>__PAGE_TITLE__</title>
+<meta name="description" content="__META_DESCRIPTION__">
+<link rel="canonical" href="__CANONICAL__">
+__ROBOTS__
+<link rel="icon" href="__LOGO__">
+<link rel="apple-touch-icon" href="__LOGO__">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/base.css">
+<link rel="stylesheet" href="/assets/css/header.css">
+<link rel="stylesheet" href="/assets/css/footer.css">
+<link rel="stylesheet" href="/assets/css/responsiveness.css">
+<script src="https://kit.fontawesome.com/bc43529ae8.js" crossorigin="anonymous"></script>
+<style>
+/* ============================================================
+   PROFILE DESIGN SYSTEM.
+   Every rule is scoped under .rp so this page can never change
+   any other page on the site. The site header and footer live
+   outside .rp and keep their own stylesheets untouched.
+   ============================================================ */
+:root{
+  --ink:#0d0b2e; --ink2:#161240; --indigo:#2b206b; --violet:#5b3abd; --violet2:#7c52e0;
+  --lav:#c8b6f4; --lav2:#e3c4ff; --paper:#f5f3fb; --card:#ffffff; --line:#e1dcf0; --text:#1d1a3d; --mute:#5e5a80;
+  --head:"Newsreader",Georgia,"Times New Roman",serif; --body:"Inter","Segoe UI",Arial,sans-serif;
+}
+html{scroll-behavior:smooth}
+:focus-visible{outline:3px solid var(--violet2);outline-offset:3px;border-radius:6px}
+
+.rp{
+  font-family:var(--body);background:var(--paper);color:var(--text);
+  line-height:1.7;font-size:16.5px;-webkit-font-smoothing:antialiased;
+  min-height:60vh;
+}
+.rp *{box-sizing:border-box}
+.rp,.rp *{margin:0;padding:0}
+.rp a{color:inherit}
+.rp .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+
+/* notice */
+.rp .notice{background:var(--lav);color:var(--ink);font-size:15px;text-align:center;padding:10px 24px}
+.rp .notice a{font-weight:600}
+
+/* hero */
+.rp .hero{background:var(--ink);color:#fff;padding:56px 0 0;position:relative;overflow:hidden}
+.rp .hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(200,182,244,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(200,182,244,.06) 1px,transparent 1px);background-size:56px 56px;mask-image:linear-gradient(#000 40%,transparent)}
+.rp .hero .wrap{position:relative}
+.rp .hero-grid{display:grid;grid-template-columns:230px 1fr;gap:44px;align-items:center;padding-bottom:48px}
+.rp .avatar{width:230px;height:230px;border-radius:50%;background:var(--ink2);border:6px solid var(--violet);padding:10px;box-shadow:0 0 0 2px var(--lav) inset}
+.rp .avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block}
+.rp .badge{display:inline-flex;align-items:center;gap:8px;background:var(--indigo);border:1px solid var(--violet);color:var(--lav2);padding:6px 14px;border-radius:999px;font-size:14px;font-weight:600}
+.rp .badge svg{width:16px;height:16px}
+.rp h1{font-family:var(--head);font-weight:500;font-size:clamp(46px,6.6vw,84px);line-height:1;letter-spacing:-.03em;margin:20px 0 14px}
+.rp .tag{font-family:var(--head);font-style:italic;font-weight:400;font-size:clamp(21px,2.4vw,27px);line-height:1.4;color:var(--lav);max-width:640px}
+.rp .meta{display:flex;flex-wrap:wrap;gap:10px 22px;margin:22px 0;color:#d9d3ef;font-size:15.5px}
+.rp .meta span{display:flex;align-items:center;gap:8px}
+.rp .meta svg{width:17px;height:17px;color:var(--lav)}
+.rp .actions{display:flex;flex-wrap:wrap;gap:12px}
+.rp .btn{font:600 16px var(--body);border:0;border-radius:12px;padding:13px 22px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.rp .btn.main{background:var(--violet);color:#fff}
+.rp .btn.main:hover{background:var(--violet2)}
+.rp .btn.ghost{background:transparent;color:#fff;border:1.5px solid var(--lav)}
+.rp .btn.ghost:hover{background:var(--indigo)}
+.rp .urlbox{display:flex;align-items:center;justify-content:space-between;gap:16px;background:var(--ink2);border-top:1px solid var(--indigo);padding:16px 0;color:var(--lav);font-size:15px}
+.rp .urlbox code{font-family:ui-monospace,Consolas,monospace;color:#fff;font-size:15px;word-break:break-all}
+
+/* stats */
+.rp .stats{background:var(--card);border-bottom:1px solid var(--line)}
+.rp .stats .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.rp .stat{padding:22px 8px 22px 0}
+.rp .stat b{font-family:var(--head);font-size:42px;font-weight:500;letter-spacing:-.02em;color:var(--indigo);display:block;line-height:1.1}
+.rp .stat span{color:var(--mute);font-size:15px}
+
+/* layout — scoped to .wrap.main so it cannot catch the "btn main" buttons */
+.rp .wrap.main{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:40px;padding:48px 0 72px;align-items:start}
+.rp section{margin-bottom:46px}
+.rp h2{font-family:var(--head);font-weight:600;font-size:32px;letter-spacing:-.015em;line-height:1.15;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.rp .about p{max-width:68ch;color:#37335a;margin-bottom:12px}
+
+.rp .tabs{display:flex;gap:8px;margin:0 0 20px;flex-wrap:wrap}
+.rp .tab{font:600 15px var(--body);padding:9px 18px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--text);cursor:pointer}
+.rp .tab[aria-selected=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+.rp .works{display:grid;gap:18px}
+.rp .work{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:grid;grid-template-columns:230px 1fr}
+.rp .thumb{background:var(--indigo);display:grid;place-items:center;min-height:190px;position:relative}
+.rp .thumb.r{background:var(--violet)}
+.rp .thumb img{width:84px;height:84px;opacity:.85;border-radius:50%}
+.rp .thumb em{position:absolute;left:14px;bottom:12px;font-style:normal;font-size:13px;font-weight:600;color:var(--lav2)}
+.rp .wbody{padding:22px 24px}
+.rp .wbody h3{font-family:var(--head);font-weight:600;font-size:26px;letter-spacing:-.01em;line-height:1.2;margin-bottom:10px}
+.rp .wbody p{color:var(--mute);font-size:16px;margin-bottom:14px}
+.rp .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.rp .chip{background:var(--paper);border:1px solid var(--line);color:var(--indigo);padding:4px 12px;border-radius:999px;font-size:14px;font-weight:500}
+.rp .links{display:flex;flex-wrap:wrap;gap:16px}
+.rp .links a{color:var(--violet);font-weight:600;font-size:15px;text-decoration:none;border-bottom:2px solid var(--lav)}
+.rp .links a:hover{border-color:var(--violet)}
+.rp .more{display:none;margin-top:14px;padding-top:14px;border-top:1px dashed var(--line);color:#37335a;font-size:16px}
+.rp .work.open .more{display:block}
+.rp .toggle{background:none;border:0;color:var(--indigo);font:600 15px var(--body);cursor:pointer;padding:0;margin-top:2px}
+
+/* timeline */
+.rp .tl{border-left:3px solid var(--lav);padding-left:22px;display:grid;gap:22px;margin-left:6px}
+.rp .tl div{position:relative}
+.rp .tl div::before{content:"";position:absolute;left:-31px;top:7px;width:13px;height:13px;border-radius:50%;background:var(--violet);border:3px solid var(--paper)}
+.rp .tl b{display:block;font-size:16.5px}
+.rp .tl small{color:var(--mute);font-size:14.5px}
+
+/* sidebar */
+.rp aside .box{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:18px}
+.rp aside h2{font-size:22px;margin-bottom:14px;padding-bottom:10px}
+.rp .row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:15.5px}
+.rp .row:last-child{border:0}
+.rp .row span{color:var(--mute)}
+.rp .row b{font-weight:600;text-align:right;word-break:break-word}
+.rp .skills{display:flex;flex-wrap:wrap;gap:8px}
+.rp .person{display:flex;gap:12px;align-items:center;padding:10px 0}
+.rp .person img{width:46px;height:46px;border-radius:50%;background:var(--ink2);padding:3px}
+.rp .person b{display:block;font-size:16px;line-height:1.2}
+.rp .person small{color:var(--mute);font-size:14px}
+.rp .cta{background:var(--ink);color:#fff;border-radius:18px;padding:26px}
+.rp .cta h2{color:#fff;font-size:24px;border:0;padding:0}
+.rp .cta p{color:var(--lav);font-size:15.5px;margin-bottom:16px}
+.rp .cta .btn{width:100%;justify-content:center}
+
+.rp .toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,40px);background:var(--ink);color:#fff;padding:12px 20px;border-radius:12px;opacity:0;transition:.25s;pointer-events:none;border:1px solid var(--violet);z-index:1200}
+.rp .toast.on{opacity:1;transform:translate(-50%,0)}
+
+/* ============================================================
+   PREMIUM DEPTH.
+   Layered 3D surfaces and a very small amount of motion. The
+   only thing that animates on its own is one slow ring behind
+   the avatar (48s). Everything else moves on hover, on scroll,
+   or once on load, so the page reads as still until you touch it.
+   --px / --py are written by one small script for the pointer
+   parallax and the card sheen; they default to centre.
+   ============================================================ */
+.rp .hero{perspective:1600px}
+.rp .hero::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(120% 78% at 50% 0%,transparent 42%,rgba(5,6,26,.5) 100%)}
+.rp .hero .wrap{z-index:1}
+
+/* Depth stack around the avatar: a conic ring, a hairline ring set
+   further back, and a soft bloom. Rings live behind the photo. */
+.rp .avatar{position:relative;isolation:isolate;transform-style:preserve-3d;
+  transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.rp .avatar::before{content:"";position:absolute;inset:-24px;border-radius:50%;z-index:-1;
+  background:conic-gradient(from 0deg,transparent 0 58%,rgba(124,82,224,.9) 72%,rgba(227,196,255,.5) 80%,transparent 88%);
+  -webkit-mask:radial-gradient(circle,transparent 0 61%,#000 63%);
+          mask:radial-gradient(circle,transparent 0 61%,#000 63%);
+  animation:rp-ring 48s linear infinite}
+.rp .avatar::after{content:"";position:absolute;inset:-46px;border-radius:50%;z-index:-2;
+  border:1px solid rgba(200,182,244,.3);
+  box-shadow:0 0 0 1px rgba(124,82,224,.14),0 30px 70px -30px rgba(124,82,224,.55);
+  transform:translateZ(-70px)}
+@keyframes rp-ring{to{transform:rotate(360deg)}}
+
+/* Hairline gradient edge, so cards read as lit glass rather than
+   flat boxes. Padding + mask leaves a 1px ring of colour. */
+.rp .work::before,.rp aside .box::before,.rp .verify::before{content:"";position:absolute;inset:0;
+  border-radius:inherit;padding:1px;pointer-events:none;
+  background:linear-gradient(150deg,rgba(124,82,224,.55),rgba(200,182,244,.12) 45%,rgba(91,58,189,.4));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude}
+
+/* Work cards lift and tilt a couple of degrees on hover. */
+.rp .work{position:relative;transform-style:preserve-3d;
+  box-shadow:0 2px 4px -2px rgba(22,18,64,.14),0 12px 28px -20px rgba(43,32,107,.35);
+  transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s ease}
+.rp .work:hover{transform:translateY(-3px) rotateX(1.6deg) rotateY(-1.6deg);
+  box-shadow:0 4px 8px -4px rgba(22,18,64,.16),0 26px 46px -24px rgba(43,32,107,.5)}
+.rp .work::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;z-index:1;
+  transition:opacity .4s ease;
+  background:radial-gradient(420px 260px at var(--px,50%) var(--py,50%),rgba(124,82,224,.13),transparent 62%)}
+.rp .work:hover::after{opacity:1}
+/* Keep the sheen over the thumbnail (reads as glass) but under the text. */
+.rp .work .wbody{position:relative;z-index:2}
+
+.rp aside .box,.rp .verify{position:relative;
+  box-shadow:0 2px 4px -2px rgba(22,18,64,.12),0 14px 30px -24px rgba(43,32,107,.4)}
+.rp .cta{box-shadow:0 24px 50px -26px rgba(13,11,46,.8),inset 0 1px 0 rgba(255,255,255,.1)}
+
+/* Stat numbers sit on their own raised block. */
+.rp .stat{position:relative;transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.rp .stat:hover{transform:translateY(-2px)}
+
+@media (prefers-reduced-motion:reduce){
+  .rp .avatar::before{animation:none}
+  .rp .avatar,.rp .work,.rp .stat{transition:none}
+  .rp .work:hover,.rp .stat:hover{transform:none}
+}
+
+/* sticky section menu: sits directly under the sticky site header */
+.rp section{scroll-margin-top:calc(var(--rp-head-h,0px) + 62px)}
+.rp .crumb{font-size:14.5px;color:var(--lav);margin-bottom:14px}
+.rp .crumb a{text-decoration:none;border-bottom:1px solid var(--violet)}
+.rp .sub{position:sticky;top:var(--rp-head-h,0px);z-index:5;background:rgba(245,243,251,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.rp .sub .wrap{display:flex;gap:6px;overflow-x:auto}
+.rp .sub a{padding:17px 16px 14px;text-decoration:none;font-weight:600;font-size:15px;color:var(--mute);border-bottom:3px solid transparent;white-space:nowrap}
+.rp .sub a.on,.rp .sub a:hover{color:var(--ink);border-color:var(--violet)}
+.rp .res{border-left:3px solid var(--violet);padding:2px 0 2px 14px;margin-bottom:14px;font-size:15.5px;color:var(--text)}
+.rp .res b{display:block;color:var(--violet);font-size:13.5px;font-weight:700}
+.rp .impact{list-style:none;display:grid;gap:14px}
+.rp .impact li{display:grid;grid-template-columns:5px 1fr;gap:16px;max-width:70ch}
+.rp .impact li::before{content:"";background:var(--violet);border-radius:3px}
+.rp .impact b{display:block;font-family:var(--head);font-size:21px;font-weight:600;line-height:1.3}
+.rp .impact span{color:var(--mute);font-size:16px}
+.rp .verify{background:var(--ink);color:#fff;border-radius:18px;padding:24px;margin-bottom:18px}
+.rp .verify h2{color:#fff;border-color:var(--indigo)}
+.rp .verify .row{border-color:var(--indigo);font-size:15px}
+.rp .verify .row span{color:var(--lav)}
+.rp .about p:first-of-type{font-family:var(--head);font-size:23px;line-height:1.5;color:var(--ink)}
+@media(max-width:900px){
+  .rp .wrap.main{grid-template-columns:1fr}
+  .rp .hero-grid{grid-template-columns:1fr;text-align:left}
+  .rp .avatar{width:170px;height:170px}
+  .rp .stats .wrap{grid-template-columns:repeat(2,1fr)}
+  .rp .work{grid-template-columns:1fr}
+  .rp .thumb{min-height:130px}
+}
+@media(prefers-reduced-motion:no-preference){
+  .rp .avatar{animation:rp-rise .7s ease-out both}
+  @keyframes rp-rise{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
+}
+</style>
+</head>
+<body>
+
+<header class="main-header">
+      <div class="container">
+        <div class="logo">
+          <img src="/assets/images/hero/logo-v2.png" alt="EAGLOPEN Logo" />
+          <span>EAGLOPEN</span>
+        </div>
+        <nav class="nav">
+          <ul>
+            <li><a href="/index.html">HOME</a></li>
+            <li class="dropdown">
+              <a href="/about.html"
+                >ABOUT
+                <span class="dropdown-icon">
+                  <i class="fa-solid fa-chevron-down"></i> </span
+              ></a>
+              <ul class="dropdown-menu">
+                <li><a href="/about.html#who-we-are">Who We Are</a></li>
+                <li>
+                  <a href="/about.html#vision-mission">Vision & Mission</a>
+                </li>
+                <li><a href="/about.html#founder">Founders Message</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="/programs.html"
+                >PROGRAMS
+                <span class="dropdown-icon">
+                  <i class="fa-solid fa-chevron-down"></i> </span
+              ></a>
+              <ul class="dropdown-menu">
+                <li><a href="/programs.html">Overview</a></li>
+                <li><a href="/programs.html#programs-grid">Our Programs</a></li>
+                <li><a href="/programs.html#your-journey">Explore More</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="/algolab.html"
+                >ALGOLAB
+                <span class="dropdown-icon">
+                  <i class="fa-solid fa-chevron-down"></i> </span
+              ></a>
+              <ul class="dropdown-menu">
+                <li><a href="/algolab.html">Overview</a></li>
+                <li>
+                  <a href="/algolab.html#program-playground"
+                    >Algolab Playground</a
+                  >
+                </li>
+                <li>
+                  <a href="/algolab.html#algolab-team">Algolab Alumni</a>
+                </li>
+                <li>
+                  <a href="/algolab.html#algolab-admission"
+                    >Algolab Admission</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li><a href="/research.html">RESEARCH</a></li>
+            <li><a href="/community.html">COMMUNITY</a></li>
+            <li><a href="/media.html">MEDIA</a></li>
+            <li><a href="/news.html">NEWS</a></li>
+            <li><a href="/contact.html">CONTACT</a></li>
+          </ul>
+        </nav>
+        <button class="mobile-menu-btn" aria-label="Toggle mobile menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <nav class="mobile-nav">
+      <div class="mobile-nav-header">
+        <div class="logo">
+          <img src="/assets/images/hero/logo-v2.png" alt="EAGLOPEN Logo" />
+          <span>EAGLOPEN</span>
+        </div>
+        <button class="mobile-nav-close" aria-label="Close mobile menu">
+          &times;
+        </button>
+      </div>
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li class="dropdown">
+          <a href="/about.html"
+            >About
+            <span class="dropdown-icon">
+              <i class="fa-solid fa-chevron-down"></i> </span
+          ></a>
+          <ul class="dropdown-menu">
+            <li><a href="/about.html#who-we-are">Who We Are</a></li>
+            <li><a href="/about.html#vision-mission">Vision & Mission</a></li>
+            <li><a href="/about.html#founder">Founders Message</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="/programs.html"
+            >Programs
+            <span class="dropdown-icon">
+              <i class="fa-solid fa-chevron-down"></i> </span
+          ></a>
+          <ul class="dropdown-menu">
+            <li><a href="/programs.html">Overview</a></li>
+            <li><a href="/programs.html#programs-grid">Our Programs</a></li>
+            <li><a href="/programs.html#your-journey">Explore More</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="/algolab.html"
+            >AlgoLab
+            <span class="dropdown-icon">
+              <i class="fa-solid fa-chevron-down"></i> </span
+          ></a>
+          <ul class="dropdown-menu">
+            <li><a href="/algolab.html">Overview</a></li>
+            <li>
+              <a href="/algolab.html#program-playground">Algolab Playground</a>
+            </li>
+            <li><a href="/algolab.html#algolab-team">Algolab Alumni</a></li>
+            <li>
+              <a href="/algolab.html#algolab-admission">Algolab Admission</a>
+            </li>
+          </ul>
+        </li>
+        <li><a href="/research.html">Research</a></li>
+        <li><a href="/community.html">Community</a></li>
+        <li><a href="/media.html">Media</a></li>
+        <li><a href="/news.html">News</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+<div class="rp" id="rp">
+  <main id="app"></main>
+  <div class="toast" id="toast" role="status"></div>
+</div>
+
+<footer class="main-footer" aria-labelledby="footer-heading">
+      <div class="footer-signal" aria-hidden="true">
+        <span>Science</span><span>Technology</span><span>Open inquiry</span>
+      </div>
+      <div class="container footer-shell">
+        <section class="footer-opening">
+          <p class="footer-kicker">The next question starts here</p>
+          <h2 id="footer-heading">
+            Build what<br />moves us <em>forward.</em>
+          </h2>
+          <a class="footer-cta" href="/contact.html"
+            ><span>Start a conversation</span
+            ><i class="fa-solid fa-arrow-right" aria-hidden="true"></i
+          ></a>
+        </section>
+        <div class="footer-body">
+          <div class="footer-grid">
+            <div class="footer-brand">
+              <a
+                class="footer-brand-lockup"
+                href="/index.html"
+                aria-label="EAGLOPEN home"
+              >
+                <img
+                  class="footer-brand-logo"
+                  src="/assets/images/hero/logo-v2.png"
+                  alt=""
+                  width="52"
+                  height="52"
+                  decoding="async"
+                />
+                <span class="footer-brand-text">
+                  <span class="footer-brand-name">EAGLOPEN</span>
+                  <span class="footer-brand-org"
+                    >Science &amp; Technology Organization</span
+                  >
+                </span>
+              </a>
+              <p class="footer-brand-statement">
+                Building opportunities for students to learn, innovate, and
+                create technologies that shape Africa&apos;s future.
+              </p>
+              <div
+                class="footer-slogan-rotator"
+                aria-live="polite"
+                aria-label="EAGLOPEN slogans"
+              >
+                <span class="footer-slogan"
+                  >A Community of Learners, Builders, and Leaders.</span
+                >
+                <span class="footer-slogan"
+                  >Empowering Africa&apos;s Future Innovators.</span
+                >
+                <span class="footer-slogan"
+                  >Building Tomorrow&apos;s Problem Solvers.</span
+                >
+                <span class="footer-slogan">Learn. Build. Innovate.</span>
+                <span class="footer-slogan">Turning Ideas Into Impact.</span>
+                <span class="footer-slogan"
+                  >Science. Technology. Innovation.</span
+                >
+                <span class="footer-slogan"
+                  >Building Skills. Creating Solutions.</span
+                >
+                <span class="footer-slogan"
+                  >Where Curiosity Becomes Innovation.</span
+                >
+              </div>
+            </div>
+
+            <div class="footer-nav-quad" aria-label="Footer navigation">
+              <h3
+                class="footer-nav-quad-title footer-nav-quad-title--quick"
+                id="footer-quick-links-heading"
+              >
+                Quick Links
+              </h3>
+              <h3
+                class="footer-nav-quad-title footer-nav-quad-title--programs"
+                id="footer-programs-heading"
+              >
+                Programs
+              </h3>
+
+              <ul
+                class="footer-link-col"
+                aria-labelledby="footer-quick-links-heading"
+              >
+                <li><a class="footer-link" href="/index.html">Home</a></li>
+                <li><a class="footer-link" href="/about.html">About</a></li>
+                <li>
+                  <a class="footer-link" href="/programs.html">Programs</a>
+                </li>
+                <li><a class="footer-link" href="/algolab.html">AlgoLab</a></li>
+              </ul>
+              <ul
+                class="footer-link-col"
+                aria-labelledby="footer-quick-links-heading"
+              >
+                <li>
+                  <a class="footer-link" href="/research.html">Research</a>
+                </li>
+                <li><a class="footer-link" href="/news.html">News</a></li>
+                <li>
+                  <a class="footer-link" href="/community.html">Community</a>
+                </li>
+                <li><a class="footer-link" href="/contact.html">Contact</a></li>
+              </ul>
+              <ul
+                class="footer-link-col footer-link-col--programs"
+                aria-labelledby="footer-programs-heading"
+              >
+                <li><a class="footer-link" href="/algolab.html">AlgoLab</a></li>
+                <li>
+                  <a class="footer-link" href="/research.html"
+                    >Research Projects</a
+                  >
+                </li>
+                <li>
+                  <a class="footer-link" href="/programs.html#programs-grid"
+                    >Startup Team</a
+                  >
+                </li>
+              </ul>
+              <ul
+                class="footer-link-col"
+                aria-labelledby="footer-programs-heading"
+              >
+                <li>
+                  <a class="footer-link" href="/community.html">Community</a>
+                </li>
+                <li>
+                  <a class="footer-link" href="/programs.html#programs-glance"
+                    >Workshops</a
+                  >
+                </li>
+                <li>
+                  <a class="footer-link" href="/programs.html#your-journey"
+                    >Future Programs</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="footer-column footer-connect">
+              <h3 id="footer-connect-heading">Connect</h3>
+              <ul class="footer-contact-list">
+                <li>
+                  <span class="footer-contact-label">Contact Us</span>
+                  <a
+                    class="footer-contact-value"
+                    href="mailto:contact@eaglopen.org"
+                    >contact@eaglopen.org</a
+                  >
+                </li>
+                <li>
+                  <span class="footer-contact-label">Official Email</span>
+                  <a
+                    class="footer-contact-value"
+                    href="mailto:info@eaglopen.org"
+                    >info@eaglopen.org</a
+                  >
+                </li>
+                <li>
+                  <span class="footer-contact-label">Location</span>
+                  <span class="footer-contact-value footer-contact-static"
+                    >Adama, Ethiopia</span
+                  >
+                </li>
+              </ul>
+              <div
+                class="footer-social"
+                role="list"
+                aria-label="EAGLOPEN social media"
+              >
+                <a
+                  class="footer-social-link"
+                  href="https://linkedin.com/company/eaglopen/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  role="listitem"
+                  aria-label="EAGLOPEN on LinkedIn"
+                  ><i class="fab fa-linkedin-in" aria-hidden="true"></i
+                ></a>
+                <a
+                  class="footer-social-link"
+                  href="https://www.youtube.com/@eaglopen"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  role="listitem"
+                  aria-label="EAGLOPEN on YouTube"
+                  ><i class="fab fa-youtube" aria-hidden="true"></i
+                ></a>
+                <a
+                  class="footer-social-link"
+                  href="https://t.me/Eaglopen"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  role="listitem"
+                  aria-label="EAGLOPEN on Telegram"
+                  ><i class="fab fa-telegram" aria-hidden="true"></i
+                ></a>
+                <a
+                  class="footer-social-link"
+                  href="https://www.instagram.com/eaglopen"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  role="listitem"
+                  aria-label="EAGLOPEN on Instagram"
+                  ><i class="fab fa-instagram" aria-hidden="true"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-secondary">
+            <article class="footer-mission-card">
+              <span class="footer-mission-accent" aria-hidden="true"></span>
+              <h3>Mission</h3>
+              <p>
+                Empowering young Africans through science, technology,
+                innovation, collaboration, and practical learning.
+              </p>
+            </article>
+
+            <div class="footer-stay-connected">
+              <h3>Stay Connected</h3>
+              <p>
+                Receive updates about programs, research, events, and
+                opportunities.
+              </p>
+              <form
+                class="footer-newsletter-form"
+                action="/contact.html"
+                method="get"
+                aria-label="Stay connected with EAGLOPEN"
+              >
+                <label class="visually-hidden" for="footer-newsletter-email"
+                  >Email address</label
+                >
+                <input
+                  id="footer-newsletter-email"
+                  type="email"
+                  name="email"
+                  placeholder="you@university.edu"
+                  autocomplete="email"
+                  required
+                />
+                <button type="submit">
+                  <span>Subscribe</span>
+                  <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <div class="footer-bottom footer-bottom-modern">
+            <p>© 2026 EAGLOPEN Science &amp; Technology Organization</p>
+            <p class="footer-bottom-tagline">
+              Made with passion for the next generation of African innovators.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+<script src="/assets/js/animations.js"></script>
+<script src="/assets/js/clean-routes.js"></script>
+<script>
+/* ============================================================
+   ONE DATA OBJECT, injected at build time by _build/build.py.
+   Everything on the page is rendered from it.
+   The slug lives at eaglopen.org/research/<slug>
+   ============================================================ */
+const LOGO = "__LOGO__";
+const PROFILE = /*__PROFILE_JSON__*/;
+
+const $ = (s,r=document)=>r.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const parts = location.pathname.split("/").filter(Boolean);
+let slug = PROFILE.slug || decodeURIComponent(parts[parts.length-1]||"");
+if(!slug || /\.html?$/i.test(slug) || slug==="research" || slug==="_build") slug="yourname";
+const url = `eaglopen.org/research/${slug}`;
+
+const icon = {
+  check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>',
+  school:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-5 9 5-9 5-9-5z"/><path d="M7 11.5V16c0 1.5 2.2 3 5 3s5-1.5 5-3v-4.5"/></svg>',
+  pin:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>',
+  flask:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-9V3"/></svg>',
+  mail:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>'
+};
+
+function render(p){
+  document.title = `${p.name} | EAGLOPEN Research`;
+  const rp = document.documentElement;
+  const head = document.querySelector(".main-header");
+  const setHeadH = ()=> rp.style.setProperty("--rp-head-h", (head?.offsetHeight || 0) + "px");
+  setHeadH();
+  window.addEventListener("resize", setHeadH);
+  $("#app").innerHTML = `
+  ${p.sample ? `<div class="notice">This is a sample profile. Approved researchers get a page like this. <a href="/research.html#apply">Apply to get yours</a></div>` : ""}
+  <section class="hero"><div class="wrap">
+    <div class="hero-grid">
+      <div class="avatar"><img src="${esc(p.photo)}" alt="${esc(p.name)}"></div>
+      <div>
+        <div class="crumb"><a href="/research.html">Research</a> / <a href="/research/">Researchers</a> / ${esc(slug)}</div>
+        <span class="badge">${icon.check} ${esc(p.status)}</span>
+        <h1>${esc(p.name)}</h1>
+        <p class="tag">${esc(p.headline)}</p>
+        <div class="meta">
+          <span>${icon.school}${esc(p.university)}</span>
+          <span>${icon.pin}${esc(p.location)}</span>
+          <span>${icon.flask}${esc(p.field)}</span>
+        </div>
+        <div class="actions">
+          <a class="btn main" href="mailto:${esc(p.email)}">${icon.mail} Contact ${esc(p.name.split(" ")[0])}</a>
+          <button class="btn ghost" id="copy">Copy profile link</button>
+        </div>
+      </div>
+    </div>
+    <div class="urlbox"><span>${esc(p.selected)}</span><code>${esc(url)}</code></div>
+  </div></section>
+
+  <div class="stats"><div class="wrap">
+    ${p.stats.map(s=>`<div class="stat"><b>${esc(s[0])}</b><span>${esc(s[1])}</span></div>`).join("")}
+  </div></div>
+
+  <nav class="sub" aria-label="Profile sections"><div class="wrap"><a href="#about">About</a><a href="#impact">Impact</a><a href="#work">Work</a><a href="#journey">Journey</a><a href="/research/${encodeURIComponent(slug)}/work/">All work</a></div></nav>
+
+  <div class="wrap main">
+    <div>
+      <section class="about" id="about"><h2>About</h2>${p.about.map(t=>`<p>${esc(t)}</p>`).join("")}</section>
+
+      <section id="impact"><h2>Impact</h2><ul class="impact">${p.impact.map(i=>`<li><div><b>${esc(i.t)}</b><span>${esc(i.d)}</span></div></li>`).join("")}</ul></section>
+
+      <section id="work"><h2>Work</h2>
+        <div class="tabs" role="tablist">
+          <button class="tab" role="tab" aria-selected="true" data-f="all">All work</button>
+          <button class="tab" role="tab" aria-selected="false" data-f="project">Projects</button>
+          <button class="tab" role="tab" aria-selected="false" data-f="research">Research</button>
+        </div>
+        <div class="works" id="works"></div>
+      </section>
+
+      <section id="journey"><h2>Journey</h2>
+        <div class="tl">${p.timeline.map(t=>`<div><b>${esc(t[0])}</b><small>${esc(t[1])}</small></div>`).join("")}</div>
+      </section>
+    </div>
+
+    <aside>
+      <div class="verify"><h2>Verified by EAGLOPEN</h2>${p.verified.map(v=>`<div class="row"><span>${esc(v[0])}</span><b>${esc(v[1])}</b></div>`).join("")}</div>
+      <div class="box"><h2>Details</h2>
+        <div class="row"><span>Field</span><b>${esc(p.field)}</b></div>
+        <div class="row"><span>University</span><b>${esc(p.university)}</b></div>
+        <div class="row"><span>Education</span><b>${esc(p.education)}</b></div>
+        <div class="row"><span>Languages</span><b>${esc(p.languages)}</b></div>
+        <div class="row"><span>Email</span><b>${esc(p.email)}</b></div>
+        ${p.links.map(l=>`<div class="row"><span>${esc(l[0])}</span><b><a href="${esc(l[1])}">Open</a></b></div>`).join("")}
+      </div>
+      <div class="box"><h2>Open to</h2><p style="color:var(--mute);font-size:16px">${esc(p.open)}</p></div>
+      <div class="box"><h2>Skills</h2><div class="skills">${p.skills.map(s=>`<span class="chip">${esc(s)}</span>`).join("")}</div></div>
+      <div class="box"><h2>Works with</h2>
+        ${p.collaborators.map(c=>`<div class="person"><img src="${esc(c.photo)}" alt=""><div><b>${esc(c.name)}</b><small>${esc(c.role)}</small></div></div>`).join("")}
+      </div>
+      <div class="cta"><h2>Have a project or research?</h2><p>Applications are free. Selected students get a profile like this one and an eaglopen.org email.</p>
+        <a class="btn main" href="/research.html#apply">Apply to EAGLOPEN</a></div>
+    </aside>
+  </div>`;
+
+  const box = $("#works");
+  const draw = f => {
+    box.innerHTML = p.works.filter(w=>f==="all"||w.type===f).map((w,i)=>`
+      <article class="work">
+        <div class="thumb ${w.type==="research"?"r":""}"><img src="${esc(LOGO)}" alt=""><em>${w.type==="research"?"Research":"Project"} · ${esc(w.year)}</em></div>
+        <div class="wbody">
+          <h3>${esc(w.title)}</h3>
+          <p>${esc(w.summary)}</p>
+          ${w.result?`<p class="res"><b>Result</b>${esc(w.result)}</p>`:""}<div class="chips">${w.tags.map(t=>`<span class="chip">${esc(t)}</span>`).join("")}</div>
+          <div class="links">${w.links.map(l=>`<a href="${esc(l[1])}">${esc(l[0])}</a>`).join("")}</div>
+          <div class="more">${esc(w.detail)}</div>
+          <button class="toggle" aria-expanded="false">Read more</button>
+        </div>
+      </article>`).join("") || "<p>No work in this group yet.</p>";
+  };
+  draw("all");
+  box.addEventListener("click",e=>{
+    const b=e.target.closest(".toggle"); if(!b) return;
+    const a=b.closest(".work"); const open=a.classList.toggle("open");
+    b.textContent=open?"Show less":"Read more"; b.setAttribute("aria-expanded",open);
+  });
+  document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click",()=>{
+    document.querySelectorAll(".tab").forEach(x=>x.setAttribute("aria-selected",x===t));
+    draw(t.dataset.f);
+  }));
+
+  // Let the sticky section menu use native anchor jumps so scroll-margin-top
+  // keeps headings clear of the sticky site header. The shared site script
+  // would otherwise scroll to offsetTop and hide them behind it.
+  const sub = $(".sub");
+  if (sub) sub.addEventListener("click", e => {
+    if (e.target.closest('a[href^="#"]')) e.stopPropagation();
+  }, true);
+
+  // The works page links here with #work. The section only exists after the
+  // render above, so the browser's own fragment jump fires too early and the
+  // page loads at the top. Honour it once the content is in the DOM.
+  if (location.hash) {
+    const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (target) setTimeout(() => target.scrollIntoView(), 0);
+  }
+
+  const ld=document.createElement("script");ld.type="application/ld+json";
+  ld.textContent=JSON.stringify({"@context":"https://schema.org","@type":"Person",name:p.name,description:p.headline,url:"https://"+url,affiliation:{"@type":"Organization",name:"EAGLOPEN"}});
+  document.head.appendChild(ld);
+  const links=[...document.querySelectorAll(".sub a")];
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id))}),{rootMargin:"-30% 0px -60% 0px"});
+  document.querySelectorAll("section[id]").forEach(x=>io.observe(x));
+  $("#copy").addEventListener("click",async()=>{
+    try{ await navigator.clipboard.writeText("https://"+url); }catch(e){}
+    const t=$("#toast"); t.textContent="Profile link copied"; t.classList.add("on");
+    setTimeout(()=>t.classList.remove("on"),1800);
+  });
+
+  /* Premium depth: a few degrees of pointer tilt on the avatar, and a
+     sheen that follows the cursor across the work cards. Both are driven
+     by a single rAF-throttled pointermove, they are capped small so the
+     page stays calm, and they are skipped on touch, small screens, and
+     whenever the visitor asked for reduced motion. */
+  const calm = matchMedia("(prefers-reduced-motion: reduce)");
+  const hero = $(".hero");
+  const avatar = $(".avatar");
+  const cards = [...document.querySelectorAll(".work")];
+  const trackable = hero && avatar && cards.length && matchMedia("(hover:hover)").matches
+    && !matchMedia("(max-width:820px)").matches;
+  let queued = false, tx = 0, ty = 0;
+  const last = {x:0, y:0};
+
+  function paint(){
+    queued = false;
+    if (hero) hero.style.setProperty("--px", (50 + tx).toFixed(2) + "%");
+    if (avatar) avatar.style.transform =
+      "translate3d(0,0,0) rotateY(" + (tx * 2.2).toFixed(2) + "deg) rotateX(" + (-ty * 1.6).toFixed(2) + "deg)";
+    for (const c of cards){
+      const r = c.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > innerHeight) continue;
+      const x = ((last.x - r.left) / r.width) * 100;
+      const y = ((last.y - r.top) / r.height) * 100;
+      c.style.setProperty("--px", x.toFixed(1) + "%");
+      c.style.setProperty("--py", y.toFixed(1) + "%");
+    }
+  }
+
+  function onMove(e){
+    if (!trackable || calm.matches) return;
+    last.x = e.clientX; last.y = e.clientY;
+    const r = hero.getBoundingClientRect();
+    tx = Math.max(-1, Math.min(1, ((e.clientX - r.left) / r.width - .5) * 2));
+    ty = Math.max(-1, Math.min(1, ((e.clientY - r.top) / r.height - .5) * 2));
+    if (!queued){ queued = true; requestAnimationFrame(paint); }
+  }
+
+  function reset(){
+    if (!trackable || calm.matches) return;
+    last.x = last.y = 0;
+    if (hero) hero.style.setProperty("--px", "50%");
+    if (avatar) avatar.style.transform = "";
+    for (const c of cards){
+      c.style.setProperty("--px", "50%");
+      c.style.setProperty("--py", "50%");
+    }
+  }
+
+  if (trackable){
+    hero.addEventListener("pointermove", onMove);
+    hero.addEventListener("pointerleave", reset);
+    for (const c of cards){
+      c.addEventListener("pointermove", onMove);
+      c.addEventListener("pointerleave", reset);
+    }
+  }
+}
+render(PROFILE);
+</script>
+</body>
+</html>
