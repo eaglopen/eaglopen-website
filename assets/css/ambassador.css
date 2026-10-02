@@ -1,0 +1,164 @@
+/* ============================================================
+   EAGLOPEN AMBASSADOR SECTION
+   Shared stylesheet (loaded once per page: news.html, algolab.html).
+   Copied verbatim from the supplied <style id="am-style"> block.
+   Every rule is scoped with the "am-" prefix so it cannot collide
+   with the rest of the site.
+   ============================================================ */
+.am{
+  --am-navy-950:#041526; --am-navy-900:#071f33; --am-navy-700:#0b3a5b; --am-navy-500:#16537f;
+  --am-gold:#c9a646; --am-gold-light:#ecd187; --am-ink:#eef4f9; --am-muted:#a4b9cb;
+  position:relative; overflow:hidden; isolation:isolate; text-align:center;
+  padding:clamp(72px,9vw,128px) clamp(20px,5vw,64px) clamp(72px,9vw,120px);
+  background:
+    radial-gradient(1000px 600px at 50% 55%, rgba(22,83,127,.7), transparent 70%),
+    radial-gradient(600px 400px at 50% 0%, rgba(201,166,70,.2), transparent 70%),
+    linear-gradient(180deg,var(--am-navy-900),var(--am-navy-950));
+  color:var(--am-ink); font-family:"Sora","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+.am *,.am *::before,.am *::after{box-sizing:border-box}
+
+/* spotlight + stars */
+.am-beam{position:absolute;z-index:-1;top:-4%;left:15%;width:70%;height:86%;pointer-events:none;filter:blur(22px);
+  clip-path:polygon(44% 0,56% 0,100% 100%,0 100%);background:linear-gradient(180deg,rgba(236,209,135,.26),rgba(236,209,135,0) 85%);
+  animation:am-breathe 6s ease-in-out infinite}
+@keyframes am-breathe{50%{opacity:.6}}
+.am-stars{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.am-star{position:absolute;width:3px;height:3px;border-radius:50%;background:var(--am-gold-light);opacity:.0;animation:am-twinkle 4s ease-in-out infinite}
+@keyframes am-twinkle{50%{opacity:.85;transform:scale(1.6)}}
+
+/* ---------- headline ---------- */
+.am-chip{display:inline-flex;align-items:center;gap:10px;padding:9px 18px;border-radius:999px;font-size:.84rem;font-weight:600;color:var(--am-gold-light);
+  background:rgba(201,166,70,.1);border:1px solid rgba(201,166,70,.4);backdrop-filter:blur(6px)}
+.am-dot{width:9px;height:9px;border-radius:50%;background:#5be28a;box-shadow:0 0 0 0 rgba(91,226,138,.7);animation:am-ping 1.8s infinite}
+@keyframes am-ping{70%{box-shadow:0 0 0 11px rgba(91,226,138,0)}100%{box-shadow:0 0 0 0 rgba(91,226,138,0)}}
+.am-title{margin:24px auto 0;max-width:15ch;font-size:clamp(2.4rem,6vw,4.6rem);line-height:1.02;font-weight:800;letter-spacing:-.04em;
+  background:linear-gradient(180deg,#fff 35%,#b9d0e3);-webkit-background-clip:text;background-clip:text;color:transparent}
+.am-sub{margin:20px 0 0;font-size:clamp(1.05rem,2vw,1.35rem);font-weight:600;
+  background:linear-gradient(90deg,var(--am-gold),var(--am-gold-light),var(--am-gold));background-size:200% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;animation:am-shimmer 4s linear infinite}
+@keyframes am-shimmer{to{background-position:-200% 0}}
+.am-lead{margin:18px auto 0;max-width:58ch;font-size:clamp(1rem,1.5vw,1.14rem);line-height:1.75;color:var(--am-muted)}
+.am-lead strong{color:#fff;font-weight:600}
+
+/* ---------- 3D stage ---------- */
+.am-stage{--s:1;position:relative;height:calc(580px*var(--s));margin-top:clamp(20px,3vw,40px);perspective:1500px;display:grid;place-items:center}
+.am-scene{position:relative;width:300px;height:440px;transform-style:preserve-3d;
+  transform:scale(var(--s)) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));will-change:transform}
+
+.am-ring{position:absolute;left:50%;top:50%;width:640px;height:640px;margin:-320px 0 0 -320px;pointer-events:none;
+  transform:translateZ(-70px) rotateX(74deg);filter:drop-shadow(0 0 18px rgba(201,166,70,.35))}
+.am-ring svg{width:100%;height:100%;animation:am-rot 40s linear infinite;overflow:visible}
+.am-ring text{font:700 25px "Sora",sans-serif;letter-spacing:7px;fill:var(--am-gold)}
+@keyframes am-rot{to{transform:rotate(360deg)}}
+.am-ring.in{width:430px;height:430px;margin:-215px 0 0 -215px;transform:translateZ(-60px) rotateX(74deg);opacity:.75}
+.am-ring.in svg{animation-direction:reverse;animation-duration:26s}
+
+/* lanyard */
+.am-strap{position:absolute;left:50%;top:-260px;width:34px;height:290px;margin-left:-17px;transform:translateZ(6px);
+  background:repeating-linear-gradient(135deg,rgba(255,255,255,.14) 0 6px,transparent 6px 12px),linear-gradient(90deg,#8d6e1c,var(--am-gold) 45%,#8d6e1c);
+  -webkit-mask-image:linear-gradient(to top,#000 60%,transparent);mask-image:linear-gradient(to top,#000 60%,transparent);
+  box-shadow:0 0 22px rgba(201,166,70,.35)}
+.am-clip{position:absolute;left:50%;top:18px;width:52px;height:20px;margin-left:-26px;border-radius:8px;z-index:3;transform:translateZ(14px);
+  background:linear-gradient(180deg,#f1dc9b,#a98524);box-shadow:0 6px 12px rgba(0,0,0,.5)}
+
+/* the pass */
+.am-pass{position:absolute;inset:0;border-radius:28px;padding:34px 24px 22px;display:flex;flex-direction:column;align-items:center;overflow:hidden;
+  background:linear-gradient(160deg,#14578a,#0b3a5b 45%,#052238);
+  border:1px solid rgba(236,209,135,.55);
+  box-shadow:0 50px 90px -24px rgba(0,0,0,.75),0 0 60px -10px rgba(201,166,70,.4),0 1px 0 rgba(255,255,255,.4) inset;
+  opacity:0;transform:translate3d(0,-120px,-200px) rotateX(-40deg);transition:transform 1.3s cubic-bezier(.16,1,.3,1),opacity .8s}
+.am.is-in .am-pass{opacity:1;transform:none}
+.am-pass::before{content:"";position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen;border-radius:inherit;
+  background:linear-gradient(115deg,transparent 28%,rgba(236,209,135,.38) 42%,rgba(120,200,255,.3) 52%,rgba(255,150,230,.18) 58%,transparent 70%);
+  background-size:260% 100%;background-position:var(--hx,50%) 0}
+.am-pass::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+  background:radial-gradient(240px 240px at var(--mx,50%) var(--my,20%),rgba(255,255,255,.22),transparent 60%)}
+.am-brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:.95rem;letter-spacing:.18em;color:#fff}
+.am-brand svg{width:26px;height:26px;fill:none;stroke:var(--am-gold-light);stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round}
+.am-role{margin-top:12px;padding:5px 14px;border-radius:999px;font-size:.72rem;font-weight:700;color:#10202e;background:linear-gradient(135deg,var(--am-gold-light),var(--am-gold))}
+.am-photo{position:relative;width:128px;height:128px;margin:22px 0 16px;border-radius:50%;display:grid;place-items:center;overflow:hidden}
+.am-photo::before{content:"";position:absolute;inset:-30%;background:conic-gradient(from 0deg,var(--am-gold),transparent 35%,var(--am-gold-light) 60%,transparent 85%,var(--am-gold));animation:am-rot 6s linear infinite}
+.am-photo::after{content:"";position:absolute;inset:4px;border-radius:50%;background:linear-gradient(160deg,#1a5a88,#082c47)}
+.am-photo svg,.am-photo img{position:relative;z-index:1}
+.am-photo svg{width:52%;fill:none;stroke:var(--am-gold-light);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.am-photo img{width:calc(100% - 8px);height:calc(100% - 8px);object-fit:cover;border-radius:50%}
+.am-name{margin:0;font-size:1.3rem;font-weight:700;letter-spacing:-.01em;color:#fff}
+.am-yr{margin:3px 0 0;font-size:.8rem;color:var(--am-muted)}
+.am-mail{display:flex;align-items:center;gap:8px;margin-top:16px;padding:9px 14px;border-radius:12px;font-size:.78rem;font-weight:600;color:var(--am-gold-light);
+  background:rgba(4,21,38,.55);border:1px solid rgba(236,209,135,.3)}
+.am-mail svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.am-bars{margin-top:auto;width:100%;height:30px;border-radius:4px;opacity:.55;
+  background:repeating-linear-gradient(90deg,#fff 0 2px,transparent 2px 5px,#fff 5px 6px,transparent 6px 10px,#fff 10px 13px,transparent 13px 15px)}
+.am-id{margin-top:8px;font-size:.66rem;letter-spacing:.3em;color:var(--am-muted)}
+
+/* perk panels */
+.am-perk{--x:0px;--y:0px;--z:80px;position:absolute;left:50%;top:50%;width:250px;padding:18px 18px 18px 16px;text-align:left;
+  display:flex;gap:14px;align-items:flex-start;border-radius:20px;
+  background:linear-gradient(150deg,rgba(255,255,255,.17),rgba(255,255,255,.05) 50%,rgba(11,58,91,.5));
+  border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 30px 50px -18px rgba(0,0,0,.6),0 1px 0 rgba(255,255,255,.35) inset;
+  opacity:0;transform:translate3d(calc(-50% + var(--x)*.35),calc(-50% + var(--y) + 70px),-260px) scale(.8);
+  transition:transform 1.1s cubic-bezier(.16,1,.3,1),opacity .8s}
+.am.is-in .am-perk{opacity:1;transform:translate3d(calc(-50% + var(--x)),calc(-50% + var(--y)),var(--z))}
+.am-perk.p1{--x:-350px;--y:-125px;--z:90px;transition-delay:.35s}
+.am-perk.p2{--x:-330px;--y:110px;--z:150px;transition-delay:.5s}
+.am-perk.p3{--x:350px;--y:-100px;--z:130px;transition-delay:.65s}
+.am-perk.p4{--x:330px;--y:130px;--z:70px;transition-delay:.8s}
+.am-ico{flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:14px;
+  background:linear-gradient(135deg,var(--am-gold-light),var(--am-gold));box-shadow:0 8px 18px -6px rgba(201,166,70,.8)}
+.am-ico svg{width:22px;height:22px;fill:none;stroke:#10202e;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.am-perk h3{margin:0;font-size:.98rem;font-weight:700;color:#fff;letter-spacing:-.01em}
+.am-perk p{margin:5px 0 0;font-size:.8rem;line-height:1.55;color:var(--am-muted)}
+.am-perk .am-fl{display:contents}
+
+/* ---------- CTA ---------- */
+.am-cta-wrap{margin-top:clamp(8px,2vw,24px)}
+.am-cta{position:relative;display:inline-flex;align-items:center;gap:16px;padding:20px 20px 20px 40px;border-radius:999px;overflow:hidden;
+  font:700 1.1rem/1 "Sora","Segoe UI",system-ui,sans-serif;color:#10202e;text-decoration:none;
+  background:linear-gradient(135deg,#f0d77f,var(--am-gold) 55%,#ad8a2b);
+  box-shadow:0 18px 40px -8px rgba(201,166,70,.7),0 0 0 1px rgba(255,255,255,.3) inset,0 -4px 0 rgba(0,0,0,.14) inset;
+  transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s;animation:am-pulse 2.6s ease-in-out infinite}
+@keyframes am-pulse{50%{box-shadow:0 18px 56px -4px rgba(236,209,135,.95),0 0 0 1px rgba(255,255,255,.3) inset,0 -4px 0 rgba(0,0,0,.14) inset}}
+.am-cta::before{content:"";position:absolute;top:0;bottom:0;width:55%;left:-80%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.6),transparent);transform:skewX(-20deg);transition:left .7s}
+.am-cta:hover{transform:translateY(-5px) scale(1.03)}
+.am-cta:hover::before{left:130%}
+.am-cta:active{transform:scale(.98)}
+.am-cta:focus-visible{outline:3px solid #fff;outline-offset:5px}
+.am-cta-ico{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:#0b3a5b;transition:transform .3s}
+.am-cta-ico svg{width:20px;height:20px;fill:none;stroke:var(--am-gold-light);stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+.am-cta:hover .am-cta-ico{transform:translate(3px,-3px)}
+.am-note{margin:18px 0 0;font-size:.86rem;color:var(--am-muted)}
+
+/* ---------- responsive ---------- */
+@media (max-width:1180px){.am-stage{--s:.85}}
+@media (max-width:1020px){.am-stage{--s:.72}}
+@media (max-width:900px){
+  .am-stage{height:auto;perspective:none;display:block}
+  .am-scene{transform:none!important;width:auto;height:auto;display:flex;flex-direction:column;align-items:center;gap:16px}
+  .am-ring,.am-strap,.am-clip{display:none}
+  .am-pass{position:relative;inset:auto;width:300px;height:440px;margin-bottom:12px;animation:am-bob 5s ease-in-out infinite}
+  .am-perk{position:relative;left:auto;top:auto;width:100%;max-width:420px;opacity:1!important;transform:none!important}
+}
+@keyframes am-bob{50%{translate:0 -8px}}
+@media (max-width:560px){.am-cta{padding-left:30px;font-size:1rem}}
+@media (prefers-reduced-motion:reduce){.am *,.am *::before,.am *::after{animation:none!important;transition-duration:.01ms!important}}
+
+/* ============================================================
+   SITE-CONFLICT GUARD  (adds no new design — only restores it)
+   assets/css/responsiveness.css forces
+     section:not(.hero-section):not(.page-hero):not(.about-hero)
+             :not(.contact-hero):not(.news-hero) { padding-top:60px;
+             padding-bottom:60px }
+   at <=1024px. That selector carries five class-level :not()
+   arguments, so it outranks a plain `.am` and would otherwise
+   squash this section's own vertical padding on phones/tablets.
+   Re-asserting the exact same clamp values with a higher
+   specificity selector keeps the design intact without editing
+   any existing site stylesheet.
+   ============================================================ */
+@media (max-width:1024px){
+  .am#ambassadors{
+    padding:clamp(72px,9vw,128px) clamp(20px,5vw,64px) clamp(72px,9vw,120px);
+  }
+}

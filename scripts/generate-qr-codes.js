@@ -18,6 +18,7 @@ const { Jimp } = require("jimp");
 
 const SITE_URL = "https://eaglopen.org";
 const REGISTRATION_URL = "https://eaglopen.org/research.html#apply";
+const AMBASSADOR_URL = "https://eaglopen.org/algolab.html#ambassadors";
 const DATA_FILE = path.join(__dirname, "algolab-participants-data.json");
 const TEAM_FILE = path.join(__dirname, "algolab-team-data.json");
 const OUTPUT_DIR = path.join(__dirname, "..", "qrcodes");
@@ -145,7 +146,11 @@ async function main() {
   const regImage = await makeQrWithLogo(REGISTRATION_URL, logoImage);
   await writeWithRetry(regImage, regOutPath);
 
-  console.log(`Done. Saved ${people.length} QR codes (${participants.length} participants + ${team.length} team) into the qrcodes folder.`);
+  const ambOutPath = path.join(OUTPUT_DIR, "ambassador-registration.png");
+  const ambImage = await makeQrWithLogo(AMBASSADOR_URL, logoImage);
+  await writeWithRetry(ambImage, ambOutPath);
+
+  console.log(`Done. Saved ${people.length} QR codes (${participants.length} participants + ${team.length} team) + research-registration.png + ambassador-registration.png into the qrcodes folder.`);
 }
 
 main();
