@@ -1,0 +1,299 @@
+{
+  "$comment": [
+    "Hand-authored source of truth for the AlgoLab course-material pages.",
+    "Run `npm run build:materials` after editing. The script scans",
+    "assets/files/algolab/ and merges what it finds with this file, then writes",
+    "assets/js/algolab-materials-data.js (the file the website actually loads).",
+    "Never rename, move, delete or edit anything inside assets/files/algolab/."
+  ],
+  "repo": {
+    "$comment": "Public GitHub repo that hosts the notebooks. Used to build one-click Colab and nbviewer links.",
+    "owner": "eaglopen",
+    "repo": "eaglopen-website",
+    "branch": "main"
+  },
+  "courses": {
+    "ai-ml": {
+      "name": "AI & Machine Learning",
+      "icon": "fas fa-brain",
+      "dir": "AI and ML",
+      "days": ["Tuesday", "Thursday"],
+      "time": "8:00 – 10:30 AM",
+      "summary": "Explore how intelligent systems learn from data, make predictions, and affect the world around us.",
+      "instructor": "biniyam-aschalew",
+      "weeks": [
+        ["What is AI? Ethics and real-world examples", "Data, features and preparing a dataset"],
+        ["How machines learn: supervised learning", "Classification, prediction and evaluation"],
+        ["Introduction to neural networks", "AI project workshop and presentations"]
+      ],
+      "videoLibrary": {
+        "eyebrow": "Lecture Recordings",
+        "heading": "Video Library",
+        "description": "Watch every lecture of this course at your own pace, then follow along with the matching notes, code and lab exercises below each video."
+      },
+      "lectures": [
+        {
+          "n": 1,
+          "video": "https://youtu.be/t-S8qDNi3wo",
+          "title": "ML Day One",
+          "youtubeTitle": "ml day one"
+        },
+        {
+          "n": 2,
+          "video": "https://youtu.be/8vm3PM4N6w0",
+          "title": "ML for September 1",
+          "youtubeTitle": "ML for sep 1"
+        },
+        {
+          "n": 3,
+          "video": "https://youtu.be/yxLGBDYkU8w",
+          "title": "ML Day 3",
+          "youtubeTitle": "ML DAY 3"
+        },
+        {
+          "n": 4,
+          "video": "https://youtu.be/v2yrdOLx4XQ",
+          "title": "ML for September 3",
+          "youtubeTitle": "ML for sep 3"
+        },
+        {
+          "n": 5,
+          "title": "Practice and project workshop"
+        }
+      ],
+      "fileRules": [
+        { "$comment": "Lecture code notebooks", "dir": "lecture", "test": "^lec(\\d+)_code\\.ipynb$", "lecture": 1, "slot": "lectureCode" },
+        { "$comment": "Lecture 3 notebook lives in Practice/", "dir": "Practice", "test": "^lec(\\d+)_code\\.ipynb$", "lecture": 1, "slot": "lectureCode" },
+        { "$comment": "Lecture notes PDFs; prefer the clean name over the ' (2)' duplicate", "dir": "lecture", "test": "^lec(\\d+)_notes(?:\\s*\\((\\d+)\\))?\\.pdf$", "lecture": 1, "slot": "notes", "preferCleanName": true },
+        { "$comment": "Lecture notes named by week, e.g. week02_lec03.pdf", "dir": "lecture", "test": "^week\\d+_lec(\\d+)(?:\\s*\\((\\d+)\\))?\\.pdf$", "lecture": 1, "slot": "notes", "preferCleanName": true },
+        { "$comment": "Lab notebooks with solutions", "dir": "Practice", "test": "^lab(\\d+)_solutions\\.ipynb$", "lecture": 1, "slot": "lab", "isSolution": 1, "stripToken": "_solutions" },
+        { "$comment": "Lab notebooks", "dir": "Practice", "test": "^lab(\\d+)\\.ipynb$", "lecture": 1, "slot": "lab" },
+        { "$comment": "Practice notebooks with solutions", "dir": "Practice", "test": "^practice(\\d+)_solutions\\.ipynb$", "lecture": 1, "slot": "lab", "isSolution": 1, "stripToken": "_solutions" },
+        { "$comment": "Practice notebooks", "dir": "Practice", "test": "^practice(\\d+)\\.ipynb$", "lecture": 1, "slot": "lab" },
+        { "$comment": "Everything else in this course", "dir": ".", "test": ".", "lecture": 0, "slot": "extras" }
+      ]
+    },
+
+    "aerospace": {
+      "name": "Aerospace Fundamentals",
+      "icon": "fas fa-rocket",
+      "dir": "Aerospace",
+      "days": ["Tuesday", "Thursday"],
+      "time": "2:00 – 4:30 PM",
+      "summary": "Discover the forces, systems, and bold engineering ideas behind flight and space exploration.",
+      "instructor": "naol-samuel",
+      "weeks": [
+        ["Introduction to aerospace and flight", "Forces of flight: lift, weight, thrust and drag"],
+        ["Aircraft design and stability", "Rocket science and space missions"],
+        ["Satellites, orbits and Earth observation", "Design challenge and mission showcase"]
+      ],
+      "videoLibrary": {
+        "eyebrow": "Lecture Recordings",
+        "heading": "Video Library",
+        "description": "Watch every lecture of this course at your own pace, then follow along with the matching notes, code and lab exercises below each video."
+      },
+      "lectures": [
+        {
+          "n": 1,
+          "video": "https://youtu.be/LtEcb6doI-A",
+          "title": "Aerospace 1",
+          "youtubeTitle": "aerospace 1"
+        },
+        {
+          "n": 2,
+          "video": "https://youtu.be/Ipv55uKbT2s",
+          "title": "Aerospace 2",
+          "youtubeTitle": "aerospace 2"
+        },
+        {
+          "n": 3,
+          "video": "https://youtu.be/aHfUxo8JCZE",
+          "title": "Aerospace Day 4",
+          "youtubeTitle": "aerospace day 4"
+        },
+        {
+          "n": 4,
+          "video": "https://youtu.be/sF8C2fjfcyA",
+          "title": "Aerospace — September 1, 2026",
+          "youtubeTitle": "aerospace sep1, 2026"
+        }
+      ],
+      "fileRules": [
+        {
+          "$comment": "Slides are named AE101-W<week>-L<token>.pptx. The week tells us the lecture, because the 'L' token is inconsistent across uploads.",
+          "dir": "lecture",
+          "test": "^AE101-W(\\d+)-L\\d+\\.pptx$",
+          "lecture": 1,
+          "slot": "notes"
+        },
+        { "$comment": "Everything else in this course", "dir": ".", "test": ".", "lecture": 0, "slot": "extras" }
+      ]
+    },
+
+    "python": {
+      "name": "Python Programming",
+      "icon": "fab fa-python",
+      "dir": "Python",
+      "days": ["Monday", "Wednesday", "Friday"],
+      "time": "8:00 – 10:30 AM",
+      "summary": "Learn to think like a programmer, write clean Python, and solve real problems through practice.",
+      "instructor": "mesay-shemsu",
+      "weeks": [
+        ["Getting started with Python", "Variables, data types & input", "Conditions and decision making"],
+        ["Loops and iteration", "Functions and code organization", "Lists, tuples and dictionaries"],
+        ["Working with files", "Problem-solving patterns", "Mini project and showcase"]
+      ],
+      "videoLibrary": {
+        "eyebrow": "Lecture Recordings",
+        "heading": "Video Library",
+        "description": "Watch every lecture of this course at your own pace, then follow along with the matching notes, code and lab exercises below each video."
+      },
+      "credit": {
+        "eyebrow": "Course credit",
+        "heading": "Course materials by Prof. Jelani Nelson",
+        "body": "The Python notes, labs and problem sets in this course were prepared by Professor Jelani Nelson (UC Berkeley), creator of AddisCoder, for the AddisCoder program. We are deeply grateful to him for generously allowing EAGLOPEN to share them with our students.",
+        "linkLabel": "Learn more about AddisCoder",
+        "linkHref": "https://www.addiscoder.com",
+        "materialsLine": "Materials: Prof. Jelani Nelson, AddisCoder"
+      },
+      "lectures": [
+        { "n": 1, "video": "https://youtu.be/Dvw3PP6X5fA", "title": "Python Day 2", "youtubeTitle": "python day 2" },
+        { "n": 2, "video": "https://youtu.be/IQTmeiJ9pfk", "title": "Python Recursion", "youtubeTitle": "python recursion" },
+        { "n": 3, "title": "Lecture 3" },
+        { "n": 4, "title": "Lecture 4" },
+        { "n": 5, "title": "Lecture 5" },
+        { "n": 6, "title": "Lecture 6" },
+        { "n": 7, "title": "Lecture 7" },
+        { "n": 8, "title": "Lecture 8" },
+        { "n": 9, "title": "Lecture 9" },
+        { "n": 10, "title": "Lecture 10" },
+        { "n": 11, "title": "Lecture 11" },
+        { "n": 12, "title": "Lecture 12" },
+        { "n": 13, "title": "Lecture 13" }
+      ],
+      "fileRules": [
+        {
+          "$comment": "Lecture notes named lec<number><part>, e.g. lec1a.pdf / lec1b.pdf",
+          "dir": "lectures",
+          "test": "^lec(\\d+)([a-zA-Z])\\.pdf$",
+          "lecture": 1,
+          "slot": "notes",
+          "part": 2,
+          "partNames": { "a": "Part A", "b": "Part B", "c": "Part C" }
+        },
+        {
+          "$comment": "Lecture 9 part B was uploaded as a PowerPoint deck",
+          "dir": "lectures",
+          "test": "^lec(\\d+)([a-zA-Z])\\.pptx$",
+          "lecture": 1,
+          "slot": "notes",
+          "part": 2,
+          "partNames": { "a": "Part A", "b": "Part B", "c": "Part C" }
+        },
+        {
+          "$comment": "One extra notes PDF that is not part of the lecN naming scheme",
+          "dir": "lectures",
+          "test": "^day_(\\d+)_lecture\\.pdf$",
+          "lecture": 1,
+          "slot": "notes",
+          "label": "Lecture slides"
+        },
+        {
+          "$comment": "Problem sets with a letter part, e.g. probs4a.pdf. '_supp' marks the solutions. 'dedupe' keeps one row per lecture+part so 6b_supp.pdf does not show up beside probs6b_supp.pdf.",
+          "dir": "problems for lab",
+          "test": "^probs(\\d+)([a-zA-Z])(_supp)?\\.pdf$",
+          "lecture": 1,
+          "slot": "problems",
+          "part": 2,
+          "isSolution": 3,
+          "stripToken": "_supp",
+          "dedupe": true,
+          "prefer": "^probs",
+          "partNames": { "a": "Part A", "b": "Part B", "c": "Part C" }
+        },
+        {
+          "$comment": "Problem sets with no letter part, e.g. probs10.pdf",
+          "dir": "problems for lab",
+          "test": "^probs(\\d+)(_supp)?\\.pdf$",
+          "lecture": 1,
+          "slot": "problems",
+          "isSolution": 2,
+          "stripToken": "_supp",
+          "dedupe": true,
+          "prefer": "^probs"
+        },
+        {
+          "$comment": "Older uploads that dropped the 'probs' prefix, e.g. 6b_supp.pdf. Matched so they dedupe against the canonical copy; if a canonical copy is missing the file is still linked.",
+          "dir": "problems for lab",
+          "test": "^(\\d+)([a-zA-Z])(_supp)?\\.pdf$",
+          "lecture": 1,
+          "slot": "problems",
+          "part": 2,
+          "isSolution": 3,
+          "stripToken": "_supp",
+          "dedupe": true,
+          "partNames": { "a": "Part A", "b": "Part B", "c": "Part C" }
+        },
+        { "$comment": "Everything else in this course", "dir": ".", "test": ".", "lecture": 0, "slot": "extras" }
+      ]
+    },
+
+    "cpp": {
+      "name": "C++ Programming",
+      "icon": "fas fa-code",
+      "dir": "C++",
+      "days": ["Monday", "Wednesday", "Friday"],
+      "time": "2:00 – 4:30 PM",
+      "summary": "Build strong programming logic and efficient solutions with C++ and algorithmic thinking.",
+      "instructor": "melkamu-abetu",
+      "weeks": [
+        ["C++ environment & first program", "Variables, operators & input/output", "Conditions and control flow"],
+        ["Loops and functions", "Arrays, strings & vectors", "Pointers and memory basics"],
+        ["Structures and object-oriented thinking", "Algorithms and problem solving", "Programming challenge and review"]
+      ],
+      "videoLibrary": {
+        "eyebrow": "Lecture Recordings",
+        "heading": "Video Library",
+        "description": "Watch every lecture of this course at your own pace, then follow along with the matching notes, code and lab exercises below each video."
+      },
+      "lectures": [
+        { "n": 1, "video": "https://youtu.be/LQWngtDskV4", "title": "C++ — Session 1", "youtubeTitle": "C++" },
+        { "n": 2, "video": "https://youtu.be/mTqfehfi810", "title": "C++ First Class", "youtubeTitle": "C++ FIRST class" },
+        { "n": 3, "video": "https://youtu.be/eTHmC9fpfkA", "title": "Day 5 — C++", "youtubeTitle": "day 5 c++" },
+        { "n": 4, "video": "https://youtu.be/RlxgV4GTqW0", "title": "C++ Day 3, First Session", "youtubeTitle": "C++ DAY 3 FIRST SESSION" },
+        { "n": 5, "video": "https://youtu.be/RhLnOWvsbAY", "title": "C++ Day 3", "youtubeTitle": "C++ DAY 3" }
+      ],
+      "fileRules": [
+        {
+          "$comment": "Lecture decks: 'Chapter-1 (3).pptx', 'Chapter 2.pptx', 'CH-3.pptx', 'Chapter - 4 (2) (2).pptx'",
+          "dir": "lecture",
+          "test": "^(?:CH|Chapter)\\s*-?\\s*(\\d+)",
+          "lecture": 1,
+          "slot": "notes"
+        },
+        {
+          "$comment": "Lab decks: 'Lab Lecture 1 (2).pptx'",
+          "dir": "Practice",
+          "test": "^Lab\\s+Lecture\\s+(\\d+)",
+          "lecture": 1,
+          "slot": "lab"
+        },
+        { "$comment": "Everything else in this course", "dir": ".", "test": ".", "lecture": 0, "slot": "extras" }
+      ]
+    }
+  },
+
+  "coordinators": ["lencho-taye", "negasa-reta"],
+
+  "slots": {
+    "notes": { "label": "Lecture notes", "soonTitle": "Lecture notes coming soon.", "soonBody": "They are being finalized and will be available to read here very soon." },
+    "lectureCode": { "label": "Lecture code", "soonTitle": "Code notebook coming soon.", "soonBody": "The notebook used in this lecture is being prepared and will be added here very soon." },
+    "lab": { "label": "Lab practice", "soonTitle": "Lab exercises coming soon.", "soonBody": "The lab sheet and exercises are being finalized and will be available to download very soon." },
+    "problems": { "label": "Problem set", "soonTitle": "Problem set coming soon.", "soonBody": "This problem set is being finalized and will be available to read and download very soon." }
+  },
+
+  "comingSoon": {
+    "video": { "badge": "Coming soon", "title": "Lecture video coming soon.", "body": "This recording is being prepared and will be published here very soon." },
+    "lecture": { "badge": "Coming soon", "title": "Materials for this lecture will be published very soon.", "body": "Please check back shortly." }
+  }
+}

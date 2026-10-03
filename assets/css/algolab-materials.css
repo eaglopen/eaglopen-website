@@ -1,0 +1,883 @@
+/* =====================================================
+   EAGLOPEN — AlgoLab course materials pages
+   Builds on algolab.css / yt-embed.css. Adds:
+   course team, credit banner, "how to open" panel,
+   lecture cards and the polished "coming soon" states.
+   ===================================================== */
+
+/* ---------- shared bits ------------------------------------------- */
+
+.al-materials-section {
+  padding: 76px 0 0;
+}
+
+.al-materials-section:first-child {
+  padding-top: 0;
+}
+
+.al-materials-section .section-head {
+  margin-bottom: var(--space-8);
+}
+
+.al-materials-section .section-sub {
+  max-width: 62ch;
+  margin-inline: auto;
+}
+
+/* =====================================================
+   1. COURSE TEAM
+   ===================================================== */
+
+.al-materials-team {
+  padding: 68px 0 0;
+}
+
+.al-materials-team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+/* Same card as the team section on algolab.html, sized for three across. */
+.al-materials-team-grid .al-person {
+  display: flex;
+  flex-direction: column;
+  padding: 32px 26px 28px;
+}
+
+.al-materials-team-grid .al-person-bio {
+  flex: 1;
+}
+
+/* The base badge pill comes from algolab.css; only the tints are ours, so the
+   instructor reads first and the coordinators second. */
+.al-materials-team-grid .al-person-role-badge.is-instructor {
+  color: var(--color-primary);
+  background: rgba(11, 92, 63, 0.12);
+}
+
+.al-materials-team-grid .al-person-role-badge.is-coordinator {
+  color: var(--color-gold-dark);
+  background: rgba(201, 168, 76, 0.14);
+}
+
+.al-materials-team-grid .al-profile-cta {
+  margin-top: 22px;
+}
+
+/* =====================================================
+   2. CREDIT BANNER (Prof. Jelani Nelson, Python course)
+   ===================================================== */
+
+.al-credit {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 26px;
+  max-width: 1040px;
+  margin: 40px auto 0;
+  padding: 34px 38px;
+  border: 1px solid rgba(201, 168, 76, 0.4);
+  border-radius: 20px;
+  background:
+    radial-gradient(ellipse 70% 120% at 0% 0%, rgba(201, 168, 76, 0.16), transparent 60%),
+    linear-gradient(150deg, #fffdf7 0%, var(--color-white) 55%);
+  box-shadow: 0 26px 54px -34px rgba(8, 26, 43, 0.55);
+}
+
+.al-credit-mark {
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  border-radius: 18px;
+  color: var(--color-gold-dark);
+  font-size: 1.6rem;
+  background: linear-gradient(140deg, rgba(201, 168, 76, 0.26), rgba(201, 168, 76, 0.1));
+  border: 1px solid rgba(201, 168, 76, 0.34);
+}
+
+.al-credit-eyebrow {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--color-gold-dark);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.al-credit h2 {
+  margin-bottom: 10px;
+  color: var(--color-primary);
+  font-size: var(--font-size-xl);
+  line-height: 1.25;
+}
+
+.al-credit p {
+  max-width: 66ch;
+  color: var(--color-gray-600);
+  font-size: 0.97rem;
+  line-height: var(--line-height-relaxed);
+}
+
+.al-credit-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 16px;
+  color: var(--color-primary);
+  font-size: 0.9rem;
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+}
+
+.al-credit-link i {
+  color: var(--color-gold-dark);
+  transition: transform 0.3s var(--ease-expo);
+}
+
+.al-credit-link:hover {
+  color: var(--color-secondary-dark);
+}
+
+.al-credit-link:hover i {
+  transform: translateX(4px);
+}
+
+.al-credit-link:focus-visible {
+  outline: 3px solid var(--color-secondary);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* Short line repeated next to the Python materials list. */
+.al-credit-inline {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 22px;
+  color: var(--color-gray-500);
+  font-size: var(--font-size-sm);
+}
+
+.al-credit-inline i {
+  color: var(--color-gold-dark);
+}
+
+/* =====================================================
+   3. HOW TO OPEN THESE MATERIALS
+   ===================================================== */
+
+.al-howto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 22px;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.al-howto-card {
+  display: flex;
+  flex-direction: column;
+  padding: 28px 28px 26px;
+  border: 1px solid var(--color-gray-200);
+  border-radius: 18px;
+  background: var(--color-white);
+  box-shadow: 0 20px 44px -34px rgba(8, 26, 43, 0.6);
+}
+
+.al-howto-head {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 16px;
+}
+
+.al-howto-icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 13px;
+  font-size: 1.15rem;
+  color: var(--color-primary);
+  background: rgba(0, 180, 216, 0.12);
+}
+
+.al-howto-card h3 {
+  color: var(--color-primary);
+  font-size: 1.06rem;
+  line-height: 1.3;
+}
+
+.al-howto-card > p {
+  color: var(--color-gray-600);
+  font-size: 0.92rem;
+  line-height: var(--line-height-relaxed);
+}
+
+.al-howto-card strong {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-bold);
+}
+
+.al-howto-card kbd {
+  display: inline-block;
+  padding: 2px 7px;
+  border: 1px solid var(--color-gray-200);
+  border-bottom-width: 2px;
+  border-radius: 6px;
+  background: var(--color-gray-50);
+  color: var(--color-primary);
+  font-family: var(--font-family-primary);
+  font-size: 0.78rem;
+  font-weight: var(--font-weight-bold);
+}
+
+/* Option 1 / Option 2 inside the notebooks card */
+.al-howto-options {
+  display: grid;
+  gap: 14px;
+  margin-top: 4px;
+}
+
+.al-howto-option {
+  padding: 16px 17px;
+  border: 1px solid var(--color-gray-200);
+  border-radius: 13px;
+  background: var(--color-gray-50);
+}
+
+.al-howto-option > h4 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  color: var(--color-primary);
+  font-size: 0.82rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.al-howto-option > h4 span {
+  display: grid;
+  place-items: center;
+  width: 21px;
+  height: 21px;
+  border-radius: 6px;
+  color: var(--color-white);
+  font-size: 0.66rem;
+  letter-spacing: 0;
+  background: var(--color-primary-light);
+}
+
+.al-howto-sub {
+  margin-bottom: 9px;
+  color: var(--color-secondary-dark) !important;
+  font-size: 0.74rem !important;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.al-howto-option ol {
+  margin: 0 0 12px;
+  padding-left: 20px;
+  color: var(--color-gray-600);
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+
+.al-howto-option li + li {
+  margin-top: 5px;
+}
+
+.al-howto-option code {
+  padding: 2px 6px;
+  border-radius: 5px;
+  background: rgba(11, 60, 93, 0.07);
+  color: var(--color-primary);
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: 0.84em;
+}
+
+.al-howto-option .al-btn {
+  width: 100%;
+}
+
+.al-howto-tip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  max-width: 1040px;
+  margin: 22px auto 0;
+  padding: 13px 20px;
+  border: 1px dashed rgba(201, 168, 76, 0.5);
+  border-radius: 12px;
+  color: var(--color-gray-600);
+  font-size: 0.9rem;
+  text-align: center;
+  background: rgba(201, 168, 76, 0.08);
+}
+
+.al-howto-tip i {
+  color: var(--color-gold-dark);
+}
+
+/* =====================================================
+   4. BUTTONS (light and dark surfaces)
+   ===================================================== */
+
+.al-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 10px 16px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 0.83rem;
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease,
+    transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.al-btn i {
+  font-size: 0.78rem;
+}
+
+.al-btn--primary {
+  color: var(--color-primary-dark);
+  background: var(--color-gold);
+  box-shadow: 0 12px 26px -16px rgba(201, 168, 76, 0.9);
+}
+
+.al-btn--primary:hover {
+  background: var(--color-gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px -16px rgba(201, 168, 76, 0.95);
+}
+
+.al-btn--ghost {
+  color: var(--color-primary);
+  border-color: var(--color-gray-200);
+  background: var(--color-white);
+}
+
+.al-btn--ghost:hover {
+  color: var(--color-secondary-dark);
+  border-color: var(--color-secondary-light);
+  transform: translateY(-2px);
+}
+
+.al-btn--onDark {
+  color: rgba(255, 255, 255, 0.9);
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.al-btn--onDark:hover {
+  color: var(--color-primary-dark);
+  border-color: var(--color-gold);
+  background: var(--color-gold);
+  transform: translateY(-2px);
+}
+
+.al-btn:focus-visible {
+  outline: 3px solid var(--color-secondary);
+  outline-offset: 3px;
+}
+
+.al-btn--primary:focus-visible {
+  outline-color: var(--color-secondary-light);
+}
+
+/* =====================================================
+   5. VIDEO LIBRARY + LECTURE CARDS
+   ===================================================== */
+
+.al-participant-videos .al-lecture-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 26px;
+  max-width: 1180px;
+  margin: var(--space-10) auto 0;
+  align-items: start;
+}
+
+.al-lecture-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03));
+  box-shadow: 0 30px 70px -46px rgba(0, 0, 0, 0.9);
+  transition: transform 0.4s var(--ease-expo), border-color 0.4s var(--ease-expo),
+    box-shadow 0.4s var(--ease-expo);
+}
+
+.al-lecture-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(201, 168, 76, 0.34);
+  box-shadow: 0 40px 84px -46px rgba(0, 0, 0, 0.95);
+}
+
+.al-lecture-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  padding: 20px 22px 16px;
+}
+
+.al-lecture-num {
+  display: grid;
+  flex: none;
+  place-items: center;
+  min-width: 42px;
+  height: 42px;
+  padding: 0 9px;
+  border-radius: 12px;
+  color: var(--color-primary-dark);
+  font-size: 0.78rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.02em;
+  background: var(--color-gold);
+}
+
+.al-lecture-head h3 {
+  color: var(--color-white);
+  font-size: 1.06rem;
+  line-height: 1.32;
+}
+
+.al-lecture-topic {
+  margin-top: 4px;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+/* The player box itself is .yt-lite from yt-embed.css - identical to Research. */
+.al-lecture-video {
+  padding: 0 22px;
+}
+
+.al-lecture-video .yt-lite {
+  border-radius: var(--radius-lg);
+  box-shadow: 0 22px 50px -34px rgba(0, 0, 0, 0.95);
+}
+
+/* ---------- resources ---------- */
+
+.al-lecture-resources {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 18px 22px 22px;
+}
+
+.al-resource-group + .al-resource-group {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.al-resource-group > h4 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.68rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.al-resource-group > h4 i {
+  color: var(--color-gold);
+}
+
+.al-resource {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 12px 13px;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.al-resource:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.al-resource-icon {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  font-size: 0.95rem;
+  color: var(--color-white);
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.al-resource-icon[data-kind="pdf"] {
+  color: #ff9d9d;
+  background: rgba(214, 71, 71, 0.2);
+}
+
+.al-resource-icon[data-kind="notebook"] {
+  color: #ffd479;
+  background: rgba(201, 168, 76, 0.2);
+}
+
+.al-resource-icon[data-kind="slides"] {
+  color: #9ae6f5;
+  background: rgba(0, 180, 216, 0.2);
+}
+
+.al-resource-body {
+  min-width: 0;
+}
+
+.al-resource-name {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-white);
+  font-size: 0.9rem;
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.35;
+}
+
+.al-resource-badge {
+  padding: 3px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.62rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.al-resource-file {
+  margin-top: 3px;
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 0.71rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.al-resource-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.al-resource-actions .al-btn {
+  flex: 1 1 auto;
+  min-width: 128px;
+}
+
+.al-resource-actions .al-btn--tertiary {
+  flex: 0 0 auto;
+  min-width: 0;
+  min-height: 42px;
+  padding-inline: 13px;
+  color: rgba(255, 255, 255, 0.62);
+  border-color: rgba(255, 255, 255, 0.14);
+  background: transparent;
+}
+
+.al-resource-actions .al-btn--tertiary:hover {
+  color: var(--color-white);
+  border-color: rgba(255, 255, 255, 0.34);
+}
+
+/* Course-wide extras (setup guides, assessments, reference notes) */
+.al-extras {
+  max-width: 1180px;
+  margin: 46px auto 0;
+  padding: 26px 28px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-xl);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.al-extras > h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+  color: var(--color-white);
+  font-size: 1.02rem;
+}
+
+.al-extras > h3 i {
+  color: var(--color-gold);
+}
+
+.al-extras > p {
+  margin-bottom: 16px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.86rem;
+}
+
+.al-extras .al-resource:last-child {
+  padding-bottom: 12px;
+}
+
+/* ---------- credit line inside the dark media section ---------- */
+
+.al-videos-credit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  max-width: 1180px;
+  margin: 34px auto 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.86rem;
+  text-align: center;
+}
+
+.al-videos-credit i {
+  color: var(--color-gold);
+}
+
+.al-videos-credit a {
+  color: var(--color-gold-light);
+  font-weight: var(--font-weight-semibold);
+  text-underline-offset: 3px;
+}
+
+/* =====================================================
+   6. COMING SOON
+   ===================================================== */
+
+.al-coming {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+  padding: 16px 18px;
+  border: 1px dashed rgba(255, 255, 255, 0.24);
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.al-coming--video {
+  aspect-ratio: 16 / 9;
+  align-content: center;
+  justify-items: center;
+  gap: 9px;
+  padding: 22px;
+  text-align: center;
+  border-radius: var(--radius-lg);
+}
+
+.al-coming--video .al-coming-icon {
+  width: 52px;
+  height: 52px;
+  font-size: 1.15rem;
+}
+
+.al-coming--video .al-coming-text {
+  max-width: 34ch;
+}
+
+.al-coming-icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.95rem;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.al-coming-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  color: var(--color-gold-light);
+  font-size: 0.63rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: rgba(201, 168, 76, 0.14);
+  border: 1px solid rgba(201, 168, 76, 0.28);
+  white-space: nowrap;
+}
+
+.al-coming-text strong {
+  display: block;
+  margin-bottom: 3px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.9rem;
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.4;
+}
+
+.al-coming-text p {
+  color: rgba(255, 255, 255, 0.56);
+  font-size: 0.79rem;
+  line-height: 1.55;
+}
+
+/* A lecture with nothing at all yet still keeps its card height. */
+.al-lecture-empty {
+  margin-top: 16px;
+  padding: 16px 18px;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 13px;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.84rem;
+  line-height: 1.55;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.al-lecture-empty strong {
+  display: block;
+  margin-bottom: 3px;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* =====================================================
+   7. COURSE SYLLABUS (existing week/day content)
+   ===================================================== */
+
+.al-materials-syllabus {
+  padding: 76px 0 0;
+}
+
+.al-materials-syllabus .al-week-nav {
+  max-width: 1040px;
+  margin: 0 auto 28px;
+}
+
+.al-materials-syllabus .al-day-grid {
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+/* The materials page explains downloads itself, so this note is folded in. */
+.al-materials-note.is-compact {
+  max-width: 1040px;
+  margin: 30px auto 0;
+}
+
+/* =====================================================
+   8. RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 1080px) {
+  .al-participant-videos .al-lecture-grid {
+    gap: 22px;
+  }
+}
+
+@media (max-width: 900px) {
+  .al-materials-team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .al-participant-videos .al-lecture-grid {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 620px;
+  }
+}
+
+@media (max-width: 640px) {
+  .al-materials-section,
+  .al-materials-team,
+  .al-materials-syllabus {
+    padding-top: 52px;
+  }
+
+  .al-materials-team-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  .al-credit {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    padding: 26px 22px;
+    border-radius: 17px;
+  }
+
+  .al-howto-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .al-howto-card {
+    padding: 22px 20px;
+  }
+
+  .al-howto-tip {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .al-lecture-head,
+  .al-lecture-video,
+  .al-lecture-resources {
+    padding-inline: 16px;
+  }
+
+  .al-resource-actions .al-btn {
+    min-width: 0;
+  }
+
+  .al-extras {
+    padding: 20px 18px;
+  }
+}
+
+/* Very small phones: keep buttons comfortably tappable. */
+@media (max-width: 380px) {
+  .al-resource-actions {
+    flex-direction: column;
+  }
+
+  .al-resource-actions .al-btn {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .al-lecture-card,
+  .al-lecture-card:hover,
+  .al-btn,
+  .al-btn:hover,
+  .al-credit-link i,
+  .al-credit-link:hover i {
+    transform: none;
+    transition: none;
+  }
+}

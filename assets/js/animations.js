@@ -7,23 +7,52 @@ document.addEventListener("DOMContentLoaded", () => {
     ".fade-in, .slide-in-left, .slide-in-right, .reveal-up, .stagger-children"
   );
 
-  const revealObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
-  );
+  const makeRevealObserver = (options) => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      options
+    );
+    return observer;
+  };
+
+  const revealObserver = makeRevealObserver({
+    threshold: 0.12,
+    rootMargin: "0px 0px -40px 0px",
+  });
+
+  // A .stagger-children container can be far taller than the viewport (a long
+  // list of cards, for example). `threshold` is a fraction of the whole
+  // element, so on a very tall container a ratio like 0.12 can never be
+  // reached - at most one viewport is ever on screen - and the entire group
+  // stays stuck at opacity 0. A container only needs to touch the viewport
+  // once, so it is observed with no ratio at all.
+  const containerObserver = makeRevealObserver({
+    threshold: 0,
+    rootMargin: "0px 0px -40px 0px",
+  });
 
   animatedElements.forEach((el) => {
+    // Children of a stagger container are revealed by the container itself.
     const staggerParent = el.closest(".stagger-children");
     if (staggerParent && staggerParent !== el) return;
-    revealObserver.observe(el);
+
+    const observer = el.classList.contains("stagger-children")
+      ? containerObserver
+      : revealObserver;
+    observer.observe(el);
   });
+
+  // If the observer is unavailable, show everything rather than hiding it.
+  if (!("IntersectionObserver" in window)) {
+    animatedElements.forEach((el) => el.classList.add("visible"));
+  }
 
   // ===== SECTION TITLE UNDERLINE =====
   const sectionTitles = document.querySelectorAll(".section-title");
