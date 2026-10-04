@@ -22,6 +22,8 @@ window.ALGOLAB_MATERIALS = {
       "image": "assets/images/programs/biny.jpg",
       "position": "AI and ML Instructor",
       "bio": "Biniyam is pursuing his Master's in Electrical Engineering at KAIST, South Korea. He completed his BSc in Computer Science with a minor in Industrial Engineering at KAIST on a full Scholarship, and earned the Hanseong Scholarship for academic excellence. His research focuses on AI and foundation models. He is this year's AlgoLab instructor for AI.",
+      "email": "aschalbiniyam@gmail.com",
+      "linkedin": "https://linkedin.com/in/biniyamaschalew",
       "profileUrl": "algolab/biniyam-aschalew"
     },
     "naol-samuel": {
@@ -49,7 +51,9 @@ window.ALGOLAB_MATERIALS = {
       "name": "Negasa Reta",
       "image": "assets/images/research/team/negasa.jpg",
       "position": "Program Coordinator",
-      "bio": "Software Engineer · Founder @ Dungoo Software Solutions · European Union Youth Sounding Board (EU YSB) Member · UNDP Student Ambassador - FTL Track · Entrepreneur · Knowledge Engineering · AI Dev & Automation",
+      "bio": "Negasa Reta is a co-founder of EAGLOPEN and this year's AlgoLab coordinator. He is the founder of Dungoo Software Solutions and a UNDP Student Ambassador. His work spans software engineering, AI development, and automation.",
+      "email": "negasareta@eaglopen.org",
+      "linkedin": "https://linkedin.com/in/negasa-reta-7448a9371",
       "profileUrl": "algolab/negasa-reta"
     },
     "lencho-taye": {
@@ -57,6 +61,8 @@ window.ALGOLAB_MATERIALS = {
       "image": "assets/images/research/team/lenisuit.jpg",
       "position": "Program Coordinator",
       "bio": "Founder & Executive Director, EAGLOPEN · Lead Instructor (2023, 24, 25 Cohort) · AddisCoder '25 Alumnus · IAAC Ambassador · Student Researcher & Software Developer",
+      "email": "lencho@eaglopen.org",
+      "linkedin": "https://linkedin.com/in/lenchotaye",
       "profileUrl": "algolab/lencho-taye"
     }
   },

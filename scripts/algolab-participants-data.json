@@ -317,10 +317,11 @@
   },
   {
     "name": "Bilisa",
-    "image": "assets/images/hero/logo-v2.png",
+    "image": "assets/images/algolab-2026/algo2026/Bilisa Ferede.jpg",
     "description": "A passionate student exploring coding, AI, and technology through EAGLOPEN AlgoLab 2026.",
     "cohort": "2026",
-    "id": "EAGLOPEN-ALG-2026-P-040"
+    "id": "EAGLOPEN-ALG-2026-P-040",
+    "certificate": "certificates/Bilisa Ferede.png"
   },
   {
     "name": "Firebruk Gezu",

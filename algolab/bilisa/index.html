@@ -103,6 +103,37 @@
         padding-top: 30px;
         border-top: 2px solid rgba(218, 165, 32, 0.3);
       }
+      .al-profile-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 18px;
+      }
+      .al-profile-contact {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        padding: 9px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.24);
+        background: rgba(255, 255, 255, 0.06);
+        color: #ffffff;
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        text-decoration: none;
+        transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+      }
+      .al-profile-contact:hover {
+        background: linear-gradient(110deg, #c9a84c, #f0d98f);
+        border-color: #c9a84c;
+        color: #14202e;
+        transform: translateY(-2px);
+      }
+      .al-profile-contact:focus-visible {
+        outline: 3px solid var(--color-secondary-light);
+        outline-offset: 4px;
+      }
     </style>
   </head>
   <body>
@@ -115,21 +146,23 @@
     <main class="al-profile-page">
       <div class="container">
         <article class="al-profile-view" id="participant-profile" aria-live="polite">
-          <img src="/assets/images/hero/logo-v2.png" alt="Bilisa" />
+          <img src="/assets/images/algolab-2026/algo2026/Bilisa Ferede.jpg" alt="Bilisa" />
           <span class="al-verified-badge"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Verified Profile</span>
+          
           <h1>Bilisa</h1>
           <span class="al-alumni-cohort">AlgoLab 2026 Participant</span>
           <p>A passionate student exploring coding, AI, and technology through EAGLOPEN AlgoLab 2026.</p>
+          
           <section class="al-certificate">
-          <span class="al-verified-badge al-certificate-badge"><i class="fa-solid fa-certificate" aria-hidden="true"></i> Verified Certificate</span>
-          <p class="al-certificate-id">Certificate ID: EAGLOPEN-ALG-2026-P-040</p>
-          <figure class="al-certificate-figure">
-            <img src="/certificates/Bilisa Ferede.png" alt="Bilisa's EAGLOPEN AlgoLab verified certificate" />
-          </figure>
-          <a class="al-certificate-download" href="/certificates/Bilisa Ferede.png" download="bilisa-EAGLOPEN-Algolab-Certificate.png" aria-label="Download Bilisa's verified certificate">
-            <i class="fa-solid fa-download" aria-hidden="true"></i> <span>Download Certificate</span>
-          </a>
-        </section>
+        <span class="al-verified-badge al-certificate-badge"><i class="fa-solid fa-certificate" aria-hidden="true"></i> Verified Certificate</span>
+        <p class="al-certificate-id">Certificate ID: EAGLOPEN-ALG-2026-P-040</p>
+        <figure class="al-certificate-figure">
+          <img src="/certificates/Bilisa Ferede.png" alt="Bilisa's EAGLOPEN AlgoLab verified certificate" />
+        </figure>
+        <a class="al-certificate-download" href="/certificates/Bilisa Ferede.png" download="bilisa-EAGLOPEN-Algolab-Certificate.png" aria-label="Download Bilisa's verified certificate">
+          <i class="fa-solid fa-download" aria-hidden="true"></i> <span>Download Certificate</span>
+        </a>
+      </section>
           
           <a class="al-profile-back" href="/algolab-participants.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to participants</a>
         </article>

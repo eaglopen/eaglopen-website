@@ -957,15 +957,18 @@
             </p>
             <div class="al-person-links">
               <a
-                href="https://kr.linkedin.com/in/biniyamaschalew"
+                href="https://linkedin.com/in/biniyamaschalew"
                 target="_blank"
-                aria-label="LinkedIn"
+                rel="noopener noreferrer"
+                aria-label="Biniyam Aschalew on LinkedIn"
                 ><i class="fab fa-linkedin"></i
               ></a>
               <a href="https://github.com" target="_blank" aria-label="GitHub"
                 ><i class="fab fa-github"></i
               ></a>
-              <a href="biniyam@kaist.ac.kr" aria-label="Email"
+              <a
+                href="mailto:aschalbiniyam@gmail.com"
+                aria-label="Email Biniyam Aschalew"
                 ><i class="fas fa-envelope"></i
               ></a>
             </div>
@@ -1079,20 +1082,22 @@
             <h3>Negasa Reta</h3>
             <p class="al-person-position">Program Coordinator</p>
             <p class="al-person-bio">
-              Negasa Reta is a co founder of EAGLOPEN and this year's AlgoLab
-              coordinator. He is the founder of Dungoo Software Solutions, a
-              board member of the European Union Youth Sounding Board (EU YSB),
-              and a UNDP Student Ambassador for the FTL Track. His work spans
-              software engineering, AI development, and automation.
+              Negasa Reta is a co-founder of EAGLOPEN and this year's AlgoLab
+              coordinator. He is the founder of Dungoo Software Solutions and a
+              UNDP Student Ambassador. His work spans software engineering, AI
+              development, and automation.
             </p>
             <div class="al-person-links">
               <a
-                href="https://linkedin.com"
+                href="https://linkedin.com/in/negasa-reta-7448a9371"
                 target="_blank"
-                aria-label="LinkedIn"
+                rel="noopener noreferrer"
+                aria-label="Negasa Reta on LinkedIn"
                 ><i class="fab fa-linkedin"></i
               ></a>
-              <a href="mailto:email@example.com" aria-label="Email"
+              <a
+                href="mailto:negasareta@eaglopen.org"
+                aria-label="Email Negasa Reta"
                 ><i class="fas fa-envelope"></i
               ></a>
             </div>
@@ -1115,12 +1120,15 @@
             </p>
             <div class="al-person-links">
               <a
-                href="https://linkedin.com"
+                href="https://linkedin.com/in/lenchotaye"
                 target="_blank"
-                aria-label="LinkedIn"
+                rel="noopener noreferrer"
+                aria-label="Lencho Taye on LinkedIn"
                 ><i class="fab fa-linkedin"></i
               ></a>
-              <a href="mailto:email@example.com" aria-label="Email"
+              <a
+                href="mailto:lencho@eaglopen.org"
+                aria-label="Email Lencho Taye"
                 ><i class="fas fa-envelope"></i
               ></a>
             </div>
@@ -1648,10 +1656,10 @@
     (function(){
       /* ADD, REMOVE OR EDIT TRACKS HERE. days: use null if unknown (the days chip is then hidden). */
 var TRACKS=[
-      {title:"Python Programming",desc:"Build a strong programming foundation through practical problem solving.",weeks:3,days:9,icon:"py",mark:"Py",href:"algolab-materials.html?course=python"},
-      {title:"C++ Programming",desc:"Develop efficient, rigorous solutions with modern C++ and algorithmic thinking.",weeks:3,days:9,icon:"code",mark:"C++",href:"algolab-materials.html?course=cpp"},
       {title:"AI & Machine Learning",desc:"Discover the principles and tools behind intelligent systems and data-driven models.",weeks:3,days:6,icon:"chip",mark:"AI",href:"algolab-materials.html?course=ai-ml"},
-      {title:"Aerospace Fundamentals",desc:"Explore the science, systems, and engineering ideas that make flight possible.",weeks:3,days:6,icon:"rocket",mark:"Ae",href:"algolab-materials.html?course=aerospace"}
+      {title:"Python Programming",desc:"Build a strong programming foundation through practical problem solving.",weeks:3,days:9,icon:"py",mark:"Py",href:"algolab-materials.html?course=python"},
+      {title:"Aerospace Fundamentals",desc:"Explore the science, systems, and engineering ideas that make flight possible.",weeks:3,days:6,icon:"rocket",mark:"Ae",href:"algolab-materials.html?course=aerospace"},
+      {title:"C++ Programming",desc:"Develop efficient, rigorous solutions with modern C++ and algorithmic thinking.",weeks:3,days:9,icon:"code",mark:"C++",href:"algolab-materials.html?course=cpp"}
     ];
       var A='fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"';
       var ICON={
@@ -1667,6 +1675,32 @@ var TRACKS=[
       var desk=function(){return window.matchMedia("(min-width: 861px)").matches};
       var active=0;
 
+      /* Below 861px the stage becomes a native scroll-snap strip instead of
+         the stacked desktop carousel, so the gold "on" border has to follow
+         whichever card the finger has scrolled to.
+         A card is matched against the scroll position it would rest at, which
+         is its centred offset clamped to the ends of the strip. Comparing
+         raw centres instead would pick the wrong card at the first and last
+         position, because those two can never sit in the middle. */
+      function snapLeft(i){
+        var c=cards[i];if(!c)return 0;
+        var max=stage.scrollWidth-stage.clientWidth;
+        if(max<=0)return 0;
+        var left=(c.offsetLeft+c.offsetWidth/2)-stage.clientWidth/2;
+        return left<0?0:(left>max?max:left);
+      }
+      function nearest(){
+        var best=0,dist=Infinity;
+        cards.forEach(function(c,i){
+          var d=Math.abs(stage.scrollLeft-snapLeft(i));
+          if(d<dist){dist=d;best=i}
+        });
+        return best;
+      }
+      function scrollToCard(i){
+        stage.scrollTo({left:snapLeft(i),behavior:"smooth"});
+      }
+
       stage.innerHTML=TRACKS.map(function(t,i){
         var per=t.days?Math.round(t.days/t.weeks):1,wk="";
         for(var w=1;w<=t.weeks;w++){var seg="";for(var s=0;s<per;s++)seg+='<i style="width:calc('+(100/per)+'% - 4px)"></i>';wk+='<div class="sy-wk"><b>WEEK '+w+'</b>'+seg+'</div>'}
@@ -1679,7 +1713,7 @@ var TRACKS=[
       document.getElementById("sy-count").textContent=TRACKS.length+" learning tracks";
       var cards=[].slice.call(stage.children),dotEls=[].slice.call(dots.children);
 
-      function set(n){
+      function set(n,fromScroll){
         active=(n+TRACKS.length)%TRACKS.length;
         cards.forEach(function(c,i){
           var k=i-active,a=Math.abs(k),on=k===0;
@@ -1690,6 +1724,8 @@ var TRACKS=[
         });
         dotEls.forEach(function(d,i){d.classList.toggle("on",i===active)});
         now.innerHTML="Track "+(active+1)+" of "+TRACKS.length+": <b>"+esc(TRACKS[active].title)+"</b>";
+        /* fromScroll keeps the scroll handler from fighting the finger. */
+        if(!desk()&&!fromScroll)scrollToCard(active);
       }
       document.getElementById("sy-prev").onclick=function(){set(active-1)};
       document.getElementById("sy-next").onclick=function(){set(active+1)};
@@ -1708,7 +1744,17 @@ var TRACKS=[
         if(sx===null||!desk())return;var dx=e.clientX-sx;sx=null;
         if(Math.abs(dx)>70)set(active+(dx<0?1:-1));
       });
-      window.addEventListener("resize",function(){set(active)});
+      /* Keeps the gold border, the dots and the "Track n of m" line in step
+         with a swipe on touch screens. Passive, so scrolling stays smooth. */
+      stage.addEventListener("scroll",function(){
+        if(desk())return;
+        var i=nearest();
+        if(i!==active)set(i,true);
+      },{passive:true});
+      window.addEventListener("resize",function(){
+        if(desk()){stage.scrollLeft=0;set(active)}
+        else set(nearest(),true);
+      });
       set(0);
     })();
     </script>

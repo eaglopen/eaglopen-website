@@ -512,6 +512,45 @@
   margin-top: var(--space-5);
 }
 
+/* ===== CURRENT PROJECTS: SMALL SCREEN GUARDS =====
+   The video chrome bar (three dots + the file name + "rec") is a nowrap
+   flex row with a wide min-content width. On a phone that used to push the
+   spotlight grid column wider than its container, and the section's
+   overflow:hidden then cut the heading, paragraph and bullet list out of
+   view. Letting both grid children shrink keeps every word on screen. */
+.research-projects .projects-spotlight-media,
+.research-projects .projects-spotlight-text {
+  min-width: 0;
+}
+
+.research-projects .projects-spotlight-text h3,
+.research-projects .projects-spotlight-text p {
+  overflow-wrap: anywhere;
+}
+
+.research-projects .yt-lite-chrome .yt-dot {
+  flex-shrink: 0;
+}
+
+.research-projects .yt-lite-chrome .yt-chrome-title {
+  min-width: 0;
+  flex: 1 1 auto;
+  max-width: none;
+}
+
+.research-projects .yt-lite-label {
+  max-width: calc(100% - var(--space-8));
+  text-align: center;
+}
+
+/* Below this width the chrome file name is dropped so the dots and the
+   "rec" badge still fit on one line. */
+@media (max-width: 560px) {
+  .research-projects .yt-lite-chrome .yt-chrome-title {
+    display: none;
+  }
+}
+
 /* ===== PUBLICATIONS ===== */
 .research-publications {
   padding: var(--section-padding) 0;
@@ -1021,7 +1060,7 @@
   }
 
   .projects-spotlight {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-8);
   }
 

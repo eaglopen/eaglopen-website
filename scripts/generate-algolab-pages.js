@@ -18,6 +18,7 @@ const path = require("path");
 const DATA_FILE = path.join(__dirname, "algolab-participants-data.json");
 const TEAM_FILE = path.join(__dirname, "algolab-team-data.json");
 const OUTPUT_ROOT = path.join(__dirname, "..", "algolab");
+const SITE_URL = "https://eaglopen.org";
 
 function escapeHtml(str) {
   return String(str)
@@ -65,6 +66,20 @@ function buildPage(participant, slug) {
   const position = participant.position || `AlgoLab ${cohort} Participant`;
   const badgeText = role === "Participant" ? "Verified Profile" : `Verified ${role}`;
   const metaLabel = role === "Participant" ? "participant" : role.toLowerCase();
+
+  const email = participant.email ? String(participant.email).trim() : "";
+  const linkedin = participant.linkedin ? String(participant.linkedin).trim() : "";
+  const contactLinks = [
+    linkedin
+      ? `<a class="al-profile-contact" href="${escapeHtml(linkedin)}" target="_blank" rel="noopener noreferrer" aria-label="${name} on LinkedIn"><i class="fa-brands fa-linkedin" aria-hidden="true"></i> <span>LinkedIn</span></a>`
+      : "",
+    email
+      ? `<a class="al-profile-contact" href="mailto:${escapeHtml(email)}" aria-label="Email ${name}"><i class="fa-solid fa-envelope" aria-hidden="true"></i> <span>Email</span></a>`
+      : "",
+  ].filter(Boolean);
+  const contactHtml = contactLinks.length
+    ? `<nav class="al-profile-links" aria-label="${name}'s contact links">${contactLinks.join("")}</nav>`
+    : "";
   const backTarget = role === "Participant"
     ? "/algolab-participants.html"
     : (role === "Contributor"
@@ -115,6 +130,8 @@ function buildPage(participant, slug) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="${name} is a verified EAGLOPEN AlgoLab ${cohort} ${metaLabel}." />
+    <link rel="canonical" href="${SITE_URL}/algolab/${slug}/" />
+    <meta name="robots" content="noindex, follow" />
     <title>${name} | EAGLOPEN AlgoLab</title>
     <script src="https://kit.fontawesome.com/bc43529ae8.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/assets/css/base.css" />
@@ -211,6 +228,37 @@ function buildPage(participant, slug) {
         padding-top: 30px;
         border-top: 2px solid rgba(218, 165, 32, 0.3);
       }
+      .al-profile-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 18px;
+      }
+      .al-profile-contact {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        padding: 9px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.24);
+        background: rgba(255, 255, 255, 0.06);
+        color: #ffffff;
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        text-decoration: none;
+        transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+      }
+      .al-profile-contact:hover {
+        background: linear-gradient(110deg, #c9a84c, #f0d98f);
+        border-color: #c9a84c;
+        color: #14202e;
+        transform: translateY(-2px);
+      }
+      .al-profile-contact:focus-visible {
+        outline: 3px solid var(--color-secondary-light);
+        outline-offset: 4px;
+      }
     </style>
   </head>
   <body>
@@ -229,6 +277,7 @@ function buildPage(participant, slug) {
           <h1>${name}</h1>
           <span class="al-alumni-cohort">${escapeHtml(position)}</span>
           <p>${description}</p>
+          ${contactHtml}
           ${certificateHtml}
           ${excellenceHtml}
           <a class="al-profile-back" href="${backTarget}"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> ${backLabel}</a>

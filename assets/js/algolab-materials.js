@@ -234,6 +234,23 @@
   function renderPerson(slug, badge, badgeClass) {
     const person = DATA.people[slug];
     if (!person) return "";
+    const contactLinks = [
+      person.linkedin
+        ? `<a href="${esc(person.linkedin)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(
+            person.name
+          )} on LinkedIn"><i class="fa-brands fa-linkedin"></i></a>`
+        : "",
+      person.email
+        ? `<a href="mailto:${esc(
+            person.email
+          )}" aria-label="Email ${esc(person.name)}"><i class="fa-solid fa-envelope"></i></a>`
+        : "",
+    ].filter(Boolean);
+    const contactHtml = contactLinks.length
+      ? `<nav class="al-person-links" aria-label="${esc(
+          person.name
+        )}'s contact links">${contactLinks.join("")}</nav>`
+      : "";
     return `<article class="al-person">
       <div class="al-person-photo">
         <img src="${esc(person.image)}" alt="${esc(person.name)} photo" loading="lazy" width="110" height="110" />
@@ -242,6 +259,7 @@
       <h3>${esc(person.name)}</h3>
       <p class="al-person-position">${esc(person.position)}</p>
       <p class="al-person-bio">${esc(person.bio)}</p>
+      ${contactHtml}
       ${
         person.profileUrl
           ? `<a class="al-profile-cta" href="${esc(person.profileUrl)}" aria-label="Open ${esc(

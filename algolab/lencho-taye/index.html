@@ -103,6 +103,37 @@
         padding-top: 30px;
         border-top: 2px solid rgba(218, 165, 32, 0.3);
       }
+      .al-profile-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 18px;
+      }
+      .al-profile-contact {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        padding: 9px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.24);
+        background: rgba(255, 255, 255, 0.06);
+        color: #ffffff;
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        text-decoration: none;
+        transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+      }
+      .al-profile-contact:hover {
+        background: linear-gradient(110deg, #c9a84c, #f0d98f);
+        border-color: #c9a84c;
+        color: #14202e;
+        transform: translateY(-2px);
+      }
+      .al-profile-contact:focus-visible {
+        outline: 3px solid var(--color-secondary-light);
+        outline-offset: 4px;
+      }
     </style>
   </head>
   <body>
@@ -121,6 +152,7 @@
           <h1>Lencho Taye</h1>
           <span class="al-alumni-cohort">Program Coordinator</span>
           <p>Founder &amp; Executive Director, EAGLOPEN · Lead Instructor (2023, 24, 25 Cohort) · AddisCoder &#39;25 Alumnus · IAAC Ambassador · Student Researcher &amp; Software Developer</p>
+          <nav class="al-profile-links" aria-label="Lencho Taye's contact links"><a class="al-profile-contact" href="https://linkedin.com/in/lenchotaye" target="_blank" rel="noopener noreferrer" aria-label="Lencho Taye on LinkedIn"><i class="fa-brands fa-linkedin" aria-hidden="true"></i> <span>LinkedIn</span></a><a class="al-profile-contact" href="mailto:lencho@eaglopen.org" aria-label="Email Lencho Taye"><i class="fa-solid fa-envelope" aria-hidden="true"></i> <span>Email</span></a></nav>
           
           
           <a class="al-profile-back" href="/algolab.html#algolab-team"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to the AlgoLab team</a>
@@ -130,6 +162,3 @@
     <script src="/assets/js/clean-routes.js"></script>
   </body>
 </html>
-
-
-

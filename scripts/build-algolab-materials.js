@@ -155,6 +155,8 @@ function loadPeople(manifest) {
       image: member.image,
       position: member.position,
       bio: clean(member.description),
+      ...(member.email ? { email: member.email } : {}),
+      ...(member.linkedin ? { linkedin: member.linkedin } : {}),
       profileUrl: `algolab/${slug}`,
     };
     wanted.delete(slug);
